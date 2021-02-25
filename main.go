@@ -8,14 +8,12 @@ import (
 
 func main() {
 	router := gin.Default()
+	// Cargar archivos públicos
+	// https://docs.gomplate.ca/syntax/ => sintaxis
 	router.Static("/public", "public")
 	router.LoadHTMLGlob("views/*")
 
-	// Simple group: v1
-	v1 := router.Group("/api")
-	{
-		v1.GET("/init", controllers.InitIndex)
+	router.GET("/", controllers.InitIndex)
 
-	}
 	router.Run(":4000")
 }
