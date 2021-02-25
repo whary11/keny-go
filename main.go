@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"keny-go/controllers"
+)
 
 func main() {
-	fmt.Println("Hola Mundo")
+	controllers.InitIndex()
 }
