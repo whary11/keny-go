@@ -16,9 +16,10 @@ func main() {
 	// Cargar archivos públicos
 	// https://docs.gomplate.ca/syntax/ => sintaxis
 	router.Static("/public", "public")
-	router.LoadHTMLGlob("views/*")
+	router.LoadHTMLGlob("views/**/*")
 
 	router.GET("/", controllers.InitIndex)
+	router.GET("/product_detail", controllers.ProductDatail)
 
 	router.Run(":" + port)
 }

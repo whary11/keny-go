@@ -11,3 +11,9 @@ func InitIndex(c *gin.Context) {
 		"title": "Keny - Company",
 	})
 }
+
+func ProductDatail(c *gin.Context) {
+	c.HTML(http.StatusOK, "product_details.tmpl", gin.H{
+		"title": "Keny - Company",
+	})
+}
