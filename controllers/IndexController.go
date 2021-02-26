@@ -1,7 +1,13 @@
 package controllers
 
-import "fmt"
+import (
+	"net/http"
 
-func InitIndex() {
-	fmt.Println("Hola desde controllers")
+	"github.com/gin-gonic/gin"
+)
+
+func InitIndex(c *gin.Context) {
+	c.HTML(http.StatusOK, "index.tmpl", gin.H{
+		"title": "Keny - Company",
+	})
 }
