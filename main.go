@@ -10,6 +10,8 @@ import (
 
 func main() {
 
+	fmt.Println(utils.GetEnv("DATABASE_NAME"))
+
 	port := "4000"
 	fmt.Println("Servidor corriendo en: " + utils.GetOutboundIP() + ":" + port)
 	router := gin.Default()
