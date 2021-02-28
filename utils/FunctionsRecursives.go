@@ -6,8 +6,13 @@ import (
 	"os"
 	"strings"
 
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
+
+func GetResponse(c *gin.Context, code int, data Response) {
+	c.JSON(code, data)
+}
 
 func GetOutboundIP() string {
 	conn, _ := net.Dial("udp", "8.8.8.8:80")

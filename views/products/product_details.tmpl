@@ -10,7 +10,7 @@
     <meta name="author" content="multikart">
     <link rel="icon" href="/public/assets/images/favicon/1.png" type="image/x-icon">
     <link rel="shortcut icon" href="/public/assets/images/favicon/1.png" type="image/x-icon">
-    <title>{{ .title }}</title>
+    <title>{{ .pro.Name }}</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -34,10 +34,20 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="/public/assets/css/color1.css" media="screen" id="color">
 
+    <style>
+        .reference_selected{
+            display: inline-block;
+        }
+        .hr_reference{
+            margin-top: .5rem !important;
+            border: 1px solid black;
+            margin-left: -2px !important;
+        }
+    </style>
+
 </head>
 
 <body>
-
     <!-- loader start -->
     <div class="loader_skeleton">
         <header>
@@ -876,14 +886,14 @@
 
 
     <!-- section start -->
-    <section>
+    <section >
         <div class="collection-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="product-slick">
+                        <div class="product-slick" >
                             <div><img src="/public/assets/images/pro3/1.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                                    class="img-fluid blur-up lazyload image_zoom_cls-0" height="300px" ></div>
                             <div><img src="/public/assets/images/pro3/2.jpg" alt=""
                                     class="img-fluid blur-up lazyload image_zoom_cls-1"></div>
                             <div><img src="/public/assets/images/pro3/27.jpg" alt=""
@@ -906,20 +916,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 rtl-text">
+                    {{ $ref := index .pro.References 0}}
+                    <div class="col-lg-6 rtl-text" id="product_detail_vue">
                         <div class="product-right">
-                            <h2 class="mb-0">Women Pink Shirt</h2>
-                            <h5 class="mb-2">by <a href="#">zara</a></h5>
-                            <h4><del>$459.00</del><span>55% off</span></h4>
-                            <h3>$32.96</h3>
+                            <h2 class="mb-0">{{ .pro.Name }}</h2>
+                            <h5 class="mb-2"></h5>
+                            <h4><del>$ {{ print $ref.Price }}</del><span>55% off</span></h4>
+                            <h3>$ {{ print $ref.Price }}</h3>
                             <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
+                            {{ range $index, $item := .pro.References }}
+                                {{ if $item.Color }}
+                                    <div class="reference_selected" id="div_reference_{{$item.Id}}">
+                                        <li @click.prevent="selectReference({{$item.Id}},{{$item.Stock}},{{$item.Price}})" class="bg-light0" id="reference_{{$item.Id}}" style="background:{{$item.Color}} !important"></li>
+                                        {{ if eq $ref.Id  $item.Id }}
+                                            <hr data-id="{{$item.Id}}" data-price="{{$item.Price}}" data-stock="{{$item.Stock}}" class="hr_reference">
+                                        {{ end }}
+                                    </div>
+                                {{ else }}
+                                    {{ $item.Name}}
+                                {{ end }}
+                            {{ end }}
                             </ul>
                             <div class="product-description border-product">
-                                <h6 class="product-title size-text">select size <span><a href="" data-toggle="modal"
-                                            data-target="#sizemodal">size chart</a></span></h6>
+                                <!-- <h6 class="product-title size-text">select size <span><a href="" data-toggle="modal"
+                                            data-target="#sizemodal">size chart</a></span></h6> -->
                                 <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -934,15 +954,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="size-box">
+                                <!-- <div class="size-box">
                                     <ul>
                                         <li class="active"><a href="#">s</a></li>
                                         <li><a href="#">m</a></li>
                                         <li><a href="#">l</a></li>
                                         <li><a href="#">xl</a></li>
                                     </ul>
-                                </div>
-                                <h6 class="product-title">quantity</h6>
+                                </div> -->
+                                <h6 class="product-title">Cantidad</h6>
                                 <div class="qty-box">
                                     <div class="input-group"><span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-left-minus" data-type="minus" data-field=""><i
@@ -958,10 +978,7 @@
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">product details</h6>
-                                <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
-                                    doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore
-                                    veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam
-                                    voluptatem,</p>
+                                <p>{{ .pro.Description }}</p>
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">share it</h6>
@@ -979,7 +996,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="border-product">
+                            <!-- <div class="border-product">
                                 <h6 class="product-title">Time Reminder</h6>
                                 <div class="timer">
                                     <p id="demo"><span>25 <span class="padding-l">:</span> <span
@@ -990,7 +1007,7 @@
                                                 class="timer-cal">Sec</span></span>
                                     </p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -2325,6 +2342,8 @@
     </div>
     <!-- tap to top end -->
 
+    <!-- latest jquery-->
+    <script src="/public/js/vue.js"></script>
 
     <!-- latest jquery-->
     <script src="/public/assets/js/jquery-3.3.1.min.js"></script>
@@ -2352,6 +2371,9 @@
 
     <!-- Theme js-->
     <script src="/public/assets/js/script.js"></script>
+
+    <!-- latest jquery-->
+    <script src="/public/js/ProductDetail/product_detail.js"></script>
 
     <script>
         function openSearch() {

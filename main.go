@@ -21,7 +21,7 @@ func main() {
 	router.LoadHTMLGlob("views/**/*")
 
 	router.GET("/", controllers.InitIndex)
-	router.GET("/product_detail", controllers.ProductDatail)
+	router.GET("/product_detail/:slug", controllers.ProductDatail)
 	router.GET("/user/:user_id", controllers.GetUserById)
 
 	router.Run(":" + port)
