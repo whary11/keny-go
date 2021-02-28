@@ -23,9 +23,6 @@ func ProductDatail(c *gin.Context) {
 		})
 		return
 	}
-	// c.HTML(http.StatusOK, "product_details.tmpl", gin.H{
-	// 	"pro": product,
-	// })
 	utils.GetResponse(c, http.StatusOK, utils.Response{
 		"status":  status,
 		"message": message,
