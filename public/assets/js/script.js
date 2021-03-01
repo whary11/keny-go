@@ -795,6 +795,7 @@
     $('.product-slick').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
+        height:500,
         arrows: true,
         fade: true,
         asNavFor: '.slider-nav'
