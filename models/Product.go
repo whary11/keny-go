@@ -5,14 +5,14 @@ import (
 )
 
 type Product struct {
-	Id              int    `json:"id" example:"123"`
-	Name            string `json:"name" example:"Paracetamol"`
-	Description     string `json:"description" example:"luis.raga@keny.com"`
-	MetaTitle       string `json:"meta_title" example:"2021-02-24 20:19:39"`
-	MetaDescription string `json:"meta_description" example:"2021-02-24 20:19:39"`
-	MetaTags        string `json:"meta_tags" example:"2021-02-24 20:19:39"`
-	Slug            string `json:"slug" example:"page-1"`
-	References      []Reference
+	Id              int         `json:"id" example:"123"`
+	Name            string      `json:"name" example:"Paracetamol"`
+	Description     string      `json:"description" example:"luis.raga@keny.com"`
+	MetaTitle       string      `json:"meta_title" example:"2021-02-24 20:19:39"`
+	MetaDescription string      `json:"meta_description" example:"2021-02-24 20:19:39"`
+	MetaTags        string      `json:"meta_tags" example:"2021-02-24 20:19:39"`
+	Slug            string      `json:"slug" example:"page-1"`
+	References      []Reference `json:"references" example:"page-1"`
 }
 
 func (product *Product) GetProductBySlug() (status bool, message string) {

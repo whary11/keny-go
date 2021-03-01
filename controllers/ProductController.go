@@ -17,6 +17,7 @@ func ProductDatail(c *gin.Context) {
 
 	if !status {
 		utils.GetResponse(c, http.StatusOK, utils.Response{
+			"code":    http.StatusNotFound,
 			"status":  status,
 			"message": message,
 			"data":    nil,
@@ -24,8 +25,9 @@ func ProductDatail(c *gin.Context) {
 		return
 	}
 	utils.GetResponse(c, http.StatusOK, utils.Response{
+		"code":    http.StatusOK,
 		"status":  status,
 		"message": message,
-		"data":    product.References,
+		"data":    product,
 	})
 }
