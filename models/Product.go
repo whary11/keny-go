@@ -18,6 +18,7 @@ type Product struct {
 func (product *Product) GetProductBySlug() (status bool, message string) {
 
 	var reference Reference
+	var reference_images Images
 	querySelect := `
 		SELECT 
 		-- info product
@@ -45,9 +46,17 @@ func (product *Product) GetProductBySlug() (status bool, message string) {
 			&reference.ViewFront, &reference.Price, &reference.Stock); err != nil {
 			fmt.Println(err.Error())
 		}
-		fmt.Println(reference.Name)
+		//llenar las imagens de cada referencia
+		reference_images.ReferenceId = reference.Id
+		reference_images.Images = []Image{}
+		status, message := reference_images.GetImagesByReferenceId()
+		if !status {
+			return false, message
+		}
+		reference.Images = reference_images.Images
 		product.addReference(reference)
 	}
+
 	if product.Id == 0 {
 		return false, "No se encontró información"
 	}

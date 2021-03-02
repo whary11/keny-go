@@ -11,7 +11,7 @@ import (
 // Dev: nodemon --exec go run main.go --signal SIGTERM
 func main() {
 
-	fmt.Println(utils.GetEnv("DATABASE_READ_USERNAME") + ":" + utils.GetEnv("DATABASE_READ_PASSWORD") + "@tcp(" + utils.GetEnv("DATABASE_READ_HOSTNAME") + "" + utils.GetEnv("DATABASE_READ_PORT") + ")/" + utils.GetEnv("DATABASE_READ_NAME"))
+	// fmt.Println(utils.GetEnv("DATABASE_READ_USERNAME") + ":" + utils.GetEnv("DATABASE_READ_PASSWORD") + "@tcp(" + utils.GetEnv("DATABASE_READ_HOSTNAME") + "" + utils.GetEnv("DATABASE_READ_PORT") + ")/" + utils.GetEnv("DATABASE_READ_NAME"))
 
 	port := "4000"
 	fmt.Println("Servidor corriendo en: " + utils.GetOutboundIP() + ":" + port)
