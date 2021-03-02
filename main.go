@@ -25,5 +25,12 @@ func main() {
 	router.GET("/product_detail/:slug", controllers.ProductDatail)
 	router.GET("/user/:user_id", controllers.GetUserById)
 
+	v1 := router.Group("/cart")
+	{
+		v1.POST("/add", controllers.Add)
+		// v1.POST("/submit", submitEndpoint)
+		// v1.POST("/read", readEndpoint)
+	}
+
 	router.Run(":" + port)
 }
