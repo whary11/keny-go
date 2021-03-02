@@ -430,4 +430,14 @@ BEGIN;
 INSERT INTO `users` VALUES (1, 'David', 'Raga', 'david@gmial.com', 'sdfasdfasd', '2021-02-27 00:00:00', '2021-02-27 00:00:00');
 COMMIT;
 
+CREATE TABLE `cart` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `reference_id` int unsigned NOT NULL,
+  `user_id` int unsigned DEFAULT NULL,
+  `code_cart` double unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+
+
 SET FOREIGN_KEY_CHECKS = 1;
