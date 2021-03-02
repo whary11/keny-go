@@ -301,7 +301,7 @@ CREATE TABLE `reference_images` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `referece_images_reference_id_idx` (`reference_id`),
   CONSTRAINT `referece_images_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `references` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of reference_images
