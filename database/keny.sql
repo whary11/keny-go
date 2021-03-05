@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Local
+ Source Server         : Laika Local V2
  Source Server Type    : MySQL
- Source Server Version : 80023
+ Source Server Version : 100413
  Source Host           : localhost:3306
  Source Schema         : keny
 
  Target Server Type    : MySQL
- Target Server Version : 80023
+ Target Server Version : 100413
  File Encoding         : 65001
 
- Date: 01/03/2021 20:27:41
+ Date: 04/03/2021 20:34:20
 */
 
 SET NAMES utf8mb4;
@@ -22,11 +22,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `addresses`;
 CREATE TABLE `addresses` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `status_id` int unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   `principal` binary(1) NOT NULL DEFAULT '0',
-  `user_id` int unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -37,13 +37,26 @@ CREATE TABLE `addresses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for cart
+-- ----------------------------
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE `cart` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `reference_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
+  `code_cart` double unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
 -- Table structure for categories
 -- ----------------------------
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `status_id` int unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -57,12 +70,12 @@ CREATE TABLE `categories` (
 -- ----------------------------
 DROP TABLE IF EXISTS `cities`;
 CREATE TABLE `cities` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `department_id` int unsigned NOT NULL,
-  `status_id` int unsigned NOT NULL,
+  `department_id` int(10) unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cities_department_id_idx` (`department_id`),
   KEY `cities_status_id_idx` (`status_id`),
@@ -75,7 +88,7 @@ CREATE TABLE `cities` (
 -- ----------------------------
 DROP TABLE IF EXISTS `configurations`;
 CREATE TABLE `configurations` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name_company` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -85,7 +98,7 @@ CREATE TABLE `configurations` (
 -- ----------------------------
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE `countries` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -98,12 +111,12 @@ CREATE TABLE `countries` (
 -- ----------------------------
 DROP TABLE IF EXISTS `departments`;
 CREATE TABLE `departments` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `updated_at` datetime NOT NULL,
   `created_at` datetime NOT NULL,
-  `country_id` int unsigned NOT NULL,
-  `status_id` int unsigned NOT NULL,
+  `country_id` int(10) unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `departments_country_id_idx` (`country_id`),
@@ -117,10 +130,10 @@ CREATE TABLE `departments` (
 -- ----------------------------
 DROP TABLE IF EXISTS `headquarters`;
 CREATE TABLE `headquarters` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `address` varchar(100) NOT NULL,
-  `status_id` int unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -137,20 +150,36 @@ INSERT INTO `headquarters` VALUES (1, 'Principal', 'calle falsa', 1, '2020-12-09
 COMMIT;
 
 -- ----------------------------
+-- Table structure for oauth_access_tokens
+-- ----------------------------
+DROP TABLE IF EXISTS `oauth_access_tokens`;
+CREATE TABLE `oauth_access_tokens` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `access_token` text NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `revoked` int(11) NOT NULL DEFAULT 0,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `expires_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
 -- Table structure for order_details
 -- ----------------------------
 DROP TABLE IF EXISTS `order_details`;
 CREATE TABLE `order_details` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `order_id` int unsigned NOT NULL,
-  `reference_id` int unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(10) unsigned NOT NULL,
+  `reference_id` int(10) unsigned NOT NULL,
   `reference_name` varchar(45) NOT NULL,
   `price` double NOT NULL,
-  `quantity` int NOT NULL,
+  `quantity` int(11) NOT NULL,
   `price_with_discount` double NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `puchase_status_id` int unsigned NOT NULL,
+  `puchase_status_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `od_reference_id_idx` (`reference_id`),
@@ -166,11 +195,11 @@ CREATE TABLE `order_details` (
 -- ----------------------------
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `puchase_status_id` int unsigned NOT NULL,
+  `puchase_status_id` int(10) unsigned NOT NULL,
   `total` double NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
@@ -185,14 +214,14 @@ CREATE TABLE `orders` (
 -- ----------------------------
 DROP TABLE IF EXISTS `phones`;
 CREATE TABLE `phones` (
-  `id` int NOT NULL,
-  `phone` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `phone` int(11) NOT NULL,
   `verified` binary(1) NOT NULL DEFAULT '0',
   `principal` binary(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` varchar(45) NOT NULL,
-  `country_id` int unsigned NOT NULL,
-  `user_id` int unsigned NOT NULL,
+  `country_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `phones_user_id_idx` (`user_id`),
   KEY `phones_country_id_idx` (`country_id`),
@@ -205,7 +234,7 @@ CREATE TABLE `phones` (
 -- ----------------------------
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `meta_title` varchar(100) NOT NULL,
@@ -214,7 +243,7 @@ CREATE TABLE `products` (
   `slug` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   `apdated_at` datetime NOT NULL,
-  `status_id` int unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `slug_UNIQUE` (`slug`),
@@ -235,10 +264,10 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `products_categories`;
 CREATE TABLE `products_categories` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` int unsigned NOT NULL,
-  `category_id` int unsigned NOT NULL,
-  `status_id` int unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `category_id` int(10) unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -256,10 +285,10 @@ CREATE TABLE `products_categories` (
 -- ----------------------------
 DROP TABLE IF EXISTS `products_tags`;
 CREATE TABLE `products_tags` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` int unsigned NOT NULL,
-  `tag_id` int unsigned NOT NULL,
-  `status_id` int unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `tag_id` int(10) unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -277,7 +306,7 @@ CREATE TABLE `products_tags` (
 -- ----------------------------
 DROP TABLE IF EXISTS `purchase_statuses`;
 CREATE TABLE `purchase_statuses` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `color` varchar(45) NOT NULL,
   `customer_conversion` varchar(45) NOT NULL,
@@ -292,8 +321,8 @@ CREATE TABLE `purchase_statuses` (
 -- ----------------------------
 DROP TABLE IF EXISTS `reference_images`;
 CREATE TABLE `reference_images` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `reference_id` int unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `reference_id` int(10) unsigned NOT NULL,
   `url` text NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -317,12 +346,12 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `references`;
 CREATE TABLE `references` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `product_id` int unsigned NOT NULL,
-  `view_front` int NOT NULL DEFAULT '1' COMMENT '1 = Va a ser  por los clientes',
+  `product_id` int(10) unsigned NOT NULL,
+  `view_front` int(11) NOT NULL DEFAULT 1 COMMENT '1 = Va a ser  por los clientes',
   `color` varchar(45) DEFAULT NULL,
-  `status_id` int unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -346,14 +375,14 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `references_headquarters`;
 CREATE TABLE `references_headquarters` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `reference_id` int unsigned NOT NULL,
-  `headquarter_id` int unsigned NOT NULL,
-  `status_id` int unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `reference_id` int(10) unsigned NOT NULL,
+  `headquarter_id` int(10) unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
   `cost_price` double NOT NULL,
   `price` double NOT NULL,
-  `stock` int NOT NULL,
-  `reserve_stock` int NOT NULL DEFAULT '0',
+  `stock` int(11) NOT NULL,
+  `reserve_stock` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -379,7 +408,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `statuses`;
 CREATE TABLE `statuses` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `color` varchar(45) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -400,7 +429,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `tags`;
 CREATE TABLE `tags` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
@@ -411,7 +440,7 @@ CREATE TABLE `tags` (
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `last_name` varchar(100) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
@@ -429,15 +458,5 @@ CREATE TABLE `users` (
 BEGIN;
 INSERT INTO `users` VALUES (1, 'David', 'Raga', 'david@gmial.com', 'sdfasdfasd', '2021-02-27 00:00:00', '2021-02-27 00:00:00');
 COMMIT;
-
-CREATE TABLE `cart` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `reference_id` int unsigned NOT NULL,
-  `user_id` int unsigned DEFAULT NULL,
-  `code_cart` double unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
-
 
 SET FOREIGN_KEY_CHECKS = 1;

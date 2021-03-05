@@ -85,11 +85,8 @@ func GetContainJwt(tokenJwt string) jwt.MapClaims {
 	})
 
 	if err != nil {
-		fmt.Println("Error: ", err)
+		fmt.Println("Error: ", err.Error())
 		fmt.Println(token.Valid)
-
-		// return res
-
 	}
 	// ... error handling
 	// fmt.Println(token)
@@ -117,8 +114,6 @@ func VerifiedToken(tokenString string) (string, bool) {
 
 	texto := ""
 	token, err := jwt.ParseWithClaims(tokenString, &Claim{}, verifyFunction)
-
-	fmt.Println(token.Valid, err)
 
 	if err != nil {
 		switch err.(type) {
@@ -158,5 +153,16 @@ func VerifiedToken(tokenString string) (string, bool) {
 
  1. Como detectar que token de los que están en la db de ese usuario está llegando (desencriptar el de la debe y comparar, cuál es la mejor manera ?)
 
+
+*/
+
+/*
+	Proceso de login
+
+	1. Generar los token
+	2. Devolver en el PAYLOAD del token el id del mismo en la db => Contra este se validará para tomar cualquer acción (Buscar este token y vefiricar su fecha de espiración por ejemplo).
+	3. revisar este token de laravel
+
+	eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0MyIsImp0aSI6IjU5NmUyY2FhNDg3Mjk3ZjdhNGEwZDU5NzQ5NmMzNzY0ZjNkNjkyMDUwYmE5NGZhNDA2YzYzZTA1NjBmODEzZWFiNmQwNTE1ZDY5NTU4NTdiIiwiaWF0IjoxNjE0Njk1MjUxLCJuYmYiOjE2MTQ2OTUyNTEsImV4cCI6MTY0NjIzMTI1MSwic3ViIjoiMjE1Iiwic2NvcGVzIjpbXX0.ApriECxXbY9EUn1dJ1vbZVpaspS4BVYvec4Izs50KCB5LuNX5dYUCvNJ7vavaVRiopl8uyl3V6Di1Oq-1cGTT0dGY_pJzBICLR2L7KMpj-9P_IZWTFXhCmbmlq886K70CZDDglbkm7W5qo1sZmqffEb35l1gHRYc51uNzUxNIt3zVLZKeIO090kVB95Rg06YvmeHp_U-pMdci3E5seh_aZONbJIK1bqqnfzI-Tf9ZrX2-1t8-rRMdSjdZ6ad0zqfLdcvsazcnaJz0_CvYy2raPbJlSkb6KjQAlm7GGDXPr4-1yWLvbJKTs2mFNpo0eLKn0jwNmcAwD2LPUlrAJQ_EUBLr6VfL_066tDVFSPGskV9kd5xxfR2nPGCf_jUd-r_ltkuNKQ7qWJi3v7NTC5BkC4eOKPIJygRPQ82mY--JdJ64TtvkODdKAD5ZNzRVbV3YrgnmtPAmd9WyZbR4yPfzPxicdagoQuUyU5TBhSf7PXa0R0nGKg4e2bovSOeuUVJ2mNTQRgANYZo5JiXps3ILQKO8i3zCLTKnsSc6ciEn92iLzilp4CdZlZsWao7ITv1Opg2YdN3lo7JDEfMHSgeum9FPc0xHgVkQVz1Dub34JwLuDEgzgiR6S0NW9IqpcqyEqurescek3dniwMq_DRirV2rjNjrmQIR7kSDgdsrSDc
 
 */
