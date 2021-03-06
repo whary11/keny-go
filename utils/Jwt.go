@@ -5,19 +5,14 @@ import (
 	"fmt"
 	"io/ioutil"
 	"sync"
-	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
+	"github.com/google/uuid"
 )
 
-type Model struct {
-	FirstName string `json:"first_name"`
-	Email     string `json:"email"`
-	Password  string `json:"password,omitempty"`
-}
-
 type Claim struct {
-	Usuario Model `json:"user"`
+	Sub int       `json:"sub"`
+	Jti uuid.UUID `json:"jti"`
 	jwt.StandardClaims
 }
 
@@ -57,18 +52,26 @@ func loadSignFiles() {
 }
 
 // generateJWT genera un token JWT nuevo
-func GenerateJWT(u Model) (string, error) {
+func (u *Claim) GenerateJWT(expiried int64) (string, error) {
+
 	var token string
-	c := Claim{
-		Usuario: u,
-		StandardClaims: jwt.StandardClaims{
-			// Tiempo de expiración del token: 1 semana
-			ExpiresAt: time.Now().Add(time.Hour * 24 * 1).Unix(),
-			Issuer:    "Keny",
-		},
+	u.Jti = uuid.New()
+	u.StandardClaims = jwt.StandardClaims{
+		// Tiempo de expiración del token: 1 semana
+		ExpiresAt: expiried,
+		Issuer:    "Keny",
 	}
 
-	t := jwt.NewWithClaims(jwt.SigningMethodRS256, c)
+	// c := Claim   {
+	// 	Usuario: u,
+	// 	StandardClaims: jwt.StandardClaims{
+	// 		// Tiempo de expiración del token: 1 semana
+	// 		ExpiresAt: expiried,
+	// 		Issuer:    "Keny",
+	// 	},
+	// }
+
+	t := jwt.NewWithClaims(jwt.SigningMethodRS256, u)
 	token, err := t.SignedString(SignKey)
 	if err != nil {
 		return "", err
