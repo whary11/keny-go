@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Laika Local V2
+ Source Server         : Local
  Source Server Type    : MySQL
- Source Server Version : 100413
+ Source Server Version : 80023
  Source Host           : localhost:3306
  Source Schema         : keny
 
  Target Server Type    : MySQL
- Target Server Version : 100413
+ Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 04/03/2021 20:34:20
+ Date: 06/03/2021 21:10:23
 */
 
 SET NAMES utf8mb4;
@@ -22,11 +22,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `addresses`;
 CREATE TABLE `addresses` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `address` varchar(255) NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   `principal` binary(1) NOT NULL DEFAULT '0',
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -41,22 +41,22 @@ CREATE TABLE `addresses` (
 -- ----------------------------
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `reference_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `reference_id` int unsigned NOT NULL,
+  `user_id` int unsigned DEFAULT NULL,
   `code_cart` double unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Table structure for categories
 -- ----------------------------
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -70,12 +70,12 @@ CREATE TABLE `categories` (
 -- ----------------------------
 DROP TABLE IF EXISTS `cities`;
 CREATE TABLE `cities` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `department_id` int(10) unsigned NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `department_id` int unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cities_department_id_idx` (`department_id`),
   KEY `cities_status_id_idx` (`status_id`),
@@ -88,7 +88,7 @@ CREATE TABLE `cities` (
 -- ----------------------------
 DROP TABLE IF EXISTS `configurations`;
 CREATE TABLE `configurations` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name_company` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -98,7 +98,7 @@ CREATE TABLE `configurations` (
 -- ----------------------------
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE `countries` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -111,12 +111,12 @@ CREATE TABLE `countries` (
 -- ----------------------------
 DROP TABLE IF EXISTS `departments`;
 CREATE TABLE `departments` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `updated_at` datetime NOT NULL,
   `created_at` datetime NOT NULL,
-  `country_id` int(10) unsigned NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `country_id` int unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `departments_country_id_idx` (`country_id`),
@@ -130,10 +130,10 @@ CREATE TABLE `departments` (
 -- ----------------------------
 DROP TABLE IF EXISTS `headquarters`;
 CREATE TABLE `headquarters` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `address` varchar(100) NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -154,32 +154,86 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `oauth_access_tokens`;
 CREATE TABLE `oauth_access_tokens` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `access_token` text NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `revoked` int(11) NOT NULL DEFAULT 0,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) NOT NULL,
+  `user_id` int unsigned NOT NULL,
+  `revoked` int NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `expires_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `access_token_UNIQUE` (`uuid`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of oauth_access_tokens
+-- ----------------------------
+BEGIN;
+INSERT INTO `oauth_access_tokens` VALUES (1, '00000000-0000-0000-0000-000000000000', 0, 0, '2021-03-05 20:43:47', '2021-03-05 20:43:47', '2021-03-07 01:37:37');
+INSERT INTO `oauth_access_tokens` VALUES (5, '2a394b75-a6a0-4b5d-b917-190b508461a0', 0, 0, '2021-03-05 20:53:52', '2021-03-05 20:53:52', '2021-03-07 01:53:48');
+INSERT INTO `oauth_access_tokens` VALUES (6, '930b2088-1438-4923-9f25-69828e4e0151', 0, 0, '2021-03-05 20:53:55', '2021-03-05 20:53:55', '2021-03-07 01:53:48');
+INSERT INTO `oauth_access_tokens` VALUES (7, '019bd368-a33d-4224-9d1c-97a3492d3a03', 0, 0, '2021-03-05 20:53:57', '2021-03-05 20:53:57', '2021-03-07 01:53:48');
+INSERT INTO `oauth_access_tokens` VALUES (8, 'b83f1572-a1f7-4741-a30e-c83bda0656d8', 0, 0, '2021-03-05 20:55:56', '2021-03-05 20:55:56', '2021-03-07 01:55:51');
+INSERT INTO `oauth_access_tokens` VALUES (9, '20d5c23a-6259-4e62-89bb-7ce5ee9b7556', 0, 0, '2021-03-05 20:56:53', '2021-03-05 20:56:53', '2021-03-07 01:56:45');
+INSERT INTO `oauth_access_tokens` VALUES (10, '14053bab-3f1b-4d0c-971b-cc43dc66f094', 43, 0, '2021-03-05 20:57:57', '2021-03-05 20:57:57', '2021-03-07 01:57:54');
+INSERT INTO `oauth_access_tokens` VALUES (11, 'd94aaac9-e268-4aee-a989-2cb19c37191c', 43, 0, '2021-03-05 21:02:19', '2021-03-05 21:02:19', '2021-03-07 02:02:14');
+INSERT INTO `oauth_access_tokens` VALUES (12, '470ce81c-5f4b-4d37-bb06-78fc796a2ce3', 43, 0, '2021-03-05 21:18:58', '2021-03-05 21:18:58', '2021-03-06 21:18:46');
+INSERT INTO `oauth_access_tokens` VALUES (13, '20a55812-2ac9-450e-b454-435918db344e', 43, 0, '2021-03-05 21:22:26', '2021-03-05 21:22:26', '2021-03-06 21:22:04');
+INSERT INTO `oauth_access_tokens` VALUES (14, 'c4b6c854-ba68-4d0f-b7e9-66a492157709', 43, 0, '2021-03-05 21:25:19', '2021-03-05 21:25:19', '2021-03-06 21:25:13');
+INSERT INTO `oauth_access_tokens` VALUES (15, 'f4b2a5e2-2eed-4cf4-ad53-b03b8c6217fb', 43, 0, '2021-03-06 10:14:32', '2021-03-06 10:14:32', '2021-03-06 11:36:00');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for oauth_refresh_tokens
+-- ----------------------------
+DROP TABLE IF EXISTS `oauth_refresh_tokens`;
+CREATE TABLE `oauth_refresh_tokens` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `token_id` int unsigned NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `oauth_refresh_tokens_access_token_id_index` (`token_id`),
+  CONSTRAINT `oauth_refresh_tokens_token_id` FOREIGN KEY (`token_id`) REFERENCES `oauth_access_tokens` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of oauth_refresh_tokens
+-- ----------------------------
+BEGIN;
+INSERT INTO `oauth_refresh_tokens` VALUES (1, 1, 0, '2021-03-12 17:37:37', '2021-03-05 20:43:47', '2021-03-05 20:43:47');
+INSERT INTO `oauth_refresh_tokens` VALUES (2, 5, 0, '2021-03-12 17:53:48', '2021-03-05 20:53:52', '2021-03-05 20:53:52');
+INSERT INTO `oauth_refresh_tokens` VALUES (3, 6, 0, '2021-03-12 17:53:48', '2021-03-05 20:53:55', '2021-03-05 20:53:55');
+INSERT INTO `oauth_refresh_tokens` VALUES (4, 7, 0, '2021-03-12 17:53:48', '2021-03-05 20:53:57', '2021-03-05 20:53:57');
+INSERT INTO `oauth_refresh_tokens` VALUES (5, 8, 0, '2021-03-12 17:55:51', '2021-03-05 20:55:56', '2021-03-05 20:55:56');
+INSERT INTO `oauth_refresh_tokens` VALUES (6, 9, 0, '2021-03-12 17:56:45', '2021-03-05 20:56:53', '2021-03-05 20:56:53');
+INSERT INTO `oauth_refresh_tokens` VALUES (7, 10, 0, '2021-03-12 17:57:54', '2021-03-05 20:57:57', '2021-03-05 20:57:57');
+INSERT INTO `oauth_refresh_tokens` VALUES (8, 11, 0, '2021-03-12 18:02:14', '2021-03-05 21:02:19', '2021-03-05 21:02:19');
+INSERT INTO `oauth_refresh_tokens` VALUES (9, 12, 0, '2021-03-12 21:18:46', '2021-03-05 21:18:58', '2021-03-05 21:18:58');
+INSERT INTO `oauth_refresh_tokens` VALUES (10, 13, 0, '2021-03-12 21:22:04', '2021-03-05 21:22:26', '2021-03-05 21:22:26');
+INSERT INTO `oauth_refresh_tokens` VALUES (11, 14, 0, '2021-03-12 21:25:13', '2021-03-05 21:25:19', '2021-03-05 21:25:19');
+INSERT INTO `oauth_refresh_tokens` VALUES (12, 15, 0, '2021-03-13 10:13:20', '2021-03-06 10:14:32', '2021-03-06 10:14:32');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for order_details
 -- ----------------------------
 DROP TABLE IF EXISTS `order_details`;
 CREATE TABLE `order_details` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `order_id` int(10) unsigned NOT NULL,
-  `reference_id` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int unsigned NOT NULL,
+  `reference_id` int unsigned NOT NULL,
   `reference_name` varchar(45) NOT NULL,
   `price` double NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `quantity` int NOT NULL,
   `price_with_discount` double NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `puchase_status_id` int(10) unsigned NOT NULL,
+  `puchase_status_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `od_reference_id_idx` (`reference_id`),
@@ -195,11 +249,11 @@ CREATE TABLE `order_details` (
 -- ----------------------------
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `puchase_status_id` int(10) unsigned NOT NULL,
+  `puchase_status_id` int unsigned NOT NULL,
   `total` double NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
@@ -214,14 +268,14 @@ CREATE TABLE `orders` (
 -- ----------------------------
 DROP TABLE IF EXISTS `phones`;
 CREATE TABLE `phones` (
-  `id` int(11) NOT NULL,
-  `phone` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `phone` int NOT NULL,
   `verified` binary(1) NOT NULL DEFAULT '0',
   `principal` binary(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` varchar(45) NOT NULL,
-  `country_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `country_id` int unsigned NOT NULL,
+  `user_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `phones_user_id_idx` (`user_id`),
   KEY `phones_country_id_idx` (`country_id`),
@@ -234,7 +288,7 @@ CREATE TABLE `phones` (
 -- ----------------------------
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `meta_title` varchar(100) NOT NULL,
@@ -243,7 +297,7 @@ CREATE TABLE `products` (
   `slug` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   `apdated_at` datetime NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `slug_UNIQUE` (`slug`),
@@ -264,10 +318,10 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `products_categories`;
 CREATE TABLE `products_categories` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` int(10) unsigned NOT NULL,
-  `category_id` int(10) unsigned NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int unsigned NOT NULL,
+  `category_id` int unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -285,10 +339,10 @@ CREATE TABLE `products_categories` (
 -- ----------------------------
 DROP TABLE IF EXISTS `products_tags`;
 CREATE TABLE `products_tags` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `product_id` int(10) unsigned NOT NULL,
-  `tag_id` int(10) unsigned NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int unsigned NOT NULL,
+  `tag_id` int unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -306,7 +360,7 @@ CREATE TABLE `products_tags` (
 -- ----------------------------
 DROP TABLE IF EXISTS `purchase_statuses`;
 CREATE TABLE `purchase_statuses` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `color` varchar(45) NOT NULL,
   `customer_conversion` varchar(45) NOT NULL,
@@ -321,8 +375,8 @@ CREATE TABLE `purchase_statuses` (
 -- ----------------------------
 DROP TABLE IF EXISTS `reference_images`;
 CREATE TABLE `reference_images` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `reference_id` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `reference_id` int unsigned NOT NULL,
   `url` text NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -330,7 +384,7 @@ CREATE TABLE `reference_images` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `referece_images_reference_id_idx` (`reference_id`),
   CONSTRAINT `referece_images_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `references` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of reference_images
@@ -346,12 +400,12 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `references`;
 CREATE TABLE `references` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `product_id` int(10) unsigned NOT NULL,
-  `view_front` int(11) NOT NULL DEFAULT 1 COMMENT '1 = Va a ser  por los clientes',
+  `product_id` int unsigned NOT NULL,
+  `view_front` int NOT NULL DEFAULT '1' COMMENT '1 = Va a ser  por los clientes',
   `color` varchar(45) DEFAULT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -375,14 +429,14 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `references_headquarters`;
 CREATE TABLE `references_headquarters` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `reference_id` int(10) unsigned NOT NULL,
-  `headquarter_id` int(10) unsigned NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `reference_id` int unsigned NOT NULL,
+  `headquarter_id` int unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
   `cost_price` double NOT NULL,
   `price` double NOT NULL,
-  `stock` int(11) NOT NULL,
-  `reserve_stock` int(11) NOT NULL DEFAULT 0,
+  `stock` int NOT NULL,
+  `reserve_stock` int NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -399,7 +453,7 @@ CREATE TABLE `references_headquarters` (
 -- Records of references_headquarters
 -- ----------------------------
 BEGIN;
-INSERT INTO `references_headquarters` VALUES (1, 1, 1, 1, 5000, 10000, 10, 0, '2020-10-08 00:00:00', '2020-10-08 00:00:00');
+INSERT INTO `references_headquarters` VALUES (1, 1, 1, 1, 5000, 10000, 0, 0, '2020-10-08 00:00:00', '2020-10-08 00:00:00');
 INSERT INTO `references_headquarters` VALUES (2, 2, 1, 1, 10000, 20000, 5, 0, '2020-10-08 00:00:00', '2020-10-08 00:00:00');
 COMMIT;
 
@@ -408,7 +462,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `statuses`;
 CREATE TABLE `statuses` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `color` varchar(45) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -429,7 +483,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `tags`;
 CREATE TABLE `tags` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
@@ -440,7 +494,7 @@ CREATE TABLE `tags` (
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `last_name` varchar(100) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
@@ -450,13 +504,132 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (1, 'David', 'Raga', 'david@gmial.com', 'sdfasdfasd', '2021-02-27 00:00:00', '2021-02-27 00:00:00');
+INSERT INTO `users` VALUES (42, 'Luis', 'Raga', 'luis.raga@keny.com', '$2a$14$kbUOTgtKJX33YGgB8LswFufFSPPXYsuMdjRL7y/y/Q/RqOSnKAhSy', '2021-03-05 18:25:50', '2021-03-05 18:25:50');
+INSERT INTO `users` VALUES (43, 'David', 'Raga', 'david.raga@keny.com', '$2a$14$8P3MFBoTDgw5cVDzxR1.reLmbDID/Hb9NTGxb/VnPfN/VW7JyNTnG', '2021-03-05 18:26:02', '2021-03-05 18:26:02');
 COMMIT;
+
+-- ----------------------------
+-- Procedure structure for ksp_create_token
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_create_token`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_create_token`(p_uuid text, p_token_expires varchar(100), p_token_refresh_exp varchar(100), p_user_id int)
+BEGIN
+
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    
+    BEGIN
+        SHOW ERRORS;
+        ROLLBACK;   
+    END;
+    
+    DECLARE EXIT HANDLER FOR SQLWARNING
+    BEGIN
+        SHOW ERRORS;  
+        ROLLBACK;   
+    END;
+    -- SET time_zone = "America/Toronto";
+    
+    START TRANSACTION;
+		INSERT INTO `oauth_access_tokens` VALUES (null, p_uuid,p_user_id,0,now(),now(),p_token_expires);
+        INSERT INTO `oauth_refresh_tokens` VALUES (null, last_insert_id(),0, p_token_refresh_exp, now(), now());
+    COMMIT;
+    call ksp_response(true,"Usuario registrado correctamente");
+    
+    
+	
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for ksp_create_user
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_create_user`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_create_user`(p_name varchar(255), p_last_name varchar(255), p_email varchar(255), p_password varchar(255))
+BEGIN
+
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SHOW ERRORS;
+        ROLLBACK;   
+    END;
+    
+    DECLARE EXIT HANDLER FOR SQLWARNING
+    BEGIN
+        SHOW ERRORS;  
+        ROLLBACK;   
+    END;
+    -- SET time_zone = "America/Bogota";
+       
+    START TRANSACTION;
+
+	INSERT INTO `users`
+	(`id`,`name`,`last_name`,`email`,`password`,`created_at`,`updated_at`)VALUES (null,p_name,p_last_name,p_email,p_password, now(), now());
+	
+		
+    
+    COMMIT;
+    call ksp_response(true,"Usuario registrado correctamente");
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for ksp_get_user_by_email
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_get_user_by_email`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_get_user_by_email`(p_email varchar(255))
+  COMMENT 'retornar usuario por email'
+BEGIN
+	SELECT id,name,last_name,email,password FROM users Where email = p_email;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for ksp_response
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_response`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_response`(p_result boolean, msg text)
+  COMMENT 'respuesta general'
+BEGIN
+	DECLARE state VARCHAR(100);
+    DECLARE p_code int;
+    IF p_result = true THEN
+		SET state = "OK";
+        SET p_code = 200;
+	ELSE
+		SET state = "FAILED";
+        SET p_code = 500;
+	END IF;
+	SELECT state level, p_code as "Code", msg as msg;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for ksp_validate_token_by_uuid
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_validate_token_by_uuid`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_validate_token_by_uuid`(p_uuid varchar(100),p_now varchar(100))
+BEGIN
+	SELECT user_id FROM oauth_access_tokens 
+    WHERE expires_at > p_now 
+    AND revoked = 0 
+    AND uuid = p_uuid;
+END
+;;
+delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;

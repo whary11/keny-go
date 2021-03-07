@@ -5,6 +5,7 @@ import (
 	"keny-go/utils"
 
 	"github.com/google/uuid"
+	"github.com/uniplaces/carbon"
 )
 
 type Auth struct {
@@ -35,4 +36,19 @@ func (a *Auth) SaveToken() (bool, string) {
 	message = excepcioSql.Message
 
 	return result, message
+}
+
+func (a *Auth) ValidateTokenByUuid() bool {
+	querySelect := `CALL ksp_validate_token_by_uuid(?,?)`
+
+	row := dbBoilerplateGo.Read.QueryRow(querySelect, a.Uuid, carbon.Now().DateTimeString())
+	fmt.Println(row)
+	err := row.Scan(&a.UserId)
+	if err != nil {
+		return false
+	}
+	if a.UserId == 0 {
+		return false
+	}
+	return true
 }
