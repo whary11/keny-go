@@ -79,17 +79,19 @@ func (u *Claim) GenerateJWT(expiried int64) (string, error) {
 	return token, nil
 }
 
-func GetContainJwt(tokenJwt string) jwt.MapClaims {
+func (claims *Claim) GetContainJwt(tokenJwt string) {
 	tokenString := tokenJwt
 	// var res ContainsJwt
-	claims := jwt.MapClaims{}
+	// claims := jwt.MapClaims{}
 	token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
 		return []byte(``), nil
 	})
 
+	// fmt.Println(token)
 	if err != nil {
 		fmt.Println("Error: ", err.Error())
 		fmt.Println(token.Valid)
+		// return claims, err
 	}
 	// ... error handling
 	// fmt.Println(token)
@@ -105,7 +107,7 @@ func GetContainJwt(tokenJwt string) jwt.MapClaims {
 
 	// fmt.Println(claims)
 
-	return claims
+	// return claims, nil
 
 }
 

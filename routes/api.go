@@ -8,8 +8,7 @@ import (
 )
 
 func Api(router *gin.Engine) {
-	// router.GET("/product_detail/:slug", controllers.ProductDatail)
-	// router.GET("/user/:user_id", controllers.GetUserById)
+	router.GET("/product_detail/:slug", controllers.ProductDatail)
 
 	api := router.Group("/api")
 	{
@@ -24,6 +23,8 @@ func Api(router *gin.Engine) {
 		user := api.Group("/users")
 		{
 			user.POST("/register", controllers.RegisterUser)
+			user.GET("/:user_id", middlewares.Auth(), controllers.GetUserById)
+
 		}
 
 		/// Rutas para el carrito

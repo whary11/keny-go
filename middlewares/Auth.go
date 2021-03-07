@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"keny-go/models"
 	"keny-go/utils"
 	"net/http"
 	"strings"
@@ -10,14 +11,26 @@ import (
 
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {
+
 		header := c.Request.Header["Authorization"]
-		bearerToken := header[0]
-		token := strings.Split(bearerToken, " ")
-		if len(token) == 2 && token[0] == "Bearer" {
-			_, validate := utils.VerifiedToken(token[1])
-			if validate {
-				c.Next()
-				return
+
+		if len(header) > 0 {
+			bearerToken := header[0]
+			token := strings.Split(bearerToken, " ")
+			if len(token) == 2 && token[0] == "Bearer" {
+				_, validate := utils.VerifiedToken(token[1])
+				if validate {
+					var claim utils.Claim
+					claim.GetContainJwt(token[1])
+					if claim.Sub > 0 {
+						var a models.Auth
+						a.Uuid = claim.Jti
+						if a.ValidateTokenByUuid() {
+							c.Next()
+							return
+						}
+					}
+				}
 			}
 		}
 		c.AbortWithStatusJSON(http.StatusUnauthorized, utils.Response{
@@ -25,5 +38,6 @@ func Auth() gin.HandlerFunc {
 			"status":  false,
 			"message": "No autorizado",
 		})
+
 	}
 }
