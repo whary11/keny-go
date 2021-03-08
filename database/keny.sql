@@ -14,9 +14,11 @@
  Date: 06/03/2021 21:10:23
 */
 
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
+use keny;
 -- ----------------------------
 -- Table structure for addresses
 -- ----------------------------
