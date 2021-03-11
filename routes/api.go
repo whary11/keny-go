@@ -8,7 +8,6 @@ import (
 )
 
 func Api(router *gin.Engine) {
-	router.GET("/product_detail/:slug", controllers.ProductDatail)
 
 	api := router.Group("/api")
 	{
@@ -32,6 +31,9 @@ func Api(router *gin.Engine) {
 		{
 			v1.POST("/add", controllers.Add)
 		}
+
+		// Productos
+		api.GET("/product_detail/:slug", controllers.ProductDatail)
 	}
 
 }
