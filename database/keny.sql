@@ -11,7 +11,7 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 06/03/2021 21:10:23
+ Date: 10/03/2021 20:16:36
 */
 
 SET NAMES utf8mb4;
@@ -63,7 +63,14 @@ CREATE TABLE `categories` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `categories_status_id_idx` (`status_id`),
   CONSTRAINT `categories_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of categories
+-- ----------------------------
+BEGIN;
+INSERT INTO `categories` VALUES (1, 'Libros', 1, '2021-03-10 10:45:49', '2021-03-10 10:45:51');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for cities
@@ -332,7 +339,14 @@ CREATE TABLE `products_categories` (
   CONSTRAINT `products_categories_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
   CONSTRAINT `products_categories_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   CONSTRAINT `products_categories_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of products_categories
+-- ----------------------------
+BEGIN;
+INSERT INTO `products_categories` VALUES (1, 1, 1, 1, '2021-03-10 10:46:03', '2021-03-10 10:46:05');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for products_tags
@@ -354,6 +368,37 @@ CREATE TABLE `products_tags` (
   CONSTRAINT `products_tags_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`),
   CONSTRAINT `products_tags_tag_id` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for promotions
+-- ----------------------------
+DROP TABLE IF EXISTS `promotions`;
+CREATE TABLE `promotions` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `destiny_type` int unsigned NOT NULL COMMENT '1=categoria, 2=marca, 3= tags, 4=producto',
+  `destiny_id` int unsigned NOT NULL,
+  `value` int NOT NULL,
+  `permitted_uses` int NOT NULL DEFAULT '1',
+  `quantity_uses` int NOT NULL DEFAULT '0',
+  `start_date` datetime NOT NULL,
+  `final_date` datetime NOT NULL,
+  `status_id` int unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `promotions_status_id_idx` (`status_id`),
+  CONSTRAINT `promotions_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of promotions
+-- ----------------------------
+BEGIN;
+INSERT INTO `promotions` VALUES (1, 'Test', 4, 1, 10, 100, 0, '2021-03-09 10:45:06', '2021-03-31 10:45:12', 1, '2021-03-09 10:45:22', '2021-03-10 10:45:24');
+INSERT INTO `promotions` VALUES (2, 'Test', 1, 1, 15, 100, 10, '2021-03-09 10:45:06', '2021-03-24 10:45:12', 1, '2021-03-10 10:45:22', '2021-03-10 10:45:24');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for purchase_statuses
@@ -578,6 +623,82 @@ BEGIN
     
     COMMIT;
     call ksp_response(true,"Usuario registrado correctamente");
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for ksp_get_product_by_slug
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_get_product_by_slug`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_get_product_by_slug`(in p_slug text)
+  COMMENT 'Retorna el producto con sus referencias y con promoción si tiene.'
+BEGIN
+	SELECT 
+		-- info product
+		p.id,p.name,
+		p.slug,p.description,p.meta_title,p.meta_description,p.meta_tags,
+		-- info references
+		rh.id reference_id
+		,r.name reference_name,r.color, r.view_front,rh.price,rh.stock, (SELECT pm.`value` from products p
+		join promotions pm on pm.destiny_id = p.id
+	where 
+	-- Validación sobre la promoción
+	(pm.status_id = 1 and pm.start_date < now() and pm.final_date > now() and pm.quantity_uses < pm.permitted_uses)
+	-- Validación por categoría
+	and (
+	(pm.destiny_type = 1 and destiny_id in (select pc.category_id from products_categories pc where pc.product_id = p.id )) 
+
+	-- Validación por tags
+	or (pm.destiny_type = 3 and destiny_id in(select pt.id from products_tags pt where pt.product_id = p.id))
+	 
+	-- Validación por producto
+	or (pm.destiny_type = 4 and destiny_id = p.id)
+	)
+	
+	and p.id = r.product_id
+
+	order by pm.created_at desc
+
+	limit 1) as discount
+		FROM products p
+		INNER join keny.references r on p.id = r.product_id
+		INNER join references_headquarters rh on rh.reference_id = r.id 
+		WHERE slug = p_slug;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for ksp_get_promotion_by_product
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_get_promotion_by_product`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_get_promotion_by_product`(in p_product_id int)
+  COMMENT 'Retorna el valor de una promoción para el producto dado'
+BEGIN
+	SELECT pm.`value` from products p
+		join promotions pm on pm.destiny_id = p.id
+	where 
+	-- Validación sobre la promoción
+	(pm.status_id = 1 and pm.start_date < now() and pm.final_date > now() and pm.quantity_uses < pm.permitted_uses)
+	-- Validación por categoría
+	and (
+	(pm.destiny_type = 1 and destiny_id in (select pc.category_id from products_categories pc where pc.product_id = p.id )) 
+
+	-- Validación por tags
+	or (pm.destiny_type = 3 and destiny_id in(select pt.id from products_tags pt where pt.product_id = p.id))
+	 
+	-- Validación por producto
+	or (pm.destiny_type = 4 and destiny_id = p.id)
+	)
+	
+	and p.id = p_product_id
+
+	order by pm.created_at desc
+
+	limit 1;
 END
 ;;
 delimiter ;
