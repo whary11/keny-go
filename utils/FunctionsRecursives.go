@@ -36,3 +36,7 @@ func GetEnv(key string) string {
 	result := os.Getenv(key)
 	return result
 }
+
+func GetPriceWithDiscount(price float64, percent float64) float64 {
+	return price - ((price * percent) / 100)
+}

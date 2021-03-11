@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"keny-go/utils"
 )
 
 type Product struct {
@@ -12,6 +13,7 @@ type Product struct {
 	MetaDescription string      `json:"meta_description" example:"2021-02-24 20:19:39"`
 	MetaTags        string      `json:"meta_tags" example:"2021-02-24 20:19:39"`
 	Slug            string      `json:"slug" example:"page-1"`
+	Discount        float64     `json:"discount" example:"10"`
 	References      []Reference `json:"references" example:"page-1"`
 }
 
@@ -19,18 +21,7 @@ func (product *Product) GetProductBySlug() (status bool, message string) {
 
 	var reference Reference
 	var reference_images Images
-	querySelect := `
-		SELECT 
-		-- info product
-		p.id,p.name,
-		p.slug,p.description,p.meta_title,p.meta_description,p.meta_tags,
-		-- info references
-		rh.id reference_id
-		,r.name reference_name,r.color, r.view_front,rh.price,rh.stock 
-		FROM products p
-		INNER join keny.references r on p.id = r.product_id
-		INNER join references_headquarters rh on rh.reference_id = r.id 
-		WHERE slug = ?; `
+	querySelect := `CALL ksp_get_product_by_slug(?)`
 
 	fmt.Println(product.Slug)
 	rows, err := dbBoilerplateGo.Read.Query(querySelect, product.Slug)
@@ -43,10 +34,11 @@ func (product *Product) GetProductBySlug() (status bool, message string) {
 	for rows.Next() {
 		if err := rows.Scan(&product.Id, &product.Name, &product.Slug, &product.Description, &product.MetaTitle,
 			&product.MetaDescription, &product.MetaTags, &reference.Id, &reference.Name, &reference.Color,
-			&reference.ViewFront, &reference.Price, &reference.Stock); err != nil {
+			&reference.ViewFront, &reference.Price, &reference.Stock, &product.Discount); err != nil {
 			fmt.Println(err.Error())
 		}
 		//llenar las imagens de cada referencia
+		reference.PriceWithDiscount = utils.GetPriceWithDiscount(reference.Price, product.Discount)
 		reference_images.ReferenceId = reference.Id
 		reference_images.Images = []Image{}
 		status, message := reference_images.GetImagesByReferenceId()
