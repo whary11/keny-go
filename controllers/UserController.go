@@ -8,15 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"keny-go/models"
+	"keny-go/utils"
 )
-
-type User struct {
-	Id        int    `json:"id" example:"123"`
-	Name      string `json:"name" example:"Paracetamol"`
-	Email     string `json:"email" example:"luis.raga@keny.com"`
-	CreatedAt string `json:"created_at,omitempty" example:"2021-02-24 20:19:39"`
-	UpdatedAt string `json:"updated_at,omitempty" example:"2021-02-24 20:19:39"`
-}
 
 func GetUserById(c *gin.Context) {
 	var user models.User
@@ -40,4 +33,37 @@ func GetUserById(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, user)
+}
+
+func RegisterUser(c *gin.Context) {
+	var user models.User
+	if err := c.ShouldBindJSON(&user); err != nil {
+		utils.GetResponse(c, http.StatusOK, utils.Response{
+			"code":    http.StatusInternalServerError,
+			"status":  false,
+			"message": err.Error(),
+			"data":    "",
+		})
+		return
+	}
+
+	user.Password, _ = utils.HashPassword(user.Password)
+
+	state, message := user.CreateUser()
+
+	if state {
+		utils.GetResponse(c, http.StatusOK, utils.Response{
+			"code":    http.StatusOK,
+			"status":  state,
+			"message": message,
+			"data":    user,
+		})
+	} else {
+		utils.GetResponse(c, http.StatusOK, utils.Response{
+			"code":    http.StatusOK,
+			"status":  state,
+			"message": message,
+		})
+	}
+
 }
