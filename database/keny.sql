@@ -1,24 +1,22 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Local
+ Source Server         : DB-LOCAL
  Source Server Type    : MySQL
- Source Server Version : 80023
+ Source Server Version : 80022
  Source Host           : localhost:3306
  Source Schema         : keny
 
  Target Server Type    : MySQL
- Target Server Version : 80023
+ Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 10/03/2021 20:16:36
+ Date: 11/03/2021 05:55:46
 */
-
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-use keny;
 -- ----------------------------
 -- Table structure for addresses
 -- ----------------------------
@@ -313,13 +311,84 @@ CREATE TABLE `products` (
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `products_status_id_idx` (`status_id`),
   CONSTRAINT `products_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
 BEGIN;
 INSERT INTO `products` VALUES (1, 'Espectacular libro sensorial', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'meta title', 'meta description', 'meta tagas ', 'page-1', '2021-02-10 00:00:00', '2021-02-10 00:00:00', 1);
+INSERT INTO `products` VALUES (2, 'Mono con bananas', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Mico con boca de cremallera la cual se puede abrir, cerrar y de esta forma  guardar  tres bananas de color amarillo las cuales se encuentran pegados con velcro para pegar y despegar.', 'meta title', 'meta description', 'meta tagas ', 'mono-con-bananas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (3, 'Figuras Geometricas texturas', 'Actividad compuesta por seis figuras geométricas creadas con paño lency y telas de distintas texturas, con una base que le indica a cada uno de los niños y niñas donde debe ir cada una de las piezas,  para que logre ubicaarlas relizando asociacion de imagenes.', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (4, 'Lavadora ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Lavadora que permite abrir y cerrar por medio de un botón en el cual se le puede guardar los objetos que se encuentran extendidos en el tendedero ya sea por medio de un velcro para quitar o poner o con pinzas, desarrollando habilidades motrices finas. ', 'meta title', 'meta description', 'meta tagas ', 'lavadora', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (5, 'Sombrila', 'sombrilla elaborada en paño lency, cordones de colores de donde se desprenden chaquiras  que estan ubicadas de forma ascendente desde el 1 al 5, invitando a los niños y niñas a iniciar sus habilidades numericas y de conteo ', 'meta title', 'meta description', 'meta tagas ', 'sombrila', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (6, 'Buho', 'elaborada en paño lency con cordones de colores y chaquiras, ubicadas de forma ascendente del 1 al 3 tiene forma de buho, se utilizan colores llamativos e invita a los niños y niñas a iniciar con sus habilidades numericas ', 'meta title', 'meta description', 'meta tagas ', 'buho', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (7, 'Pulpo ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Pulpo  con cordones de colores en los cuales se desprenden chaquiras de colores del 1 al 10, iniciando el desarrollo de habilidades numéricas.', 'meta title', 'meta description', 'meta tagas ', 'pulpo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (8, 'Carro de insertar', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Carretera con aros en los cuales se inserta un cordón, el cual se encuentra unido a un cascabel produciendo un sonido al movimiento.', 'meta title', 'meta description', 'meta tagas ', 'carro-de-insertar', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (9, 'Jirafa con botones ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Jirafa de colores variados con  botones y moños para abotonar los cuales permiten desarrollar habilidades motrices finas.', 'meta title', 'meta description', 'meta tagas ', 'jirafa-con-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (10, 'Palitos de colores ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Rectángulos de forma horizontal con bolsillo de diferentes colores, en los cuales se puede guardar diversos palos de colores según corresponda, permitiendo  el reconocimiento y clasificación de colores.', 'meta title', 'meta description', 'meta tagas ', 'palitos-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (11, 'Perro', 'Elaborado en paño lency, compuesta por la silueta del rostro de un perro, y una creamallera en forma de boca, la cual tiene como función abrir y cerrar para sacar y guardar su lengua', 'meta title', 'meta description', 'meta tagas ', 'perro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (12, 'Dinosaurio ', 'elaborado en paño lency, compuesto por la imagen de un dinosaurios que invita a realizar ensartado, cruzando el cordon  de un extremo al otro por la parte superior de la limagen, dos de sus patas estan puestas con botones y  se pueden quitar y poner, apuntando y desapuntando.', 'meta title', 'meta description', 'meta tagas ', 'dinosaurio', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (13, 'Cocodrilos', 'Elaborados en paño lency, Dos cocodrilos,verde y azul, cremalleras, tamaño mediano, página de color amarillo, 4 pescados de diferente color.', 'meta title', 'meta description', 'meta tagas ', 'cocodrilos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (14, 'Guante granja', 'Elaborado en paño lency, variedad de colores, 5 animales en forma de títere de dedo, vaca, cerdo, gallo, rana, gato. 1 sol, 1 nube, fondo en forma de mano de granja.', 'meta title', 'meta description', 'meta tagas ', 'guante-granja', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (15, 'Panal de Abejas', 'Elaborado en paño lency, panal de abejas con cremallera y espacio para guardar las abejas, 4 abejas con tejido en el borde, ojos locos, rama y velcro para mover las abejas,  cinta de color pegada  a la cada abejas que no permite  caerse. ', 'meta title', 'meta description', 'meta tagas ', 'panal-de-abejas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (16, 'Rana', 'Elaborado en paño lency, Rana con cremallera por fuera, 4 moscas con ojos locos y velcro para poder moverlas y lengua larga para enrollar.  ', 'meta title', 'meta description', 'meta tagas ', 'rana', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (17, 'Ratòn', 'Ratón de laberinto elaborado en paño lency, simulando un queso, casa y cuerda la cual permite que el ratòn recorra el laberinto.', 'meta title', 'meta description', 'meta tagas ', 'ratòn', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (18, 'Tangram', ' Este juego esta compuesto por 7 piezas elaboradas con paño lency, con una base que le indica a los niños y niñas donde va cada pieza, realizando  asi clasificación de formas, ', 'meta title', 'meta description', 'meta tagas ', 'tangram', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (19, 'Manos de Conteo', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (20, 'Elmo come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'elmo-come-galletas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (21, 'Zapatos de Amarrar PAR', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-par', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (22, 'Pizza nùmerica ', '', 'meta title', 'meta description', 'meta tagas ', 'pizza-nùmerica', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (23, 'Partes de la cara', '', 'meta title', 'meta description', 'meta tagas ', 'partes-de-la-cara', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (24, 'Gusano secuencia de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-secuencia-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (25, 'Gusano clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (26, 'Abeja laberinto de insertado', '', 'meta title', 'meta description', 'meta tagas ', 'abeja-laberinto-de-insertado', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (27, 'Ballena come peces', '', 'meta title', 'meta description', 'meta tagas ', 'ballena-come-peces', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (28, 'Caracol de insertado ', '', 'meta title', 'meta description', 'meta tagas ', 'caracol-de-insertado', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (29, 'Cerdito de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'cerdito-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (30, 'Oveja  de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'oveja-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (31, 'Perro con espejo', '', 'meta title', 'meta description', 'meta tagas ', 'perro-con-espejo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (32, 'Vaca de texturas ', '', 'meta title', 'meta description', 'meta tagas ', 'vaca-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (33, 'Araña con botones', '', 'meta title', 'meta description', 'meta tagas ', 'araña-con-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (34, 'Cepillado de dientes', '', 'meta title', 'meta description', 'meta tagas ', 'cepillado-de-dientes', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (35, 'Pato clasificaciòn de colores ', '', 'meta title', 'meta description', 'meta tagas ', 'pato-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (36, 'Hongo Vocales', '', 'meta title', 'meta description', 'meta tagas ', 'hongo-vocales', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (37, 'Figuras Geometricas clasificaciòn ', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-clasificaciòn', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (38, 'Camisa de botones', '', 'meta title', 'meta description', 'meta tagas ', 'camisa-de-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (39, 'OTROS', '', 'meta title', 'meta description', 'meta tagas ', 'otros', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (40, 'Moustro de emociones', '', 'meta title', 'meta description', 'meta tagas ', 'moustro-de-emociones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (41, 'Partes del Cuerpo', '', 'meta title', 'meta description', 'meta tagas ', 'partes-del-cuerpo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (42, 'Zapatos de Amarrar UNO', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-uno', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (43, 'Figuras de colores geometricas', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-de-colores-geometricas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (44, 'Perro de rompecabezas', '', 'meta title', 'meta description', 'meta tagas ', 'perro-de-rompecabezas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (45, 'Amarres', '', 'meta title', 'meta description', 'meta tagas ', 'amarres', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (46, 'Tortuga Clasificacion de colores', '', 'meta title', 'meta description', 'meta tagas ', 'tortuga-clasificacion-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (47, 'Ponque tamaños', '', 'meta title', 'meta description', 'meta tagas ', 'ponque-tamaños', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (48, 'Manos de conteo signos ', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-signos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (49, 'Lapices clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'lapices-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (50, 'Tamaños de grande a pequeño', '', 'meta title', 'meta description', 'meta tagas ', 'tamaños-de-grande-a-pequeño', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (51, 'Flautista', '', 'meta title', 'meta description', 'meta tagas ', 'flautista', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (52, 'Tren de los números', '', 'meta title', 'meta description', 'meta tagas ', 'tren-de-los-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (53, 'Vocales lazos', '', 'meta title', 'meta description', 'meta tagas ', 'vocales-lazos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (54, 'Manos de conteo y Números', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-y-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (55, 'ABC ', '', 'meta title', 'meta description', 'meta tagas ', 'abc', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (56, 'Ratón de insertado Números', '', 'meta title', 'meta description', 'meta tagas ', 'ratón-de-insertado-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (57, 'Cojín  León', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-león', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (58, 'Cojín Mico', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-mico', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (59, 'Cojín dinosaurio', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-dinosaurio', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (60, 'Cojin Come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'cojin-come-galletas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (61, 'Cojín Elefante', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elefante', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (62, 'Cojín Elmo', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elmo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (63, 'Cojín Perro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-perro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (64, 'Cojín Moutro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-moutro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (65, 'Cojín Gato', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-gato', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (66, 'TEXTURAS BEBES 7 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-7-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (67, 'TEXTURAS BEBES 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-10-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (68, 'KENY 7 ACTIVIDADES ', '', 'meta title', 'meta description', 'meta tagas ', 'keny-7-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (69, 'KENY 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-10-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (70, 'KENY 5 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-5-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (71, 'KENY MÀS ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-màs-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (72, 'CUBO SENSORIAL', '', 'meta title', 'meta description', 'meta tagas ', 'cubo-sensorial', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 COMMIT;
 
 -- ----------------------------
@@ -398,7 +467,7 @@ CREATE TABLE `promotions` (
 -- Records of promotions
 -- ----------------------------
 BEGIN;
-INSERT INTO `promotions` VALUES (1, 'Test', 4, 1, 10, 100, 0, '2021-03-09 10:45:06', '2021-03-31 10:45:12', 1, '2021-03-09 10:45:22', '2021-03-10 10:45:24');
+INSERT INTO `promotions` VALUES (1, 'Test', 4, 3, 10, 100, 0, '2021-03-09 10:45:06', '2021-03-31 10:45:12', 1, '2021-03-09 10:45:22', '2021-03-10 10:45:24');
 INSERT INTO `promotions` VALUES (2, 'Test', 1, 1, 15, 100, 10, '2021-03-09 10:45:06', '2021-03-24 10:45:12', 1, '2021-03-10 10:45:22', '2021-03-10 10:45:24');
 COMMIT;
 
@@ -461,7 +530,7 @@ CREATE TABLE `references` (
   KEY `references_status_id_idx` (`status_id`),
   CONSTRAINT `references_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   CONSTRAINT `references_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of references
@@ -469,6 +538,77 @@ CREATE TABLE `references` (
 BEGIN;
 INSERT INTO `references` VALUES (1, 'rojo', 1, 1, 'red', 1, '2020-10-01 00:00:00', '2020-10-01 00:00:00');
 INSERT INTO `references` VALUES (2, 'verde', 1, 1, 'green', 1, '2020-10-01 00:00:00', '2020-10-01 00:00:00');
+INSERT INTO `references` VALUES (5, 'Mono con bananas', 2, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (6, 'Figuras Geometricas texturas', 3, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (7, 'Lavadora ', 4, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (8, 'Sombrila', 5, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (9, 'Buho', 6, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (10, 'Pulpo ', 7, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (11, 'Carro de insertar', 8, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (12, 'Jirafa con botones ', 9, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (13, 'Palitos de colores ', 10, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (14, 'Perro', 11, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (15, 'Dinosaurio ', 12, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (16, 'Cocodrilos', 13, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (17, 'Guante granja', 14, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (18, 'Panal de Abejas', 15, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (19, 'Rana', 16, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (20, 'Ratòn', 17, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (21, 'Tangram', 18, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (22, 'Manos de Conteo', 19, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (23, 'Elmo come galletas', 20, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (24, 'Zapatos de Amarrar PAR', 21, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (25, 'Pizza nùmerica ', 22, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (26, 'Partes de la cara', 23, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (27, 'Gusano secuencia de colores', 24, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (28, 'Gusano clasificaciòn de colores', 25, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (29, 'Abeja laberinto de insertado', 26, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (30, 'Ballena come peces', 27, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (31, 'Caracol de insertado ', 28, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (32, 'Cerdito de texturas', 29, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (33, 'Oveja  de texturas', 30, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (34, 'Perro con espejo', 31, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (35, 'Vaca de texturas ', 32, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (36, 'Araña con botones', 33, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (37, 'Cepillado de dientes', 34, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (38, 'Pato clasificaciòn de colores ', 35, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (39, 'Hongo Vocales', 36, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (40, 'Figuras Geometricas clasificaciòn ', 37, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (41, 'Camisa de botones', 38, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (42, 'OTROS', 39, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (43, 'Moustro de emociones', 40, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (44, 'Partes del Cuerpo', 41, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (45, 'Zapatos de Amarrar UNO', 42, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (46, 'Figuras de colores geometricas', 43, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (47, 'Perro de rompecabezas', 44, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (48, 'Amarres', 45, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (49, 'Tortuga Clasificacion de colores', 46, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (50, 'Ponque tamaños', 47, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (51, 'Manos de conteo signos ', 48, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (52, 'Lapices clasificaciòn de colores', 49, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (53, 'Tamaños de grande a pequeño', 50, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (54, 'Flautista', 51, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (55, 'Tren de los números', 52, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (56, 'Vocales lazos', 53, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (57, 'Manos de conteo y Números', 54, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (58, 'ABC ', 55, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (59, 'Ratón de insertado Números', 56, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (60, 'Cojín  León', 57, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (61, 'Cojín Mico', 58, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (62, 'Cojín dinosaurio', 59, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (63, 'Cojin Come galletas', 60, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (64, 'Cojín Elefante', 61, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (65, 'Cojín Elmo', 62, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (66, 'Cojín Perro', 63, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (67, 'Cojín Moutro', 64, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (68, 'Cojín Gato', 65, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (69, 'TEXTURAS BEBES 7 ACTIVIDADES', 66, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (70, 'TEXTURAS BEBES 10 ACTIVIDADES', 67, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (71, 'KENY 7 ACTIVIDADES ', 68, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (72, 'KENY 10 ACTIVIDADES', 69, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (73, 'KENY 5 ACTIVIDADES', 70, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (74, 'KENY MÀS ACTIVIDADES', 71, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references` VALUES (75, 'CUBO SENSORIAL', 72, 0, 'null', 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
 COMMIT;
 
 -- ----------------------------
@@ -494,7 +634,7 @@ CREATE TABLE `references_headquarters` (
   CONSTRAINT `rh_headquarter_id` FOREIGN KEY (`headquarter_id`) REFERENCES `headquarters` (`status_id`),
   CONSTRAINT `rh_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `references` (`id`),
   CONSTRAINT `rh_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of references_headquarters
@@ -502,6 +642,77 @@ CREATE TABLE `references_headquarters` (
 BEGIN;
 INSERT INTO `references_headquarters` VALUES (1, 1, 1, 1, 5000, 10000, 0, 0, '2020-10-08 00:00:00', '2020-10-08 00:00:00');
 INSERT INTO `references_headquarters` VALUES (2, 2, 1, 1, 10000, 20000, 5, 0, '2020-10-08 00:00:00', '2020-10-08 00:00:00');
+INSERT INTO `references_headquarters` VALUES (3, 5, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (4, 6, 1, 1, 12000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (5, 7, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (6, 8, 1, 1, 10000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (7, 9, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (8, 10, 1, 1, 10000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (9, 11, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (10, 12, 1, 1, 10000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (11, 13, 1, 1, 10000, 10000, 0, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (12, 14, 1, 1, 10000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (13, 15, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (14, 16, 1, 1, 11000, 11000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (15, 17, 1, 1, 18000, 18000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (16, 18, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (17, 19, 1, 1, 10000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (18, 20, 1, 1, 13000, 13000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (19, 21, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (20, 22, 1, 1, 14000, 14000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (21, 23, 1, 1, 18000, 18000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (22, 24, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (23, 25, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (24, 26, 1, 1, 18000, 18000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (25, 27, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (26, 28, 1, 1, 10000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (27, 29, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (28, 30, 1, 1, 13000, 13000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (29, 31, 1, 1, 13000, 13000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (30, 32, 1, 1, 13000, 13000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (31, 33, 1, 1, 13000, 13000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (32, 34, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (33, 35, 1, 1, 13000, 13000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (34, 36, 1, 1, 10000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (35, 37, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (36, 38, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (37, 39, 1, 1, 13000, 13000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (38, 40, 1, 1, 11000, 11000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (39, 41, 1, 1, 11000, 11000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (40, 42, 1, 1, 20000, 20000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (41, 43, 1, 1, 13000, 13000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (42, 44, 1, 1, 18000, 18000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (43, 45, 1, 1, 10000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (44, 46, 1, 1, 11000, 11000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (45, 47, 1, 1, 11000, 11000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (46, 48, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (47, 49, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (48, 50, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (49, 51, 1, 1, 18000, 18000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (50, 52, 1, 1, 13000, 13000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (51, 53, 1, 1, 10000, 10000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (52, 54, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (53, 55, 1, 1, 14000, 14000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (54, 56, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (55, 57, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (56, 58, 1, 1, 15000, 15000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (57, 59, 1, 1, 12000, 12000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (58, 60, 1, 1, 35000, 35000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (59, 61, 1, 1, 30000, 30000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (60, 62, 1, 1, 40000, 40000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (61, 63, 1, 1, 30000, 30000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (62, 64, 1, 1, 40000, 40000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (63, 65, 1, 1, 30000, 30000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (64, 66, 1, 1, 35000, 35000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (65, 67, 1, 1, 35000, 35000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (66, 68, 1, 1, 35000, 35000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (67, 69, 1, 1, 100000, 100000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (68, 70, 1, 1, 120000, 120000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (69, 71, 1, 1, 100000, 100000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (70, 72, 1, 1, 130000, 130000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (71, 73, 1, 1, 70000, 70000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (72, 74, 1, 1, 0, 0, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
+INSERT INTO `references_headquarters` VALUES (73, 75, 1, 1, 70000, 70000, 10, 0, '2021-03-11 05:03:43', '2021-03-11 05:03:43');
 COMMIT;
 
 -- ----------------------------

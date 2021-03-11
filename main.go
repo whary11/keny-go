@@ -2,7 +2,6 @@ package main
 
 import (
 	"keny-go/routes"
-	"keny-go/models"
 
 	"github.com/gin-gonic/gin"
 )
