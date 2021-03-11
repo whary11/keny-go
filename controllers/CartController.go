@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"keny-go/models"
 	"keny-go/utils"
-	"math/rand"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
+
+
 
 func Add(c *gin.Context) {
 	var cart models.Cart
@@ -22,9 +23,9 @@ func Add(c *gin.Context) {
 		return
 	}
 
-	if cart.CartCode == 0 {
-		cart.CartCode = rand.Intn(100000000)
-	}
+	// if cart.CartCode == 0 {
+	// 	cart.Id = rand.Intn(100000000)
+	// }
 	if cart.UserId == 0 {
 		cart.UserId = 0
 	}

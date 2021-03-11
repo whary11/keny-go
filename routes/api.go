@@ -27,7 +27,7 @@ func Api(router *gin.Engine) {
 		}
 
 		/// Rutas para el carrito
-		v1 := api.Group("/cart", middlewares.Auth())
+		v1 := api.Group("/cart")
 		{
 			v1.POST("/add", controllers.Add)
 		}
