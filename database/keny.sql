@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 11/03/2021 05:55:46
+ Date: 11/03/2021 08:47:07
 */
 
 SET NAMES utf8mb4;
@@ -42,12 +42,90 @@ CREATE TABLE `addresses` (
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `reference_id` int unsigned NOT NULL,
   `user_id` int unsigned DEFAULT NULL,
-  `code_cart` double unsigned NOT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of cart
+-- ----------------------------
+BEGIN;
+INSERT INTO `cart` VALUES (6, NULL, '2021-03-11 07:50:30.000000', '2021-03-11 07:50:30.000000');
+INSERT INTO `cart` VALUES (7, NULL, '2021-03-11 07:52:11.000000', '2021-03-11 07:52:11.000000');
+INSERT INTO `cart` VALUES (8, NULL, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000');
+INSERT INTO `cart` VALUES (9, NULL, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000');
+INSERT INTO `cart` VALUES (10, NULL, '2021-03-11 07:52:14.000000', '2021-03-11 07:52:14.000000');
+INSERT INTO `cart` VALUES (11, NULL, '2021-03-11 07:52:14.000000', '2021-03-11 07:52:14.000000');
+INSERT INTO `cart` VALUES (12, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
+INSERT INTO `cart` VALUES (13, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
+INSERT INTO `cart` VALUES (14, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
+INSERT INTO `cart` VALUES (15, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
+INSERT INTO `cart` VALUES (16, NULL, '2021-03-11 07:52:16.000000', '2021-03-11 07:52:16.000000');
+INSERT INTO `cart` VALUES (17, NULL, '2021-03-11 07:53:00.000000', '2021-03-11 07:53:00.000000');
+INSERT INTO `cart` VALUES (18, NULL, '2021-03-11 07:53:01.000000', '2021-03-11 07:53:01.000000');
+INSERT INTO `cart` VALUES (19, NULL, '2021-03-11 07:53:01.000000', '2021-03-11 07:53:01.000000');
+INSERT INTO `cart` VALUES (20, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
+INSERT INTO `cart` VALUES (21, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
+INSERT INTO `cart` VALUES (22, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
+INSERT INTO `cart` VALUES (23, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
+INSERT INTO `cart` VALUES (24, NULL, '2021-03-11 07:53:03.000000', '2021-03-11 07:53:03.000000');
+INSERT INTO `cart` VALUES (25, NULL, '2021-03-11 07:53:44.000000', '2021-03-11 07:53:44.000000');
+INSERT INTO `cart` VALUES (26, NULL, '2021-03-11 07:53:48.000000', '2021-03-11 07:53:48.000000');
+INSERT INTO `cart` VALUES (27, NULL, '2021-03-11 07:53:49.000000', '2021-03-11 07:53:49.000000');
+INSERT INTO `cart` VALUES (28, NULL, '2021-03-11 07:53:49.000000', '2021-03-11 07:53:49.000000');
+INSERT INTO `cart` VALUES (29, NULL, '2021-03-11 07:53:50.000000', '2021-03-11 07:53:50.000000');
+INSERT INTO `cart` VALUES (30, NULL, '2021-03-11 07:53:59.000000', '2021-03-11 07:53:59.000000');
+INSERT INTO `cart` VALUES (31, NULL, '2021-03-11 07:54:38.000000', '2021-03-11 07:54:38.000000');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for cart_details
+-- ----------------------------
+DROP TABLE IF EXISTS `cart_details`;
+CREATE TABLE `cart_details` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `reference_id` int unsigned NOT NULL,
+  `cart_id` int unsigned NOT NULL,
+  `quantity` int NOT NULL DEFAULT '1',
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of cart_details
+-- ----------------------------
+BEGIN;
+INSERT INTO `cart_details` VALUES (33, 1, 6, 10, '2021-03-11 07:50:30.000000', '2021-03-11 07:50:30.000000');
+INSERT INTO `cart_details` VALUES (34, 1, 7, 10, '2021-03-11 07:52:11.000000', '2021-03-11 07:52:11.000000');
+INSERT INTO `cart_details` VALUES (35, 1, 8, 10, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000');
+INSERT INTO `cart_details` VALUES (36, 1, 9, 10, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000');
+INSERT INTO `cart_details` VALUES (37, 1, 10, 10, '2021-03-11 07:52:14.000000', '2021-03-11 07:52:14.000000');
+INSERT INTO `cart_details` VALUES (38, 1, 11, 10, '2021-03-11 07:52:14.000000', '2021-03-11 07:52:14.000000');
+INSERT INTO `cart_details` VALUES (39, 1, 12, 10, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
+INSERT INTO `cart_details` VALUES (40, 1, 13, 10, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
+INSERT INTO `cart_details` VALUES (41, 1, 14, 10, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
+INSERT INTO `cart_details` VALUES (42, 1, 15, 10, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
+INSERT INTO `cart_details` VALUES (43, 1, 16, 10, '2021-03-11 07:52:16.000000', '2021-03-11 07:52:16.000000');
+INSERT INTO `cart_details` VALUES (44, 1, 17, 10, '2021-03-11 07:53:00.000000', '2021-03-11 07:53:00.000000');
+INSERT INTO `cart_details` VALUES (45, 1, 18, 10, '2021-03-11 07:53:01.000000', '2021-03-11 07:53:01.000000');
+INSERT INTO `cart_details` VALUES (46, 1, 19, 10, '2021-03-11 07:53:01.000000', '2021-03-11 07:53:01.000000');
+INSERT INTO `cart_details` VALUES (47, 1, 20, 10, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
+INSERT INTO `cart_details` VALUES (48, 1, 21, 10, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
+INSERT INTO `cart_details` VALUES (49, 1, 22, 10, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
+INSERT INTO `cart_details` VALUES (50, 1, 23, 10, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
+INSERT INTO `cart_details` VALUES (51, 1, 24, 10, '2021-03-11 07:53:03.000000', '2021-03-11 07:53:03.000000');
+INSERT INTO `cart_details` VALUES (52, 1, 25, 10, '2021-03-11 07:53:44.000000', '2021-03-11 07:53:44.000000');
+INSERT INTO `cart_details` VALUES (53, 1, 26, 10, '2021-03-11 07:53:48.000000', '2021-03-11 07:53:48.000000');
+INSERT INTO `cart_details` VALUES (54, 1, 27, 10, '2021-03-11 07:53:49.000000', '2021-03-11 07:53:49.000000');
+INSERT INTO `cart_details` VALUES (55, 1, 28, 10, '2021-03-11 07:53:49.000000', '2021-03-11 07:53:49.000000');
+INSERT INTO `cart_details` VALUES (56, 1, 29, 10, '2021-03-11 07:53:50.000000', '2021-03-11 07:53:50.000000');
+INSERT INTO `cart_details` VALUES (57, 1, 30, 10, '2021-03-11 07:53:59.000000', '2021-03-11 07:53:59.000000');
+INSERT INTO `cart_details` VALUES (58, 1, 31, 10, '2021-03-11 07:54:38.000000', '2021-03-11 07:54:38.000000');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for categories
@@ -771,6 +849,68 @@ BEGIN;
 INSERT INTO `users` VALUES (42, 'Luis', 'Raga', 'luis.raga@keny.com', '$2a$14$kbUOTgtKJX33YGgB8LswFufFSPPXYsuMdjRL7y/y/Q/RqOSnKAhSy', '2021-03-05 18:25:50', '2021-03-05 18:25:50');
 INSERT INTO `users` VALUES (43, 'David', 'Raga', 'david.raga@keny.com', '$2a$14$8P3MFBoTDgw5cVDzxR1.reLmbDID/Hb9NTGxb/VnPfN/VW7JyNTnG', '2021-03-05 18:26:02', '2021-03-05 18:26:02');
 COMMIT;
+
+-- ----------------------------
+-- Procedure structure for ksp_add_to_cart
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_add_to_cart`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_add_to_cart`(p_reference_id int, p_user_id int, p_quantity int, in p_cart_id int)
+BEGIN
+
+Declare private_cart_id int;
+Declare private_quantity DOUBLE;
+
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    
+    BEGIN
+        SHOW ERRORS;
+        ROLLBACK;   
+    END;
+    
+    DECLARE EXIT HANDLER FOR SQLWARNING
+    BEGIN
+        SHOW ERRORS;  
+        ROLLBACK;   
+    END;
+    -- SET time_zone = "America/Toronto";
+    
+    START TRANSACTION;
+		
+		-- IF(p_cart_id>0,INSERT INTO `cart` VALUES (null, user_id,now(),now()),null);
+		set private_cart_id = (select c.id from cart c where c.id = p_cart_id);
+		
+		CASE 
+			 WHEN private_cart_id THEN
+				-- call ksp_response(false,"El carrito no exite.");
+				
+				set private_cart_id = p_cart_id;
+				ELSE
+				
+				INSERT INTO `cart` VALUES (null,IF(p_user_id >0,p_user_id,null),now(),now());
+				set private_cart_id = LAST_INSERT_ID();
+			
+		END CASE;
+		 
+		set private_quantity = (SELECT cd.quantity from cart_details cd where cart_id = private_cart_id and cd.reference_id = p_reference_id limit 1);
+		CASE 
+			 WHEN private_quantity THEN
+				UPDATE `keny`.`cart_details` SET `quantity` = private_quantity+p_quantity WHERE `id` = (SELECT cd.id from cart_details cd where cart_id = private_cart_id and cd.reference_id = p_reference_id limit 1);
+				ELSE
+				INSERT INTO `cart_details` VALUES (null,p_reference_id,private_cart_id,p_quantity, now(), now());
+		END CASE;
+    COMMIT;
+		
+		select c.id, c.user_id, cd.reference_id, cd.cart_id, cd.quantity  from cart_details cd 
+			join cart c on c.id = cd.cart_id
+		where cd.cart_id = private_cart_id;
+    -- call ksp_response(true,"Usuario registrado correctamente");
+    
+    
+	
+END
+;;
+delimiter ;
 
 -- ----------------------------
 -- Procedure structure for ksp_create_token
