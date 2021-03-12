@@ -9,9 +9,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
-
 func Add(c *gin.Context) {
+
+	utils.GetResponse(c, http.StatusOK, utils.Response{
+		"code":    http.StatusOK,
+		"status":  true,
+		"message": "",
+	})
+
+	return
+
 	var cart models.Cart
 	if err := c.ShouldBindJSON(&cart); err != nil {
 		utils.GetResponse(c, http.StatusOK, utils.Response{
@@ -22,6 +29,15 @@ func Add(c *gin.Context) {
 		})
 		return
 	}
+
+	utils.GetResponse(c, http.StatusOK, utils.Response{
+		"code":    http.StatusOK,
+		"status":  true,
+		"message": "",
+		"data":    cart,
+	})
+
+	return
 
 	// if cart.CartCode == 0 {
 	// 	cart.Id = rand.Intn(100000000)
@@ -62,4 +78,6 @@ func Add(c *gin.Context) {
 		"message": "",
 		"data":    cart,
 	})
+
+	return
 }
