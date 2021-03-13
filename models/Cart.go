@@ -44,10 +44,9 @@ func (c *Cart) CreateCart() (bool, string) {
 
 func (c *Cart) ValidateCart() bool {
 	var excepcioSql utils.ExceptionSql
-
 	querySelect := `CALL ksp_validate_cart(?,?,?)`
 	row := dbBoilerplateGo.Write.QueryRow(querySelect, c.Id, c.Quantity, c.ReferenceId)
-	result := true
+	result := false
 	err := row.Scan(&excepcioSql.Level, &excepcioSql.Code, &excepcioSql.Message)
 	if err != nil {
 		result = false

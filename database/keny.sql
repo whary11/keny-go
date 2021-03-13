@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : DB-LOCAL
+ Source Server         : Local
  Source Server Type    : MySQL
- Source Server Version : 80022
+ Source Server Version : 80023
  Source Host           : localhost:3306
  Source Schema         : keny
 
  Target Server Type    : MySQL
- Target Server Version : 80022
+ Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 12/03/2021 16:58:33
+ Date: 12/03/2021 22:26:13
 */
 
 SET NAMES utf8mb4;
@@ -45,6 +45,7 @@ CREATE TABLE `cart` (
   `user_id` int unsigned DEFAULT NULL,
   `created_at` datetime(6) NOT NULL,
   `updated_at` datetime(6) NOT NULL,
+  `bought` int NOT NULL DEFAULT '0' COMMENT '0=no comprado 1=comprado',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -52,75 +53,75 @@ CREATE TABLE `cart` (
 -- Records of cart
 -- ----------------------------
 BEGIN;
-INSERT INTO `cart` VALUES (6, NULL, '2021-03-11 07:50:30.000000', '2021-03-11 07:50:30.000000');
-INSERT INTO `cart` VALUES (7, NULL, '2021-03-11 07:52:11.000000', '2021-03-11 07:52:11.000000');
-INSERT INTO `cart` VALUES (8, NULL, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000');
-INSERT INTO `cart` VALUES (9, NULL, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000');
-INSERT INTO `cart` VALUES (10, NULL, '2021-03-11 07:52:14.000000', '2021-03-11 07:52:14.000000');
-INSERT INTO `cart` VALUES (11, NULL, '2021-03-11 07:52:14.000000', '2021-03-11 07:52:14.000000');
-INSERT INTO `cart` VALUES (12, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
-INSERT INTO `cart` VALUES (13, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
-INSERT INTO `cart` VALUES (14, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
-INSERT INTO `cart` VALUES (15, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000');
-INSERT INTO `cart` VALUES (16, NULL, '2021-03-11 07:52:16.000000', '2021-03-11 07:52:16.000000');
-INSERT INTO `cart` VALUES (17, NULL, '2021-03-11 07:53:00.000000', '2021-03-11 07:53:00.000000');
-INSERT INTO `cart` VALUES (18, NULL, '2021-03-11 07:53:01.000000', '2021-03-11 07:53:01.000000');
-INSERT INTO `cart` VALUES (19, NULL, '2021-03-11 07:53:01.000000', '2021-03-11 07:53:01.000000');
-INSERT INTO `cart` VALUES (20, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
-INSERT INTO `cart` VALUES (21, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
-INSERT INTO `cart` VALUES (22, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
-INSERT INTO `cart` VALUES (23, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000');
-INSERT INTO `cart` VALUES (24, NULL, '2021-03-11 07:53:03.000000', '2021-03-11 07:53:03.000000');
-INSERT INTO `cart` VALUES (25, NULL, '2021-03-11 07:53:44.000000', '2021-03-11 07:53:44.000000');
-INSERT INTO `cart` VALUES (26, NULL, '2021-03-11 07:53:48.000000', '2021-03-11 07:53:48.000000');
-INSERT INTO `cart` VALUES (27, NULL, '2021-03-11 07:53:49.000000', '2021-03-11 07:53:49.000000');
-INSERT INTO `cart` VALUES (28, NULL, '2021-03-11 07:53:49.000000', '2021-03-11 07:53:49.000000');
-INSERT INTO `cart` VALUES (29, NULL, '2021-03-11 07:53:50.000000', '2021-03-11 07:53:50.000000');
-INSERT INTO `cart` VALUES (30, NULL, '2021-03-11 07:53:59.000000', '2021-03-11 07:53:59.000000');
-INSERT INTO `cart` VALUES (31, NULL, '2021-03-11 07:54:38.000000', '2021-03-11 07:54:38.000000');
-INSERT INTO `cart` VALUES (32, NULL, '2021-03-12 09:43:00.000000', '2021-03-12 09:43:00.000000');
-INSERT INTO `cart` VALUES (33, NULL, '2021-03-12 09:43:01.000000', '2021-03-12 09:43:01.000000');
-INSERT INTO `cart` VALUES (34, NULL, '2021-03-12 09:43:02.000000', '2021-03-12 09:43:02.000000');
-INSERT INTO `cart` VALUES (35, NULL, '2021-03-12 09:43:02.000000', '2021-03-12 09:43:02.000000');
-INSERT INTO `cart` VALUES (36, NULL, '2021-03-12 09:43:03.000000', '2021-03-12 09:43:03.000000');
-INSERT INTO `cart` VALUES (37, NULL, '2021-03-12 09:43:03.000000', '2021-03-12 09:43:03.000000');
-INSERT INTO `cart` VALUES (38, NULL, '2021-03-12 09:43:04.000000', '2021-03-12 09:43:04.000000');
-INSERT INTO `cart` VALUES (39, NULL, '2021-03-12 09:43:05.000000', '2021-03-12 09:43:05.000000');
-INSERT INTO `cart` VALUES (40, NULL, '2021-03-12 09:43:06.000000', '2021-03-12 09:43:06.000000');
-INSERT INTO `cart` VALUES (41, NULL, '2021-03-12 09:43:07.000000', '2021-03-12 09:43:07.000000');
-INSERT INTO `cart` VALUES (42, NULL, '2021-03-12 09:43:08.000000', '2021-03-12 09:43:08.000000');
-INSERT INTO `cart` VALUES (43, NULL, '2021-03-12 09:43:08.000000', '2021-03-12 09:43:08.000000');
-INSERT INTO `cart` VALUES (44, NULL, '2021-03-12 09:43:09.000000', '2021-03-12 09:43:09.000000');
-INSERT INTO `cart` VALUES (45, NULL, '2021-03-12 09:43:09.000000', '2021-03-12 09:43:09.000000');
-INSERT INTO `cart` VALUES (46, NULL, '2021-03-12 09:43:09.000000', '2021-03-12 09:43:09.000000');
-INSERT INTO `cart` VALUES (47, NULL, '2021-03-12 09:43:09.000000', '2021-03-12 09:43:09.000000');
-INSERT INTO `cart` VALUES (48, NULL, '2021-03-12 09:43:10.000000', '2021-03-12 09:43:10.000000');
-INSERT INTO `cart` VALUES (49, NULL, '2021-03-12 09:43:10.000000', '2021-03-12 09:43:10.000000');
-INSERT INTO `cart` VALUES (50, NULL, '2021-03-12 09:43:11.000000', '2021-03-12 09:43:11.000000');
-INSERT INTO `cart` VALUES (51, NULL, '2021-03-12 09:43:11.000000', '2021-03-12 09:43:11.000000');
-INSERT INTO `cart` VALUES (52, NULL, '2021-03-12 09:43:11.000000', '2021-03-12 09:43:11.000000');
-INSERT INTO `cart` VALUES (53, NULL, '2021-03-12 09:43:12.000000', '2021-03-12 09:43:12.000000');
-INSERT INTO `cart` VALUES (54, NULL, '2021-03-12 09:43:12.000000', '2021-03-12 09:43:12.000000');
-INSERT INTO `cart` VALUES (55, NULL, '2021-03-12 09:43:13.000000', '2021-03-12 09:43:13.000000');
-INSERT INTO `cart` VALUES (56, NULL, '2021-03-12 09:43:13.000000', '2021-03-12 09:43:13.000000');
-INSERT INTO `cart` VALUES (57, NULL, '2021-03-12 09:43:13.000000', '2021-03-12 09:43:13.000000');
-INSERT INTO `cart` VALUES (58, NULL, '2021-03-12 09:48:17.000000', '2021-03-12 09:48:17.000000');
-INSERT INTO `cart` VALUES (59, NULL, '2021-03-12 09:48:39.000000', '2021-03-12 09:48:39.000000');
-INSERT INTO `cart` VALUES (60, NULL, '2021-03-12 09:49:36.000000', '2021-03-12 09:49:36.000000');
-INSERT INTO `cart` VALUES (61, NULL, '2021-03-12 09:49:37.000000', '2021-03-12 09:49:37.000000');
-INSERT INTO `cart` VALUES (62, NULL, '2021-03-12 09:50:06.000000', '2021-03-12 09:50:06.000000');
-INSERT INTO `cart` VALUES (63, NULL, '2021-03-12 09:52:07.000000', '2021-03-12 09:52:07.000000');
-INSERT INTO `cart` VALUES (64, NULL, '2021-03-12 09:52:20.000000', '2021-03-12 09:52:20.000000');
-INSERT INTO `cart` VALUES (65, NULL, '2021-03-12 09:52:21.000000', '2021-03-12 09:52:21.000000');
-INSERT INTO `cart` VALUES (66, NULL, '2021-03-12 09:52:40.000000', '2021-03-12 09:52:40.000000');
-INSERT INTO `cart` VALUES (67, NULL, '2021-03-12 09:53:15.000000', '2021-03-12 09:53:15.000000');
-INSERT INTO `cart` VALUES (68, NULL, '2021-03-12 09:53:15.000000', '2021-03-12 09:53:15.000000');
-INSERT INTO `cart` VALUES (69, NULL, '2021-03-12 09:53:16.000000', '2021-03-12 09:53:16.000000');
-INSERT INTO `cart` VALUES (70, NULL, '2021-03-12 09:53:16.000000', '2021-03-12 09:53:16.000000');
-INSERT INTO `cart` VALUES (71, NULL, '2021-03-12 09:53:17.000000', '2021-03-12 09:53:17.000000');
-INSERT INTO `cart` VALUES (72, NULL, '2021-03-12 09:53:17.000000', '2021-03-12 09:53:17.000000');
-INSERT INTO `cart` VALUES (73, NULL, '2021-03-12 09:53:48.000000', '2021-03-12 09:53:48.000000');
-INSERT INTO `cart` VALUES (74, NULL, '2021-03-12 09:54:11.000000', '2021-03-12 09:54:11.000000');
+INSERT INTO `cart` VALUES (6, NULL, '2021-03-11 07:50:30.000000', '2021-03-11 07:50:30.000000', 0);
+INSERT INTO `cart` VALUES (7, NULL, '2021-03-11 07:52:11.000000', '2021-03-11 07:52:11.000000', 0);
+INSERT INTO `cart` VALUES (8, NULL, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000', 0);
+INSERT INTO `cart` VALUES (9, NULL, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000', 0);
+INSERT INTO `cart` VALUES (10, NULL, '2021-03-11 07:52:14.000000', '2021-03-11 07:52:14.000000', 0);
+INSERT INTO `cart` VALUES (11, NULL, '2021-03-11 07:52:14.000000', '2021-03-11 07:52:14.000000', 0);
+INSERT INTO `cart` VALUES (12, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000', 0);
+INSERT INTO `cart` VALUES (13, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000', 0);
+INSERT INTO `cart` VALUES (14, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000', 0);
+INSERT INTO `cart` VALUES (15, NULL, '2021-03-11 07:52:15.000000', '2021-03-11 07:52:15.000000', 0);
+INSERT INTO `cart` VALUES (16, NULL, '2021-03-11 07:52:16.000000', '2021-03-11 07:52:16.000000', 0);
+INSERT INTO `cart` VALUES (17, NULL, '2021-03-11 07:53:00.000000', '2021-03-11 07:53:00.000000', 0);
+INSERT INTO `cart` VALUES (18, NULL, '2021-03-11 07:53:01.000000', '2021-03-11 07:53:01.000000', 0);
+INSERT INTO `cart` VALUES (19, NULL, '2021-03-11 07:53:01.000000', '2021-03-11 07:53:01.000000', 0);
+INSERT INTO `cart` VALUES (20, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000', 0);
+INSERT INTO `cart` VALUES (21, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000', 0);
+INSERT INTO `cart` VALUES (22, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000', 0);
+INSERT INTO `cart` VALUES (23, NULL, '2021-03-11 07:53:02.000000', '2021-03-11 07:53:02.000000', 0);
+INSERT INTO `cart` VALUES (24, NULL, '2021-03-11 07:53:03.000000', '2021-03-11 07:53:03.000000', 0);
+INSERT INTO `cart` VALUES (25, NULL, '2021-03-11 07:53:44.000000', '2021-03-11 07:53:44.000000', 0);
+INSERT INTO `cart` VALUES (26, NULL, '2021-03-11 07:53:48.000000', '2021-03-11 07:53:48.000000', 0);
+INSERT INTO `cart` VALUES (27, NULL, '2021-03-11 07:53:49.000000', '2021-03-11 07:53:49.000000', 0);
+INSERT INTO `cart` VALUES (28, NULL, '2021-03-11 07:53:49.000000', '2021-03-11 07:53:49.000000', 0);
+INSERT INTO `cart` VALUES (29, NULL, '2021-03-11 07:53:50.000000', '2021-03-11 07:53:50.000000', 0);
+INSERT INTO `cart` VALUES (30, NULL, '2021-03-11 07:53:59.000000', '2021-03-11 07:53:59.000000', 0);
+INSERT INTO `cart` VALUES (31, NULL, '2021-03-11 07:54:38.000000', '2021-03-11 07:54:38.000000', 0);
+INSERT INTO `cart` VALUES (32, NULL, '2021-03-12 09:43:00.000000', '2021-03-12 09:43:00.000000', 0);
+INSERT INTO `cart` VALUES (33, NULL, '2021-03-12 09:43:01.000000', '2021-03-12 09:43:01.000000', 0);
+INSERT INTO `cart` VALUES (34, NULL, '2021-03-12 09:43:02.000000', '2021-03-12 09:43:02.000000', 0);
+INSERT INTO `cart` VALUES (35, NULL, '2021-03-12 09:43:02.000000', '2021-03-12 09:43:02.000000', 0);
+INSERT INTO `cart` VALUES (36, NULL, '2021-03-12 09:43:03.000000', '2021-03-12 09:43:03.000000', 0);
+INSERT INTO `cart` VALUES (37, NULL, '2021-03-12 09:43:03.000000', '2021-03-12 09:43:03.000000', 0);
+INSERT INTO `cart` VALUES (38, NULL, '2021-03-12 09:43:04.000000', '2021-03-12 09:43:04.000000', 0);
+INSERT INTO `cart` VALUES (39, NULL, '2021-03-12 09:43:05.000000', '2021-03-12 09:43:05.000000', 0);
+INSERT INTO `cart` VALUES (40, NULL, '2021-03-12 09:43:06.000000', '2021-03-12 09:43:06.000000', 0);
+INSERT INTO `cart` VALUES (41, NULL, '2021-03-12 09:43:07.000000', '2021-03-12 09:43:07.000000', 0);
+INSERT INTO `cart` VALUES (42, NULL, '2021-03-12 09:43:08.000000', '2021-03-12 09:43:08.000000', 0);
+INSERT INTO `cart` VALUES (43, NULL, '2021-03-12 09:43:08.000000', '2021-03-12 09:43:08.000000', 0);
+INSERT INTO `cart` VALUES (44, NULL, '2021-03-12 09:43:09.000000', '2021-03-12 09:43:09.000000', 0);
+INSERT INTO `cart` VALUES (45, NULL, '2021-03-12 09:43:09.000000', '2021-03-12 09:43:09.000000', 0);
+INSERT INTO `cart` VALUES (46, NULL, '2021-03-12 09:43:09.000000', '2021-03-12 09:43:09.000000', 0);
+INSERT INTO `cart` VALUES (47, NULL, '2021-03-12 09:43:09.000000', '2021-03-12 09:43:09.000000', 0);
+INSERT INTO `cart` VALUES (48, NULL, '2021-03-12 09:43:10.000000', '2021-03-12 09:43:10.000000', 0);
+INSERT INTO `cart` VALUES (49, NULL, '2021-03-12 09:43:10.000000', '2021-03-12 09:43:10.000000', 0);
+INSERT INTO `cart` VALUES (50, NULL, '2021-03-12 09:43:11.000000', '2021-03-12 09:43:11.000000', 0);
+INSERT INTO `cart` VALUES (51, NULL, '2021-03-12 09:43:11.000000', '2021-03-12 09:43:11.000000', 0);
+INSERT INTO `cart` VALUES (52, NULL, '2021-03-12 09:43:11.000000', '2021-03-12 09:43:11.000000', 0);
+INSERT INTO `cart` VALUES (53, NULL, '2021-03-12 09:43:12.000000', '2021-03-12 09:43:12.000000', 0);
+INSERT INTO `cart` VALUES (54, NULL, '2021-03-12 09:43:12.000000', '2021-03-12 09:43:12.000000', 0);
+INSERT INTO `cart` VALUES (55, NULL, '2021-03-12 09:43:13.000000', '2021-03-12 09:43:13.000000', 0);
+INSERT INTO `cart` VALUES (56, NULL, '2021-03-12 09:43:13.000000', '2021-03-12 09:43:13.000000', 0);
+INSERT INTO `cart` VALUES (57, NULL, '2021-03-12 09:43:13.000000', '2021-03-12 09:43:13.000000', 0);
+INSERT INTO `cart` VALUES (58, NULL, '2021-03-12 09:48:17.000000', '2021-03-12 09:48:17.000000', 0);
+INSERT INTO `cart` VALUES (59, NULL, '2021-03-12 09:48:39.000000', '2021-03-12 09:48:39.000000', 0);
+INSERT INTO `cart` VALUES (60, NULL, '2021-03-12 09:49:36.000000', '2021-03-12 09:49:36.000000', 0);
+INSERT INTO `cart` VALUES (61, NULL, '2021-03-12 09:49:37.000000', '2021-03-12 09:49:37.000000', 0);
+INSERT INTO `cart` VALUES (62, NULL, '2021-03-12 09:50:06.000000', '2021-03-12 09:50:06.000000', 0);
+INSERT INTO `cart` VALUES (63, NULL, '2021-03-12 09:52:07.000000', '2021-03-12 09:52:07.000000', 0);
+INSERT INTO `cart` VALUES (64, NULL, '2021-03-12 09:52:20.000000', '2021-03-12 09:52:20.000000', 0);
+INSERT INTO `cart` VALUES (65, NULL, '2021-03-12 09:52:21.000000', '2021-03-12 09:52:21.000000', 0);
+INSERT INTO `cart` VALUES (66, NULL, '2021-03-12 09:52:40.000000', '2021-03-12 09:52:40.000000', 0);
+INSERT INTO `cart` VALUES (67, NULL, '2021-03-12 09:53:15.000000', '2021-03-12 09:53:15.000000', 0);
+INSERT INTO `cart` VALUES (68, NULL, '2021-03-12 09:53:15.000000', '2021-03-12 09:53:15.000000', 0);
+INSERT INTO `cart` VALUES (69, NULL, '2021-03-12 09:53:16.000000', '2021-03-12 09:53:16.000000', 0);
+INSERT INTO `cart` VALUES (70, NULL, '2021-03-12 09:53:16.000000', '2021-03-12 09:53:16.000000', 0);
+INSERT INTO `cart` VALUES (71, NULL, '2021-03-12 09:53:17.000000', '2021-03-12 09:53:17.000000', 0);
+INSERT INTO `cart` VALUES (72, NULL, '2021-03-12 09:53:17.000000', '2021-03-12 09:53:17.000000', 0);
+INSERT INTO `cart` VALUES (73, NULL, '2021-03-12 09:53:48.000000', '2021-03-12 09:53:48.000000', 0);
+INSERT INTO `cart` VALUES (74, NULL, '2021-03-12 09:54:11.000000', '2021-03-12 09:54:11.000000', 0);
 COMMIT;
 
 -- ----------------------------
@@ -144,7 +145,7 @@ CREATE TABLE `cart_details` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `cart_details` VALUES (33, 1, 6, 10, '2021-03-11 07:50:30.000000', '2021-03-11 07:50:30.000000', 1);
-INSERT INTO `cart_details` VALUES (34, 1, 7, 10, '2021-03-11 07:52:11.000000', '2021-03-11 07:52:11.000000', 1);
+INSERT INTO `cart_details` VALUES (34, 2, 6, 10, '2021-03-11 07:52:11.000000', '2021-03-11 07:52:11.000000', 1);
 INSERT INTO `cart_details` VALUES (35, 1, 8, 10, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000', 1);
 INSERT INTO `cart_details` VALUES (36, 1, 9, 10, '2021-03-11 07:52:13.000000', '2021-03-11 07:52:13.000000', 1);
 INSERT INTO `cart_details` VALUES (37, 1, 10, 10, '2021-03-11 07:52:14.000000', '2021-03-11 07:52:14.000000', 1);
@@ -498,7 +499,7 @@ INSERT INTO `products` VALUES (13, 'Cocodrilos', 'Elaborados en paño lency, Dos
 INSERT INTO `products` VALUES (14, 'Guante granja', 'Elaborado en paño lency, variedad de colores, 5 animales en forma de títere de dedo, vaca, cerdo, gallo, rana, gato. 1 sol, 1 nube, fondo en forma de mano de granja.', 'meta title', 'meta description', 'meta tagas ', 'guante-granja', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (15, 'Panal de Abejas', 'Elaborado en paño lency, panal de abejas con cremallera y espacio para guardar las abejas, 4 abejas con tejido en el borde, ojos locos, rama y velcro para mover las abejas,  cinta de color pegada  a la cada abejas que no permite  caerse. ', 'meta title', 'meta description', 'meta tagas ', 'panal-de-abejas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (16, 'Rana', 'Elaborado en paño lency, Rana con cremallera por fuera, 4 moscas con ojos locos y velcro para poder moverlas y lengua larga para enrollar.  ', 'meta title', 'meta description', 'meta tagas ', 'rana', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (17, 'Ratòn', 'Ratón de laberinto elaborado en paño lency, simulando un queso, casa y cuerda la cual permite que el ratòn recorra el laberinto.', 'meta title', 'meta description', 'meta tagas ', 'ratòn', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (17, 'Ratòn', 'Ratón de laberinto elaborado en paño lency, simulando un queso, casa y cuerda la cual permite que el ratòn recorra el laberinto.', 'meta title', 'meta description', 'meta tagas ', 'raton', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (18, 'Tangram', ' Este juego esta compuesto por 7 piezas elaboradas con paño lency, con una base que le indica a los niños y niñas donde va cada pieza, realizando  asi clasificación de formas, ', 'meta title', 'meta description', 'meta tagas ', 'tangram', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (19, 'Manos de Conteo', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (20, 'Elmo come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'elmo-come-galletas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
@@ -938,6 +939,42 @@ INSERT INTO `users` VALUES (43, 'David', 'Raga', 'david.raga@keny.com', '$2a$14$
 COMMIT;
 
 -- ----------------------------
+-- Function structure for kf_promotion_by_reference
+-- ----------------------------
+DROP FUNCTION IF EXISTS `kf_promotion_by_reference`;
+delimiter ;;
+CREATE FUNCTION `keny`.`kf_promotion_by_reference`(p_product_id int)
+ RETURNS double
+  READS SQL DATA 
+BEGIN
+			DECLARE salida DOUBLE DEFAULT 0;
+			SELECT pm.`value` from products p
+			join promotions pm on pm.destiny_id = p.id
+		where 
+		-- Validación sobre la promoción
+		(pm.status_id = 1 and pm.start_date < now() and pm.final_date > now() and pm.quantity_uses < pm.permitted_uses)
+		-- Validación por categoría
+		and (
+		(pm.destiny_type = 1 and destiny_id in (select pc.category_id from products_categories pc where pc.product_id = p.id )) 
+
+		-- Validación por tags
+		or (pm.destiny_type = 3 and destiny_id in(select pt.id from products_tags pt where pt.product_id = p.id))
+		 
+		-- Validación por producto
+		or (pm.destiny_type = 4 and destiny_id = p.id)
+		)
+		
+		and p.id = p_product_id
+
+		order by pm.created_at desc
+
+		limit 1 into salida;
+			RETURN salida;
+		END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for ksp_add_to_cart
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `ksp_add_to_cart`;
@@ -1068,6 +1105,22 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for ksp_get_info_references
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_get_info_references`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_get_info_references`(in p_references text)
+  COMMENT 'retorna la información de 1 o mas referencias'
+BEGIN
+	
+	select rh.stock, rh.price, r.id, kf_promotion_by_reference(r.product_id) discount  from references_headquarters rh 
+		join `references` r on r.id = rh.reference_id
+	where rh.headquarter_id = 1 and FIND_IN_SET(rh.reference_id,p_references) and rh.status_id = 1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for ksp_get_product_by_slug
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `ksp_get_product_by_slug`;
@@ -1081,27 +1134,7 @@ BEGIN
 		p.slug,p.description,p.meta_title,p.meta_description,p.meta_tags,
 		-- info references
 		rh.id reference_id
-		,r.name reference_name,r.color, r.view_front,rh.price,rh.stock, (SELECT pm.`value` from products p
-		join promotions pm on pm.destiny_id = p.id
-	where 
-	-- Validación sobre la promoción
-	(pm.status_id = 1 and pm.start_date < now() and pm.final_date > now() and pm.quantity_uses < pm.permitted_uses)
-	-- Validación por categoría
-	and (
-	(pm.destiny_type = 1 and destiny_id in (select pc.category_id from products_categories pc where pc.product_id = p.id )) 
-
-	-- Validación por tags
-	or (pm.destiny_type = 3 and destiny_id in(select pt.id from products_tags pt where pt.product_id = p.id))
-	 
-	-- Validación por producto
-	or (pm.destiny_type = 4 and destiny_id = p.id)
-	)
-	
-	and p.id = r.product_id
-
-	order by pm.created_at desc
-
-	limit 1) as discount
+		,r.name reference_name,r.color, r.view_front,rh.price,rh.stock, kf_promotion_by_reference(r.product_id) as discount
 		FROM products p
 		INNER join keny.references r on p.id = r.product_id
 		INNER join references_headquarters rh on rh.reference_id = r.id 
@@ -1111,52 +1144,31 @@ END
 delimiter ;
 
 -- ----------------------------
--- Procedure structure for ksp_get_promotion_by_product
--- ----------------------------
-DROP PROCEDURE IF EXISTS `ksp_get_promotion_by_product`;
-delimiter ;;
-CREATE PROCEDURE `keny`.`ksp_get_promotion_by_product`(in p_product_id int)
-  COMMENT 'Retorna el valor de una promoción para el producto dado'
-BEGIN
-	SELECT pm.`value` from products p
-		join promotions pm on pm.destiny_id = p.id
-	where 
-	-- Validación sobre la promoción
-	(pm.status_id = 1 and pm.start_date < now() and pm.final_date > now() and pm.quantity_uses < pm.permitted_uses)
-	-- Validación por categoría
-	and (
-	(pm.destiny_type = 1 and destiny_id in (select pc.category_id from products_categories pc where pc.product_id = p.id )) 
-
-	-- Validación por tags
-	or (pm.destiny_type = 3 and destiny_id in(select pt.id from products_tags pt where pt.product_id = p.id))
-	 
-	-- Validación por producto
-	or (pm.destiny_type = 4 and destiny_id = p.id)
-	)
-	
-	and p.id = p_product_id
-
-	order by pm.created_at desc
-
-	limit 1;
-END
-;;
-delimiter ;
-
--- ----------------------------
 -- Procedure structure for ksp_get_stock_reference
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `ksp_get_stock_reference`;
 delimiter ;;
-CREATE PROCEDURE `keny`.`ksp_get_stock_reference`(p_quantity int, p_reference_id int, p_cart_id int)
+CREATE PROCEDURE `keny`.`ksp_get_stock_reference`(p_reference_id int)
   COMMENT 'respuesta general'
 BEGIN
 
-set @private_quantity = 0;
-set @private_quqntity = (select cd.quantity from cart_details cd where cd.cart_id = p_cart_id and cd.reference_id = p_reference_id and cd.status_id = 1 limit 1);
-	select rh.stock rh_stock, IF(@private_quqntity is null,0,@private_quqntity) cd_quantity from references_headquarters rh 
-		-- left join cart_details cd on cd.cart_id = p_cart_id
-	where rh.headquarter_id = 1 and rh.reference_id = p_reference_id  and rh.status_id = 1 limit 1;
+DECLARE stock int;
+DECLARE price DOUBLE;
+DECLARE discount DOUBLE;
+DECLARE private_product_id int;
+
+
+
+-- set @discount = call ksp_get_promotion_by_product(int p_product_id)
+	select rh.stock, rh.price, r.product_id  from references_headquarters rh 
+		join `references` r on r.id = rh.reference_id
+	where rh.headquarter_id = 1 and rh.reference_id = p_reference_id  and rh.status_id = 1 limit 1 into stock, price, private_product_id;
+	
+	
+	call ksp_get_promotion_by_product(private_product_id, discount);
+	select stock, price, discount;
+	
+	
 END
 ;;
 delimiter ;
@@ -1203,18 +1215,19 @@ DROP PROCEDURE IF EXISTS `ksp_validate_cart`;
 delimiter ;;
 CREATE PROCEDURE `keny`.`ksp_validate_cart`(p_cart_id int, p_quantity int, in p_reference_id int)
   COMMENT 'respuesta general'
-BEGIN
-
-			-- Validar la existencia del carrito
-		set @is_exist_cart = (select count(id) from cart where id=p_cart_id);
+BEGIN		
 			CASE
-				WHEN @is_exist_cart = 0 THEN
+				WHEN p_cart_id = 0 THEN
 					call ksp_response(false,"El carrito no existe");
 				ELSE
-					-- Validar el stock de todo el cart
-					
-					call ksp_response(true,"El carrito si existe");
-					
+				-- Validar la existencia del carrito
+				set @is_exist_cart = (select count(id) from cart where id=p_cart_id and bought = 0);
+					CASE
+						WHEN @is_exist_cart = 0 THEN
+							call ksp_response(false,"El carrito no existe");
+						ELSE
+							call ksp_response(true,"El carrito si existe");
+					END CASE;
 					-- Responde el sp ksp_response(tinyint p_result, text msg)
 		END CASE;
 END

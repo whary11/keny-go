@@ -27,13 +27,26 @@ func Api(router *gin.Engine) {
 		}
 
 		/// Rutas para el carrito
-		v1 := api.Group("/cart")
+		cart := api.Group("/cart")
 		{
-			v1.POST("/add", middlewares.Cart(), controllers.Add)
+			cart.POST("/add", middlewares.Cart(), controllers.Add)
 		}
 
 		// Productos
-		api.GET("/product_detail/:slug", controllers.ProductDatail)
+
+		product := api.Group("/product")
+		{
+			product.GET("/detail/:slug", controllers.ProductDatail)
+			product.GET("/reference/info", controllers.Info)
+		}
+
+		// Productos
+
+		purchase := api.Group("/purchase")
+		{
+			purchase.POST("/create/", controllers.Create)
+			// purchase.GET("/reference/info", controllers.Info)
+		}
 	}
 
 }
