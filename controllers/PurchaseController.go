@@ -46,13 +46,14 @@ func Create(c *gin.Context) {
 
 		id := strconv.Itoa(purchase.References[i].Id)
 		quantity := strconv.Itoa(purchase.References[i].Quantity)
-		price_with_discount := fmt.Sprintf("%f", purchase.References[i].PriceWithDiscount)
+		price_with_discount := fmt.Sprintf("%g", purchase.References[i].PriceWithDiscount)
 		details += id + "&&" + quantity + "&&" + price_with_discount
 		if len(purchase.References) > i+1 {
 			ids += ","
 			details += "||"
 		}
 	}
+	fmt.Println(details)
 	var (
 		bad_references   []models.Reference
 		exist_references []models.Reference
