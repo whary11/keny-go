@@ -11,7 +11,7 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 12/03/2021 22:26:13
+ Date: 14/03/2021 11:21:59
 */
 
 SET NAMES utf8mb4;
@@ -22,19 +22,28 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `addresses`;
 CREATE TABLE `addresses` (
-  `id` int NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `status_id` int unsigned NOT NULL,
-  `principal` binary(1) NOT NULL DEFAULT '0',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL,
+  `status_id` int unsigned NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `complement` varchar(255) DEFAULT NULL,
+  `principal` int NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `addresses_status_id_idx` (`status_id`),
   KEY `addresses_user_id_idx` (`user_id`),
   CONSTRAINT `addresses_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`),
   CONSTRAINT `addresses_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of addresses
+-- ----------------------------
+BEGIN;
+INSERT INTO `addresses` VALUES (1, 2, 1, 'calle falsa', NULL, 0, '2020-03-14 00:00:00', '2020-03-14 00:00:00');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for cart
@@ -243,18 +252,26 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `cities`;
 CREATE TABLE `cities` (
-  `id` int NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `department_id` int unsigned NOT NULL,
   `name` varchar(100) NOT NULL,
+  `status_id` int unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `department_id` int unsigned NOT NULL,
-  `status_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `cities_department_id_idx` (`department_id`),
   KEY `cities_status_id_idx` (`status_id`),
   CONSTRAINT `cities_department_id` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`),
   CONSTRAINT `cities_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cities
+-- ----------------------------
+BEGIN;
+INSERT INTO `cities` VALUES (1, 1, 'Bogotá', 1, '2020-03-14 00:00:00', '2020-03-14 00:00:00');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for configurations
@@ -277,7 +294,14 @@ CREATE TABLE `countries` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of countries
+-- ----------------------------
+BEGIN;
+INSERT INTO `countries` VALUES (1, 'Colombia', '2020-03-14 00:00:00', '2020-03-14 00:00:00');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for departments
@@ -296,7 +320,14 @@ CREATE TABLE `departments` (
   KEY `departments_status_id_idx` (`status_id`),
   CONSTRAINT `departments_country_id` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
   CONSTRAINT `departments_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of departments
+-- ----------------------------
+BEGIN;
+INSERT INTO `departments` VALUES (1, 'Cundinamarca', '2020-03-14 00:00:00', '2020-03-14 00:00:00', 1, 1);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for headquarters
@@ -337,7 +368,7 @@ CREATE TABLE `oauth_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `access_token_UNIQUE` (`uuid`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of oauth_access_tokens
@@ -355,6 +386,8 @@ INSERT INTO `oauth_access_tokens` VALUES (12, '470ce81c-5f4b-4d37-bb06-78fc796a2
 INSERT INTO `oauth_access_tokens` VALUES (13, '20a55812-2ac9-450e-b454-435918db344e', 43, 0, '2021-03-05 21:22:26', '2021-03-05 21:22:26', '2021-03-06 21:22:04');
 INSERT INTO `oauth_access_tokens` VALUES (14, 'c4b6c854-ba68-4d0f-b7e9-66a492157709', 43, 0, '2021-03-05 21:25:19', '2021-03-05 21:25:19', '2021-03-06 21:25:13');
 INSERT INTO `oauth_access_tokens` VALUES (15, 'f4b2a5e2-2eed-4cf4-ad53-b03b8c6217fb', 43, 0, '2021-03-06 10:14:32', '2021-03-06 10:14:32', '2021-03-06 11:36:00');
+INSERT INTO `oauth_access_tokens` VALUES (16, '627a9453-9ae1-4885-bf8d-92b9674b42d9', 2, 0, '2021-03-14 09:37:52', '2021-03-14 09:37:52', '2021-03-15 09:37:33');
+INSERT INTO `oauth_access_tokens` VALUES (17, '21649fe3-af63-4381-bab9-83cb3dd48574', 2, 0, '2021-03-14 11:15:21', '2021-03-14 11:15:21', '2021-03-15 11:08:06');
 COMMIT;
 
 -- ----------------------------
@@ -372,7 +405,7 @@ CREATE TABLE `oauth_refresh_tokens` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `oauth_refresh_tokens_access_token_id_index` (`token_id`),
   CONSTRAINT `oauth_refresh_tokens_token_id` FOREIGN KEY (`token_id`) REFERENCES `oauth_access_tokens` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of oauth_refresh_tokens
@@ -390,6 +423,8 @@ INSERT INTO `oauth_refresh_tokens` VALUES (9, 12, 0, '2021-03-12 21:18:46', '202
 INSERT INTO `oauth_refresh_tokens` VALUES (10, 13, 0, '2021-03-12 21:22:04', '2021-03-05 21:22:26', '2021-03-05 21:22:26');
 INSERT INTO `oauth_refresh_tokens` VALUES (11, 14, 0, '2021-03-12 21:25:13', '2021-03-05 21:25:19', '2021-03-05 21:25:19');
 INSERT INTO `oauth_refresh_tokens` VALUES (12, 15, 0, '2021-03-13 10:13:20', '2021-03-06 10:14:32', '2021-03-06 10:14:32');
+INSERT INTO `oauth_refresh_tokens` VALUES (13, 16, 0, '2021-03-21 09:37:33', '2021-03-14 09:37:52', '2021-03-14 09:37:52');
+INSERT INTO `oauth_refresh_tokens` VALUES (14, 17, 0, '2021-03-21 11:08:06', '2021-03-14 11:15:21', '2021-03-14 11:15:21');
 COMMIT;
 
 -- ----------------------------
@@ -415,7 +450,20 @@ CREATE TABLE `order_details` (
   CONSTRAINT `od_order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   CONSTRAINT `od_puchase_status_id` FOREIGN KEY (`puchase_status_id`) REFERENCES `purchase_statuses` (`id`),
   CONSTRAINT `od_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `references` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of order_details
+-- ----------------------------
+BEGIN;
+INSERT INTO `order_details` VALUES (1, 13, 1, 'rojo', 10000, 1, 8500, '2021-03-14 11:05:50', '2021-03-14 11:05:50', 1);
+INSERT INTO `order_details` VALUES (2, 13, 6, 'rojo', 10000, 2, 9000, '2021-03-14 11:05:50', '2021-03-14 11:05:50', 1);
+INSERT INTO `order_details` VALUES (3, 13, 5, 'rojo', 10000, 2, 12000, '2021-03-14 11:05:50', '2021-03-14 11:05:50', 1);
+INSERT INTO `order_details` VALUES (4, 14, 1, 'rojo', 10000, 1, 8500, '2021-03-14 11:07:48', '2021-03-14 11:07:48', 1);
+INSERT INTO `order_details` VALUES (5, 14, 6, 'rojo', 10000, 2, 9000, '2021-03-14 11:07:48', '2021-03-14 11:07:48', 1);
+INSERT INTO `order_details` VALUES (6, 15, 1, 'rojo', 10000, 1, 8500, '2021-03-14 11:08:07', '2021-03-14 11:08:07', 1);
+INSERT INTO `order_details` VALUES (7, 15, 6, 'rojo', 10000, 2, 9000, '2021-03-14 11:08:07', '2021-03-14 11:08:07', 1);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for orders
@@ -424,37 +472,63 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `phone_id` int unsigned NOT NULL,
+  `address_id` int unsigned NOT NULL,
+  `city_id` int unsigned NOT NULL,
   `puchase_status_id` int unsigned NOT NULL,
   `total` double NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `orders_user_id_idx` (`user_id`),
   KEY `orders_puchase_status_id_idx` (`puchase_status_id`),
+  KEY `orders_address_id_idx` (`address_id`),
+  KEY `orders_phone_id_idx` (`phone_id`),
+  KEY `orders_city_id_idx` (`city_id`),
+  CONSTRAINT `orders_address_id` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`),
+  CONSTRAINT `orders_city_id` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`),
+  CONSTRAINT `orders_phone_id` FOREIGN KEY (`phone_id`) REFERENCES `phones` (`id`),
   CONSTRAINT `orders_puchase_status_id` FOREIGN KEY (`puchase_status_id`) REFERENCES `purchase_statuses` (`id`),
   CONSTRAINT `orders_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+BEGIN;
+INSERT INTO `orders` VALUES (13, 2, 1, 1, 1, 2, 50500, '2021-03-14 11:05:50', '2021-03-14 11:05:50');
+INSERT INTO `orders` VALUES (14, 2, 1, 1, 1, 2, 26500, '2021-03-14 11:07:48', '2021-03-14 11:07:48');
+INSERT INTO `orders` VALUES (15, 2, 1, 1, 1, 2, 26500, '2021-03-14 11:08:07', '2021-03-14 11:08:07');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for phones
 -- ----------------------------
 DROP TABLE IF EXISTS `phones`;
 CREATE TABLE `phones` (
-  `id` int NOT NULL,
-  `phone` int NOT NULL,
-  `verified` binary(1) NOT NULL DEFAULT '0',
-  `principal` binary(1) NOT NULL DEFAULT '0',
-  `created_at` datetime NOT NULL,
-  `updated_at` varchar(45) NOT NULL,
-  `country_id` int unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL,
+  `country_id` int unsigned NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `verified` int NOT NULL DEFAULT '0',
+  `principal` int NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `phones_user_id_idx` (`user_id`),
   KEY `phones_country_id_idx` (`country_id`),
   CONSTRAINT `phones_country_id` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
   CONSTRAINT `phones_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of phones
+-- ----------------------------
+BEGIN;
+INSERT INTO `phones` VALUES (1, 2, 1, '3206121376', 0, 0, '2021-03-14 00:00:00', '2021-03-14 00:00:00');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for products
@@ -650,7 +724,16 @@ CREATE TABLE `purchase_statuses` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of purchase_statuses
+-- ----------------------------
+BEGIN;
+INSERT INTO `purchase_statuses` VALUES (1, 'RECIBIDA', 'green', 'RECIBIDA', '2020-03-14 00:00:00', '2020-03-14 00:00:00');
+INSERT INTO `purchase_statuses` VALUES (2, 'PENDIENTE', 'yellow', 'PENDIENTE', '2020-03-14 00:00:00', '2020-03-14 00:00:00');
+INSERT INTO `purchase_statuses` VALUES (3, 'RECHAZADA', 'red', 'RECHAZADA', '2020-03-14 00:00:00', '2020-03-14 00:00:00');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for reference_images
@@ -928,14 +1011,14 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (42, 'Luis', 'Raga', 'luis.raga@keny.com', '$2a$14$kbUOTgtKJX33YGgB8LswFufFSPPXYsuMdjRL7y/y/Q/RqOSnKAhSy', '2021-03-05 18:25:50', '2021-03-05 18:25:50');
-INSERT INTO `users` VALUES (43, 'David', 'Raga', 'david.raga@keny.com', '$2a$14$8P3MFBoTDgw5cVDzxR1.reLmbDID/Hb9NTGxb/VnPfN/VW7JyNTnG', '2021-03-05 18:26:02', '2021-03-05 18:26:02');
+INSERT INTO `users` VALUES (1, 'Luis', 'Raga', 'luis.raga@keny.com', '$2a$14$kbUOTgtKJX33YGgB8LswFufFSPPXYsuMdjRL7y/y/Q/RqOSnKAhSy', '2021-03-05 18:25:50', '2021-03-05 18:25:50');
+INSERT INTO `users` VALUES (2, 'David', 'Raga', 'david.raga@keny.com', '$2a$14$8P3MFBoTDgw5cVDzxR1.reLmbDID/Hb9NTGxb/VnPfN/VW7JyNTnG', '2021-03-05 18:26:02', '2021-03-05 18:26:02');
 COMMIT;
 
 -- ----------------------------
@@ -971,6 +1054,25 @@ BEGIN
 		limit 1 into salida;
 			RETURN salida;
 		END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Function structure for kf_split_str
+-- ----------------------------
+DROP FUNCTION IF EXISTS `kf_split_str`;
+delimiter ;;
+CREATE FUNCTION `keny`.`kf_split_str`(p_x  VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    p_delim  VARCHAR(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    p_pos INT)
+ RETURNS varchar(255) CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci
+  READS SQL DATA 
+RETURN 
+	REPLACE(
+		SUBSTRING(SUBSTRING_INDEX(p_x, p_delim, p_pos), 
+		LENGTH(SUBSTRING_INDEX(p_x, p_delim, p_pos -1)) + 1), 
+        p_delim, ''
+	)
 ;;
 delimiter ;
 
@@ -1032,6 +1134,78 @@ Declare private_quantity DOUBLE;
     
     
 	
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for ksp_create_purchase
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_create_purchase`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_create_purchase`(p_user_id INT,
+	p_phone_id INT, 
+	p_address_id INT,
+	p_city_id INT,
+	p_total DOUBLE,
+	p_details TEXT,
+	p_now VARCHAR(255))
+  COMMENT 'creación de una compra'
+BEGIN
+	
+	DECLARE details TEXT default "";
+    DECLARE reference_id INT ;
+    DECLARE reference_name VARCHAR(40) ;
+    DECLARE quantity INT;
+	DECLARE price DOUBLE;
+    DECLARE price_with_discount DOUBLE;
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SHOW ERRORS; 
+        ROLLBACK;
+    END;
+    
+    DECLARE EXIT HANDLER FOR SQLWARNING
+    BEGIN
+        SHOW ERRORS;
+        ROLLBACK;
+    END;
+    set @status_recibida = 1;
+    set @status_pending = 2;
+    SET @count = 1;
+    
+    START TRANSACTION;
+        INSERT INTO `keny`.`orders`
+		(`id`,`user_id`,`phone_id`,`address_id`,`city_id`,`puchase_status_id`,`total`,`created_at`,`updated_at`)
+		VALUES
+		(null,p_user_id,p_phone_id,p_address_id,p_city_id, @status_pending,p_total,p_now,p_now);
+        
+        SET @order_id = last_insert_id();
+        -- details 
+        REPEAT
+			SELECT kf_split_str(p_details, "||", @count) INTO details;           
+			IF details <> "" THEN
+				SELECT kf_split_str(details, "&&", 1) INTO reference_id;
+				SELECT kf_split_str(details, "&&", 2) INTO quantity;
+				SELECT kf_split_str(details, "&&", 3) INTO price_with_discount;
+                -- seleccionar la data faltante
+                SELECT name,rh.price FROM `references` r 
+				JOIN `references_headquarters` rh on r.id = rh.reference_id
+				where rh.headquarter_id = 1
+                limit 1
+                INTO reference_name,price ;
+                
+                -- guardar los details
+                INSERT INTO `keny`.`order_details`
+				(`id`,`order_id`,`reference_id`,`reference_name`,`price`,`quantity`,`price_with_discount`,`puchase_status_id`,`created_at`,`updated_at`)
+				VALUES
+				(null,@order_id,reference_id,reference_name,price,quantity,price_with_discount,@status_recibida,p_now,p_now);
+			END IF;
+			SET @count = @count + 1;
+			UNTIL details = ""
+		END REPEAT; 
+    COMMIT;
+    call ksp_response(true,"Order creada correctamente");
 END
 ;;
 delimiter ;

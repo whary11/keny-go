@@ -3,14 +3,45 @@ package models
 import (
 	"fmt"
 	"keny-go/utils"
+
+	"github.com/uniplaces/carbon"
 )
 
 type Purchase struct {
 	References []Reference `json:"references" example:"[]" binding:"required"`
 	Total      float64     `json:"total" example:"100000" binding:"required"`
+	Address    Address     `json:"address,omitempty" `
+	AddressId  int         `json:"address_id,omitempty" binding:"required"`
+	PhoneId    int         `json:"phone_id,omitempty" binding:"required"`
+	Phone      int         `json:"phone,omitempty"`
+	Id         int         `json:"id,omitempty"`
+	UserId     int         `json:"user_id,omitempty"`
+	City       City        `json:"city,omitempty"`
+	CityId     int         `json:"city_id,omitempty" binding:"required"`
 }
 
-func CreatePurchase() {
+func (p *Purchase) CreatePurchase(details string) (bool, string) {
+
+	var excepcioSql utils.ExceptionSql
+	var (
+		result  bool
+		message string
+	)
+	querySelect := `CALL ksp_create_purchase(?,?,?,?,?,?,?)`
+	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.UserId, p.PhoneId, p.AddressId, p.CityId, p.Total, details, carbon.Now().DateTimeString())
+	result = false
+	err := row.Scan(&excepcioSql.Level, &excepcioSql.Code, &excepcioSql.Message)
+	message = excepcioSql.Message
+	fmt.Println(err, row)
+	if err != nil {
+		result = false
+		message = err.Error()
+	}
+	if excepcioSql.Code == 200 {
+		result = true
+	}
+
+	return result, message
 
 }
 

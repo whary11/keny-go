@@ -44,7 +44,7 @@ func Api(router *gin.Engine) {
 
 		purchase := api.Group("/purchase")
 		{
-			purchase.POST("/create/", controllers.Create)
+			purchase.POST("/create/", middlewares.Auth(), controllers.Create)
 			// purchase.GET("/reference/info", controllers.Info)
 		}
 	}
