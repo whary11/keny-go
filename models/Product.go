@@ -6,15 +6,16 @@ import (
 )
 
 type Product struct {
-	Id              int         `json:"id" example:"123"`
-	Name            string      `json:"name" example:"Paracetamol"`
-	Description     string      `json:"description" example:"luis.raga@keny.com"`
-	MetaTitle       string      `json:"meta_title" example:"2021-02-24 20:19:39"`
-	MetaDescription string      `json:"meta_description" example:"2021-02-24 20:19:39"`
-	MetaTags        string      `json:"meta_tags" example:"2021-02-24 20:19:39"`
-	Slug            string      `json:"slug" example:"page-1"`
-	Discount        float64     `json:"discount" example:"10"`
-	References      []Reference `json:"references" example:"page-1"`
+	Id               int         `json:"id" example:"123"`
+	Name             string      `json:"name" example:"Paracetamol"`
+	Description      string      `json:"description" example:"luis.raga@keny.com"`
+	MetaTitle        string      `json:"meta_title" example:"2021-02-24 20:19:39"`
+	MetaDescription  string      `json:"meta_description" example:"2021-02-24 20:19:39"`
+	MetaTags         string      `json:"meta_tags" example:"2021-02-24 20:19:39"`
+	Slug             string      `json:"slug" example:"page-1"`
+	Discount         float64     `json:"discount" example:"10"`
+	NumberActivities int         `json:"number_activities" example:"123"`
+	References       []Reference `json:"references" example:"page-1"`
 }
 
 func (product *Product) GetProductBySlug() (status bool, message string) {
@@ -33,7 +34,7 @@ func (product *Product) GetProductBySlug() (status bool, message string) {
 	defer rows.Close()
 	for rows.Next() {
 		if err := rows.Scan(&product.Id, &product.Name, &product.Slug, &product.Description, &product.MetaTitle,
-			&product.MetaDescription, &product.MetaTags, &reference.Id, &reference.Name, &reference.Color,
+			&product.MetaDescription, &product.MetaTags, &product.NumberActivities, &reference.Id, &reference.Name, &reference.Color,
 			&reference.ViewFront, &reference.Price, &reference.Stock, &product.Discount); err != nil {
 			fmt.Println(err.Error())
 		}

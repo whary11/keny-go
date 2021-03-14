@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Local
+ Source Server         : DB-LOCAL
  Source Server Type    : MySQL
- Source Server Version : 80023
+ Source Server Version : 80022
  Source Host           : localhost:3306
  Source Schema         : keny
 
  Target Server Type    : MySQL
- Target Server Version : 80023
+ Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 14/03/2021 11:21:59
+ Date: 14/03/2021 13:15:57
 */
 
 SET NAMES utf8mb4;
@@ -545,6 +545,7 @@ CREATE TABLE `products` (
   `created_at` datetime NOT NULL,
   `apdated_at` datetime NOT NULL,
   `status_id` int unsigned NOT NULL,
+  `number_activities` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `slug_UNIQUE` (`slug`),
@@ -557,78 +558,78 @@ CREATE TABLE `products` (
 -- Records of products
 -- ----------------------------
 BEGIN;
-INSERT INTO `products` VALUES (1, 'Espectacular libro sensorial', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'meta title', 'meta description', 'meta tagas ', 'page-1', '2021-02-10 00:00:00', '2021-02-10 00:00:00', 1);
-INSERT INTO `products` VALUES (2, 'Mono con bananas', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Mico con boca de cremallera la cual se puede abrir, cerrar y de esta forma  guardar  tres bananas de color amarillo las cuales se encuentran pegados con velcro para pegar y despegar.', 'meta title', 'meta description', 'meta tagas ', 'mono-con-bananas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (3, 'Figuras Geometricas texturas', 'Actividad compuesta por seis figuras geométricas creadas con paño lency y telas de distintas texturas, con una base que le indica a cada uno de los niños y niñas donde debe ir cada una de las piezas,  para que logre ubicaarlas relizando asociacion de imagenes.', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (4, 'Lavadora ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Lavadora que permite abrir y cerrar por medio de un botón en el cual se le puede guardar los objetos que se encuentran extendidos en el tendedero ya sea por medio de un velcro para quitar o poner o con pinzas, desarrollando habilidades motrices finas. ', 'meta title', 'meta description', 'meta tagas ', 'lavadora', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (5, 'Sombrila', 'sombrilla elaborada en paño lency, cordones de colores de donde se desprenden chaquiras  que estan ubicadas de forma ascendente desde el 1 al 5, invitando a los niños y niñas a iniciar sus habilidades numericas y de conteo ', 'meta title', 'meta description', 'meta tagas ', 'sombrila', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (6, 'Buho', 'elaborada en paño lency con cordones de colores y chaquiras, ubicadas de forma ascendente del 1 al 3 tiene forma de buho, se utilizan colores llamativos e invita a los niños y niñas a iniciar con sus habilidades numericas ', 'meta title', 'meta description', 'meta tagas ', 'buho', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (7, 'Pulpo ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Pulpo  con cordones de colores en los cuales se desprenden chaquiras de colores del 1 al 10, iniciando el desarrollo de habilidades numéricas.', 'meta title', 'meta description', 'meta tagas ', 'pulpo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (8, 'Carro de insertar', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Carretera con aros en los cuales se inserta un cordón, el cual se encuentra unido a un cascabel produciendo un sonido al movimiento.', 'meta title', 'meta description', 'meta tagas ', 'carro-de-insertar', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (9, 'Jirafa con botones ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Jirafa de colores variados con  botones y moños para abotonar los cuales permiten desarrollar habilidades motrices finas.', 'meta title', 'meta description', 'meta tagas ', 'jirafa-con-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (10, 'Palitos de colores ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Rectángulos de forma horizontal con bolsillo de diferentes colores, en los cuales se puede guardar diversos palos de colores según corresponda, permitiendo  el reconocimiento y clasificación de colores.', 'meta title', 'meta description', 'meta tagas ', 'palitos-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (11, 'Perro', 'Elaborado en paño lency, compuesta por la silueta del rostro de un perro, y una creamallera en forma de boca, la cual tiene como función abrir y cerrar para sacar y guardar su lengua', 'meta title', 'meta description', 'meta tagas ', 'perro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (12, 'Dinosaurio ', 'elaborado en paño lency, compuesto por la imagen de un dinosaurios que invita a realizar ensartado, cruzando el cordon  de un extremo al otro por la parte superior de la limagen, dos de sus patas estan puestas con botones y  se pueden quitar y poner, apuntando y desapuntando.', 'meta title', 'meta description', 'meta tagas ', 'dinosaurio', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (13, 'Cocodrilos', 'Elaborados en paño lency, Dos cocodrilos,verde y azul, cremalleras, tamaño mediano, página de color amarillo, 4 pescados de diferente color.', 'meta title', 'meta description', 'meta tagas ', 'cocodrilos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (14, 'Guante granja', 'Elaborado en paño lency, variedad de colores, 5 animales en forma de títere de dedo, vaca, cerdo, gallo, rana, gato. 1 sol, 1 nube, fondo en forma de mano de granja.', 'meta title', 'meta description', 'meta tagas ', 'guante-granja', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (15, 'Panal de Abejas', 'Elaborado en paño lency, panal de abejas con cremallera y espacio para guardar las abejas, 4 abejas con tejido en el borde, ojos locos, rama y velcro para mover las abejas,  cinta de color pegada  a la cada abejas que no permite  caerse. ', 'meta title', 'meta description', 'meta tagas ', 'panal-de-abejas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (16, 'Rana', 'Elaborado en paño lency, Rana con cremallera por fuera, 4 moscas con ojos locos y velcro para poder moverlas y lengua larga para enrollar.  ', 'meta title', 'meta description', 'meta tagas ', 'rana', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (17, 'Ratòn', 'Ratón de laberinto elaborado en paño lency, simulando un queso, casa y cuerda la cual permite que el ratòn recorra el laberinto.', 'meta title', 'meta description', 'meta tagas ', 'raton', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (18, 'Tangram', ' Este juego esta compuesto por 7 piezas elaboradas con paño lency, con una base que le indica a los niños y niñas donde va cada pieza, realizando  asi clasificación de formas, ', 'meta title', 'meta description', 'meta tagas ', 'tangram', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (19, 'Manos de Conteo', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (20, 'Elmo come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'elmo-come-galletas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (21, 'Zapatos de Amarrar PAR', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-par', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (22, 'Pizza nùmerica ', '', 'meta title', 'meta description', 'meta tagas ', 'pizza-nùmerica', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (23, 'Partes de la cara', '', 'meta title', 'meta description', 'meta tagas ', 'partes-de-la-cara', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (24, 'Gusano secuencia de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-secuencia-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (25, 'Gusano clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (26, 'Abeja laberinto de insertado', '', 'meta title', 'meta description', 'meta tagas ', 'abeja-laberinto-de-insertado', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (27, 'Ballena come peces', '', 'meta title', 'meta description', 'meta tagas ', 'ballena-come-peces', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (28, 'Caracol de insertado ', '', 'meta title', 'meta description', 'meta tagas ', 'caracol-de-insertado', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (29, 'Cerdito de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'cerdito-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (30, 'Oveja  de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'oveja-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (31, 'Perro con espejo', '', 'meta title', 'meta description', 'meta tagas ', 'perro-con-espejo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (32, 'Vaca de texturas ', '', 'meta title', 'meta description', 'meta tagas ', 'vaca-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (33, 'Araña con botones', '', 'meta title', 'meta description', 'meta tagas ', 'araña-con-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (34, 'Cepillado de dientes', '', 'meta title', 'meta description', 'meta tagas ', 'cepillado-de-dientes', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (35, 'Pato clasificaciòn de colores ', '', 'meta title', 'meta description', 'meta tagas ', 'pato-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (36, 'Hongo Vocales', '', 'meta title', 'meta description', 'meta tagas ', 'hongo-vocales', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (37, 'Figuras Geometricas clasificaciòn ', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-clasificaciòn', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (38, 'Camisa de botones', '', 'meta title', 'meta description', 'meta tagas ', 'camisa-de-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (39, 'OTROS', '', 'meta title', 'meta description', 'meta tagas ', 'otros', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (40, 'Moustro de emociones', '', 'meta title', 'meta description', 'meta tagas ', 'moustro-de-emociones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (41, 'Partes del Cuerpo', '', 'meta title', 'meta description', 'meta tagas ', 'partes-del-cuerpo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (42, 'Zapatos de Amarrar UNO', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-uno', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (43, 'Figuras de colores geometricas', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-de-colores-geometricas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (44, 'Perro de rompecabezas', '', 'meta title', 'meta description', 'meta tagas ', 'perro-de-rompecabezas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (45, 'Amarres', '', 'meta title', 'meta description', 'meta tagas ', 'amarres', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (46, 'Tortuga Clasificacion de colores', '', 'meta title', 'meta description', 'meta tagas ', 'tortuga-clasificacion-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (47, 'Ponque tamaños', '', 'meta title', 'meta description', 'meta tagas ', 'ponque-tamaños', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (48, 'Manos de conteo signos ', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-signos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (49, 'Lapices clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'lapices-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (50, 'Tamaños de grande a pequeño', '', 'meta title', 'meta description', 'meta tagas ', 'tamaños-de-grande-a-pequeño', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (51, 'Flautista', '', 'meta title', 'meta description', 'meta tagas ', 'flautista', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (52, 'Tren de los números', '', 'meta title', 'meta description', 'meta tagas ', 'tren-de-los-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (53, 'Vocales lazos', '', 'meta title', 'meta description', 'meta tagas ', 'vocales-lazos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (54, 'Manos de conteo y Números', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-y-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (55, 'ABC ', '', 'meta title', 'meta description', 'meta tagas ', 'abc', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (56, 'Ratón de insertado Números', '', 'meta title', 'meta description', 'meta tagas ', 'ratón-de-insertado-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (57, 'Cojín  León', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-león', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (58, 'Cojín Mico', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-mico', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (59, 'Cojín dinosaurio', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-dinosaurio', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (60, 'Cojin Come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'cojin-come-galletas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (61, 'Cojín Elefante', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elefante', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (62, 'Cojín Elmo', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elmo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (63, 'Cojín Perro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-perro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (64, 'Cojín Moutro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-moutro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (65, 'Cojín Gato', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-gato', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (66, 'TEXTURAS BEBES 7 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-7-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (67, 'TEXTURAS BEBES 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-10-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (68, 'KENY 7 ACTIVIDADES ', '', 'meta title', 'meta description', 'meta tagas ', 'keny-7-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (69, 'KENY 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-10-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (70, 'KENY 5 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-5-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (71, 'KENY MÀS ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-màs-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (72, 'CUBO SENSORIAL', '', 'meta title', 'meta description', 'meta tagas ', 'cubo-sensorial', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (1, 'Espectacular libro sensorial', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'meta title', 'meta description', 'meta tagas ', 'page-1', '2021-02-10 00:00:00', '2021-02-10 00:00:00', 1, 6);
+INSERT INTO `products` VALUES (2, 'Mono con bananas', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Mico con boca de cremallera la cual se puede abrir, cerrar y de esta forma  guardar  tres bananas de color amarillo las cuales se encuentran pegados con velcro para pegar y despegar.', 'meta title', 'meta description', 'meta tagas ', 'mono-con-bananas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (3, 'Figuras Geometricas texturas', 'Actividad compuesta por seis figuras geométricas creadas con paño lency y telas de distintas texturas, con una base que le indica a cada uno de los niños y niñas donde debe ir cada una de las piezas,  para que logre ubicaarlas relizando asociacion de imagenes.', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (4, 'Lavadora ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Lavadora que permite abrir y cerrar por medio de un botón en el cual se le puede guardar los objetos que se encuentran extendidos en el tendedero ya sea por medio de un velcro para quitar o poner o con pinzas, desarrollando habilidades motrices finas. ', 'meta title', 'meta description', 'meta tagas ', 'lavadora', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (5, 'Sombrila', 'sombrilla elaborada en paño lency, cordones de colores de donde se desprenden chaquiras  que estan ubicadas de forma ascendente desde el 1 al 5, invitando a los niños y niñas a iniciar sus habilidades numericas y de conteo ', 'meta title', 'meta description', 'meta tagas ', 'sombrila', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (6, 'Buho', 'elaborada en paño lency con cordones de colores y chaquiras, ubicadas de forma ascendente del 1 al 3 tiene forma de buho, se utilizan colores llamativos e invita a los niños y niñas a iniciar con sus habilidades numericas ', 'meta title', 'meta description', 'meta tagas ', 'buho', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (7, 'Pulpo ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Pulpo  con cordones de colores en los cuales se desprenden chaquiras de colores del 1 al 10, iniciando el desarrollo de habilidades numéricas.', 'meta title', 'meta description', 'meta tagas ', 'pulpo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (8, 'Carro de insertar', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Carretera con aros en los cuales se inserta un cordón, el cual se encuentra unido a un cascabel produciendo un sonido al movimiento.', 'meta title', 'meta description', 'meta tagas ', 'carro-de-insertar', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (9, 'Jirafa con botones ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Jirafa de colores variados con  botones y moños para abotonar los cuales permiten desarrollar habilidades motrices finas.', 'meta title', 'meta description', 'meta tagas ', 'jirafa-con-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (10, 'Palitos de colores ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Rectángulos de forma horizontal con bolsillo de diferentes colores, en los cuales se puede guardar diversos palos de colores según corresponda, permitiendo  el reconocimiento y clasificación de colores.', 'meta title', 'meta description', 'meta tagas ', 'palitos-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (11, 'Perro', 'Elaborado en paño lency, compuesta por la silueta del rostro de un perro, y una creamallera en forma de boca, la cual tiene como función abrir y cerrar para sacar y guardar su lengua', 'meta title', 'meta description', 'meta tagas ', 'perro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (12, 'Dinosaurio ', 'elaborado en paño lency, compuesto por la imagen de un dinosaurios que invita a realizar ensartado, cruzando el cordon  de un extremo al otro por la parte superior de la limagen, dos de sus patas estan puestas con botones y  se pueden quitar y poner, apuntando y desapuntando.', 'meta title', 'meta description', 'meta tagas ', 'dinosaurio', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (13, 'Cocodrilos', 'Elaborados en paño lency, Dos cocodrilos,verde y azul, cremalleras, tamaño mediano, página de color amarillo, 4 pescados de diferente color.', 'meta title', 'meta description', 'meta tagas ', 'cocodrilos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (14, 'Guante granja', 'Elaborado en paño lency, variedad de colores, 5 animales en forma de títere de dedo, vaca, cerdo, gallo, rana, gato. 1 sol, 1 nube, fondo en forma de mano de granja.', 'meta title', 'meta description', 'meta tagas ', 'guante-granja', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (15, 'Panal de Abejas', 'Elaborado en paño lency, panal de abejas con cremallera y espacio para guardar las abejas, 4 abejas con tejido en el borde, ojos locos, rama y velcro para mover las abejas,  cinta de color pegada  a la cada abejas que no permite  caerse. ', 'meta title', 'meta description', 'meta tagas ', 'panal-de-abejas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (16, 'Rana', 'Elaborado en paño lency, Rana con cremallera por fuera, 4 moscas con ojos locos y velcro para poder moverlas y lengua larga para enrollar.  ', 'meta title', 'meta description', 'meta tagas ', 'rana', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (17, 'Ratòn', 'Ratón de laberinto elaborado en paño lency, simulando un queso, casa y cuerda la cual permite que el ratòn recorra el laberinto.', 'meta title', 'meta description', 'meta tagas ', 'raton', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (18, 'Tangram', ' Este juego esta compuesto por 7 piezas elaboradas con paño lency, con una base que le indica a los niños y niñas donde va cada pieza, realizando  asi clasificación de formas, ', 'meta title', 'meta description', 'meta tagas ', 'tangram', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (19, 'Manos de Conteo', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (20, 'Elmo come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'elmo-come-galletas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (21, 'Zapatos de Amarrar PAR', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-par', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (22, 'Pizza nùmerica ', '', 'meta title', 'meta description', 'meta tagas ', 'pizza-nùmerica', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (23, 'Partes de la cara', '', 'meta title', 'meta description', 'meta tagas ', 'partes-de-la-cara', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (24, 'Gusano secuencia de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-secuencia-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (25, 'Gusano clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (26, 'Abeja laberinto de insertado', '', 'meta title', 'meta description', 'meta tagas ', 'abeja-laberinto-de-insertado', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (27, 'Ballena come peces', '', 'meta title', 'meta description', 'meta tagas ', 'ballena-come-peces', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (28, 'Caracol de insertado ', '', 'meta title', 'meta description', 'meta tagas ', 'caracol-de-insertado', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (29, 'Cerdito de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'cerdito-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (30, 'Oveja  de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'oveja-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (31, 'Perro con espejo', '', 'meta title', 'meta description', 'meta tagas ', 'perro-con-espejo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (32, 'Vaca de texturas ', '', 'meta title', 'meta description', 'meta tagas ', 'vaca-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (33, 'Araña con botones', '', 'meta title', 'meta description', 'meta tagas ', 'araña-con-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (34, 'Cepillado de dientes', '', 'meta title', 'meta description', 'meta tagas ', 'cepillado-de-dientes', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (35, 'Pato clasificaciòn de colores ', '', 'meta title', 'meta description', 'meta tagas ', 'pato-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (36, 'Hongo Vocales', '', 'meta title', 'meta description', 'meta tagas ', 'hongo-vocales', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (37, 'Figuras Geometricas clasificaciòn ', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-clasificaciòn', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (38, 'Camisa de botones', '', 'meta title', 'meta description', 'meta tagas ', 'camisa-de-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (39, 'OTROS', '', 'meta title', 'meta description', 'meta tagas ', 'otros', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (40, 'Moustro de emociones', '', 'meta title', 'meta description', 'meta tagas ', 'moustro-de-emociones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (41, 'Partes del Cuerpo', '', 'meta title', 'meta description', 'meta tagas ', 'partes-del-cuerpo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (42, 'Zapatos de Amarrar UNO', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-uno', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (43, 'Figuras de colores geometricas', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-de-colores-geometricas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (44, 'Perro de rompecabezas', '', 'meta title', 'meta description', 'meta tagas ', 'perro-de-rompecabezas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (45, 'Amarres', '', 'meta title', 'meta description', 'meta tagas ', 'amarres', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (46, 'Tortuga Clasificacion de colores', '', 'meta title', 'meta description', 'meta tagas ', 'tortuga-clasificacion-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (47, 'Ponque tamaños', '', 'meta title', 'meta description', 'meta tagas ', 'ponque-tamaños', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (48, 'Manos de conteo signos ', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-signos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (49, 'Lapices clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'lapices-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (50, 'Tamaños de grande a pequeño', '', 'meta title', 'meta description', 'meta tagas ', 'tamaños-de-grande-a-pequeño', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (51, 'Flautista', '', 'meta title', 'meta description', 'meta tagas ', 'flautista', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (52, 'Tren de los números', '', 'meta title', 'meta description', 'meta tagas ', 'tren-de-los-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (53, 'Vocales lazos', '', 'meta title', 'meta description', 'meta tagas ', 'vocales-lazos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (54, 'Manos de conteo y Números', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-y-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (55, 'ABC ', '', 'meta title', 'meta description', 'meta tagas ', 'abc', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (56, 'Ratón de insertado Números', '', 'meta title', 'meta description', 'meta tagas ', 'ratón-de-insertado-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (57, 'Cojín  León', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-león', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (58, 'Cojín Mico', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-mico', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (59, 'Cojín dinosaurio', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-dinosaurio', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (60, 'Cojin Come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'cojin-come-galletas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (61, 'Cojín Elefante', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elefante', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (62, 'Cojín Elmo', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elmo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (63, 'Cojín Perro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-perro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (64, 'Cojín Moutro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-moutro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (65, 'Cojín Gato', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-gato', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (66, 'TEXTURAS BEBES 7 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-7-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (67, 'TEXTURAS BEBES 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-10-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (68, 'KENY 7 ACTIVIDADES ', '', 'meta title', 'meta description', 'meta tagas ', 'keny-7-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (69, 'KENY 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-10-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (70, 'KENY 5 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-5-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (71, 'KENY MÀS ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-màs-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (72, 'CUBO SENSORIAL', '', 'meta title', 'meta description', 'meta tagas ', 'cubo-sensorial', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
 COMMIT;
 
 -- ----------------------------
@@ -749,7 +750,7 @@ CREATE TABLE `reference_images` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `referece_images_reference_id_idx` (`reference_id`),
   CONSTRAINT `referece_images_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `references` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of reference_images
@@ -758,6 +759,77 @@ BEGIN;
 INSERT INTO `reference_images` VALUES (1, 1, 'https://laikapp.s3.amazonaws.com/images_products/1_4051_Promo_Galletas_de_Cordero_y_arroz_Laika_by_Rausch_707X696.jpeg', '2021-10-06 00:00:00', '2021-10-06 00:00:00');
 INSERT INTO `reference_images` VALUES (2, 1, 'https://laikapp.s3.amazonaws.com/dev_images_products/19_34540_Dog_Chow_Salud_Visible_Cachorros_Minis_y_Peque__os_1607551812_404x718.png', '2021-10-06 00:00:00', '2021-10-06 00:00:00');
 INSERT INTO `reference_images` VALUES (3, 2, 'https://laikapp.s3.amazonaws.com/dev_images_products/22366_FANCY_PETS___Hueso_Basteado_Sabor_Queso_1606762944_500x500.png', '2021-10-06 00:00:00', '2021-10-06 00:00:00');
+INSERT INTO `reference_images` VALUES (4, 5, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (5, 6, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (6, 7, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (7, 8, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (8, 9, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (9, 10, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (10, 11, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (11, 12, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (12, 13, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (13, 14, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (14, 15, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (15, 16, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (16, 17, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (17, 18, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (18, 19, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (19, 20, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (20, 21, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (21, 22, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (22, 23, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (23, 24, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (24, 25, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (25, 26, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (26, 27, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (27, 28, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (28, 29, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (29, 30, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (30, 31, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (31, 32, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (32, 33, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (33, 34, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (34, 35, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (35, 36, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (36, 37, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (37, 38, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (38, 39, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (39, 40, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (40, 41, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (41, 42, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (42, 43, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (43, 44, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (44, 45, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (45, 46, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (46, 47, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (47, 48, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (48, 49, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (49, 50, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (50, 51, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (51, 52, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (52, 53, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (53, 54, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (54, 55, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (55, 56, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (56, 57, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (57, 58, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (58, 59, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (59, 60, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (60, 61, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (61, 62, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (62, 63, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (63, 64, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (64, 65, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (65, 66, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (66, 67, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (67, 68, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (68, 69, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (69, 70, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (70, 71, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (71, 72, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (72, 73, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (73, 74, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
+INSERT INTO `reference_images` VALUES (74, 75, 'https://keny-app.s3.ca-central-1.amazonaws.com/products/IMG_20200815_105833718.jpg', '2021-03-14 12:03:22', '2021-03-14 12:03:22');
 COMMIT;
 
 -- ----------------------------
@@ -1305,7 +1377,7 @@ BEGIN
 	SELECT 
 		-- info product
 		p.id,p.name,
-		p.slug,p.description,p.meta_title,p.meta_description,p.meta_tags,
+		p.slug,p.description,p.meta_title,p.meta_description,p.meta_tags,p.number_activities,
 		-- info references
 		rh.id reference_id
 		,r.name reference_name,r.color, r.view_front,rh.price,rh.stock, kf_promotion_by_reference(r.product_id) as discount
