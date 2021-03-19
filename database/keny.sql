@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : DB-LOCAL
+ Source Server         : Local
  Source Server Type    : MySQL
- Source Server Version : 80022
+ Source Server Version : 80023
  Source Host           : localhost:3306
  Source Schema         : keny
 
  Target Server Type    : MySQL
- Target Server Version : 80022
+ Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 14/03/2021 13:15:57
+ Date: 18/03/2021 22:19:32
 */
 
 SET NAMES utf8mb4;
@@ -368,7 +368,7 @@ CREATE TABLE `oauth_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `access_token_UNIQUE` (`uuid`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of oauth_access_tokens
@@ -388,6 +388,7 @@ INSERT INTO `oauth_access_tokens` VALUES (14, 'c4b6c854-ba68-4d0f-b7e9-66a492157
 INSERT INTO `oauth_access_tokens` VALUES (15, 'f4b2a5e2-2eed-4cf4-ad53-b03b8c6217fb', 43, 0, '2021-03-06 10:14:32', '2021-03-06 10:14:32', '2021-03-06 11:36:00');
 INSERT INTO `oauth_access_tokens` VALUES (16, '627a9453-9ae1-4885-bf8d-92b9674b42d9', 2, 0, '2021-03-14 09:37:52', '2021-03-14 09:37:52', '2021-03-15 09:37:33');
 INSERT INTO `oauth_access_tokens` VALUES (17, '21649fe3-af63-4381-bab9-83cb3dd48574', 2, 0, '2021-03-14 11:15:21', '2021-03-14 11:15:21', '2021-03-15 11:08:06');
+INSERT INTO `oauth_access_tokens` VALUES (18, 'd26d54bc-5f61-4e70-9688-08de6c4d4e1c', 2, 0, '2021-03-18 20:48:55', '2021-03-18 20:48:55', '2021-03-19 20:48:28');
 COMMIT;
 
 -- ----------------------------
@@ -405,7 +406,7 @@ CREATE TABLE `oauth_refresh_tokens` (
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `oauth_refresh_tokens_access_token_id_index` (`token_id`),
   CONSTRAINT `oauth_refresh_tokens_token_id` FOREIGN KEY (`token_id`) REFERENCES `oauth_access_tokens` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of oauth_refresh_tokens
@@ -425,6 +426,7 @@ INSERT INTO `oauth_refresh_tokens` VALUES (11, 14, 0, '2021-03-12 21:25:13', '20
 INSERT INTO `oauth_refresh_tokens` VALUES (12, 15, 0, '2021-03-13 10:13:20', '2021-03-06 10:14:32', '2021-03-06 10:14:32');
 INSERT INTO `oauth_refresh_tokens` VALUES (13, 16, 0, '2021-03-21 09:37:33', '2021-03-14 09:37:52', '2021-03-14 09:37:52');
 INSERT INTO `oauth_refresh_tokens` VALUES (14, 17, 0, '2021-03-21 11:08:06', '2021-03-14 11:15:21', '2021-03-14 11:15:21');
+INSERT INTO `oauth_refresh_tokens` VALUES (15, 18, 0, '2021-03-25 20:48:28', '2021-03-18 20:48:55', '2021-03-18 20:48:55');
 COMMIT;
 
 -- ----------------------------
@@ -439,9 +441,9 @@ CREATE TABLE `order_details` (
   `price` double NOT NULL,
   `quantity` int NOT NULL,
   `price_with_discount` double NOT NULL,
+  `puchase_status_id` int unsigned NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `puchase_status_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `od_reference_id_idx` (`reference_id`),
@@ -450,19 +452,54 @@ CREATE TABLE `order_details` (
   CONSTRAINT `od_order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   CONSTRAINT `od_puchase_status_id` FOREIGN KEY (`puchase_status_id`) REFERENCES `purchase_statuses` (`id`),
   CONSTRAINT `od_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `references` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of order_details
 -- ----------------------------
 BEGIN;
-INSERT INTO `order_details` VALUES (1, 13, 1, 'rojo', 10000, 1, 8500, '2021-03-14 11:05:50', '2021-03-14 11:05:50', 1);
-INSERT INTO `order_details` VALUES (2, 13, 6, 'rojo', 10000, 2, 9000, '2021-03-14 11:05:50', '2021-03-14 11:05:50', 1);
-INSERT INTO `order_details` VALUES (3, 13, 5, 'rojo', 10000, 2, 12000, '2021-03-14 11:05:50', '2021-03-14 11:05:50', 1);
-INSERT INTO `order_details` VALUES (4, 14, 1, 'rojo', 10000, 1, 8500, '2021-03-14 11:07:48', '2021-03-14 11:07:48', 1);
-INSERT INTO `order_details` VALUES (5, 14, 6, 'rojo', 10000, 2, 9000, '2021-03-14 11:07:48', '2021-03-14 11:07:48', 1);
-INSERT INTO `order_details` VALUES (6, 15, 1, 'rojo', 10000, 1, 8500, '2021-03-14 11:08:07', '2021-03-14 11:08:07', 1);
-INSERT INTO `order_details` VALUES (7, 15, 6, 'rojo', 10000, 2, 9000, '2021-03-14 11:08:07', '2021-03-14 11:08:07', 1);
+INSERT INTO `order_details` VALUES (8, 16, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-18 20:49:14', '2021-03-18 20:49:14');
+INSERT INTO `order_details` VALUES (9, 16, 6, 'rojo', 10000, 2, 9000, 1, '2021-03-18 20:49:14', '2021-03-18 20:49:14');
+INSERT INTO `order_details` VALUES (10, 17, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-18 21:42:42', '2021-03-18 21:42:42');
+INSERT INTO `order_details` VALUES (11, 17, 6, 'rojo', 10000, 2, 9000, 1, '2021-03-18 21:42:42', '2021-03-18 21:42:42');
+INSERT INTO `order_details` VALUES (12, 18, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-18 22:12:23', '2021-03-18 22:12:23');
+INSERT INTO `order_details` VALUES (13, 18, 6, 'Figuras Geometricas texturas', 10000, 2, 9000, 1, '2021-03-18 22:12:23', '2021-03-18 22:12:23');
+INSERT INTO `order_details` VALUES (14, 19, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-18 22:16:06', '2021-03-18 22:16:06');
+INSERT INTO `order_details` VALUES (15, 19, 6, 'Figuras Geometricas texturas', 10000, 2, 9000, 1, '2021-03-18 22:16:06', '2021-03-18 22:16:06');
+INSERT INTO `order_details` VALUES (16, 20, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-18 22:16:43', '2021-03-18 22:16:43');
+INSERT INTO `order_details` VALUES (17, 20, 6, 'Figuras Geometricas texturas', 10000, 2, 9000, 1, '2021-03-18 22:16:43', '2021-03-18 22:16:43');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for order_details_activity
+-- ----------------------------
+DROP TABLE IF EXISTS `order_details_activity`;
+CREATE TABLE `order_details_activity` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `order_detail_id` int unsigned NOT NULL,
+  `reference_id` int unsigned NOT NULL,
+  `purchase_status_id` int unsigned NOT NULL,
+  `reference_name` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `price_with_discount` double NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `order_details_activity_order_detail_id_idx` (`order_detail_id`),
+  KEY `order_details_activity_reference_id_idx` (`reference_id`),
+  KEY `order_details_activity_purchase_status_id_idx` (`purchase_status_id`),
+  CONSTRAINT `order_details_activity_order_detail_id` FOREIGN KEY (`order_detail_id`) REFERENCES `order_details` (`id`),
+  CONSTRAINT `order_details_activity_purchase_status_id` FOREIGN KEY (`purchase_status_id`) REFERENCES `purchase_statuses` (`id`),
+  CONSTRAINT `order_details_activity_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `references` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of order_details_activity
+-- ----------------------------
+BEGIN;
+INSERT INTO `order_details_activity` VALUES (1, 12, 5, 1, 'Mono con bananas', 12000, 9000, '2021-03-18 22:12:23', '2021-03-18 22:12:23');
+INSERT INTO `order_details_activity` VALUES (2, 14, 5, 1, 'Mono con bananas', 12000, 12000, '2021-03-18 22:16:06', '2021-03-18 22:16:06');
 COMMIT;
 
 -- ----------------------------
@@ -491,15 +528,17 @@ CREATE TABLE `orders` (
   CONSTRAINT `orders_phone_id` FOREIGN KEY (`phone_id`) REFERENCES `phones` (`id`),
   CONSTRAINT `orders_puchase_status_id` FOREIGN KEY (`puchase_status_id`) REFERENCES `purchase_statuses` (`id`),
   CONSTRAINT `orders_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
 BEGIN;
-INSERT INTO `orders` VALUES (13, 2, 1, 1, 1, 2, 50500, '2021-03-14 11:05:50', '2021-03-14 11:05:50');
-INSERT INTO `orders` VALUES (14, 2, 1, 1, 1, 2, 26500, '2021-03-14 11:07:48', '2021-03-14 11:07:48');
-INSERT INTO `orders` VALUES (15, 2, 1, 1, 1, 2, 26500, '2021-03-14 11:08:07', '2021-03-14 11:08:07');
+INSERT INTO `orders` VALUES (16, 2, 1, 1, 1, 2, 26500, '2021-03-18 20:49:14', '2021-03-18 20:49:14');
+INSERT INTO `orders` VALUES (17, 2, 1, 1, 1, 2, 26500, '2021-03-18 21:42:42', '2021-03-18 21:42:42');
+INSERT INTO `orders` VALUES (18, 2, 1, 1, 1, 2, 26500, '2021-03-18 22:12:23', '2021-03-18 22:12:23');
+INSERT INTO `orders` VALUES (19, 2, 1, 1, 1, 2, 26500, '2021-03-18 22:16:06', '2021-03-18 22:16:06');
+INSERT INTO `orders` VALUES (20, 2, 1, 1, 1, 2, 26500, '2021-03-18 22:16:43', '2021-03-18 22:16:43');
 COMMIT;
 
 -- ----------------------------
@@ -542,94 +581,97 @@ CREATE TABLE `products` (
   `meta_description` text NOT NULL,
   `meta_tags` text NOT NULL,
   `slug` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `apdated_at` datetime NOT NULL,
   `status_id` int unsigned NOT NULL,
   `number_activities` int NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL,
+  `apdated_at` datetime NOT NULL,
+  `type_id` int unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `slug_UNIQUE` (`slug`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `products_status_id_idx` (`status_id`),
-  CONSTRAINT `products_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`)
+  KEY `products_type_id_idx` (`type_id`),
+  CONSTRAINT `products_status_id` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`),
+  CONSTRAINT `products_type_id` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
 BEGIN;
-INSERT INTO `products` VALUES (1, 'Espectacular libro sensorial', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'meta title', 'meta description', 'meta tagas ', 'page-1', '2021-02-10 00:00:00', '2021-02-10 00:00:00', 1, 6);
-INSERT INTO `products` VALUES (2, 'Mono con bananas', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Mico con boca de cremallera la cual se puede abrir, cerrar y de esta forma  guardar  tres bananas de color amarillo las cuales se encuentran pegados con velcro para pegar y despegar.', 'meta title', 'meta description', 'meta tagas ', 'mono-con-bananas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (3, 'Figuras Geometricas texturas', 'Actividad compuesta por seis figuras geométricas creadas con paño lency y telas de distintas texturas, con una base que le indica a cada uno de los niños y niñas donde debe ir cada una de las piezas,  para que logre ubicaarlas relizando asociacion de imagenes.', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (4, 'Lavadora ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Lavadora que permite abrir y cerrar por medio de un botón en el cual se le puede guardar los objetos que se encuentran extendidos en el tendedero ya sea por medio de un velcro para quitar o poner o con pinzas, desarrollando habilidades motrices finas. ', 'meta title', 'meta description', 'meta tagas ', 'lavadora', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (5, 'Sombrila', 'sombrilla elaborada en paño lency, cordones de colores de donde se desprenden chaquiras  que estan ubicadas de forma ascendente desde el 1 al 5, invitando a los niños y niñas a iniciar sus habilidades numericas y de conteo ', 'meta title', 'meta description', 'meta tagas ', 'sombrila', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (6, 'Buho', 'elaborada en paño lency con cordones de colores y chaquiras, ubicadas de forma ascendente del 1 al 3 tiene forma de buho, se utilizan colores llamativos e invita a los niños y niñas a iniciar con sus habilidades numericas ', 'meta title', 'meta description', 'meta tagas ', 'buho', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (7, 'Pulpo ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Pulpo  con cordones de colores en los cuales se desprenden chaquiras de colores del 1 al 10, iniciando el desarrollo de habilidades numéricas.', 'meta title', 'meta description', 'meta tagas ', 'pulpo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (8, 'Carro de insertar', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Carretera con aros en los cuales se inserta un cordón, el cual se encuentra unido a un cascabel produciendo un sonido al movimiento.', 'meta title', 'meta description', 'meta tagas ', 'carro-de-insertar', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (9, 'Jirafa con botones ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Jirafa de colores variados con  botones y moños para abotonar los cuales permiten desarrollar habilidades motrices finas.', 'meta title', 'meta description', 'meta tagas ', 'jirafa-con-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (10, 'Palitos de colores ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Rectángulos de forma horizontal con bolsillo de diferentes colores, en los cuales se puede guardar diversos palos de colores según corresponda, permitiendo  el reconocimiento y clasificación de colores.', 'meta title', 'meta description', 'meta tagas ', 'palitos-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (11, 'Perro', 'Elaborado en paño lency, compuesta por la silueta del rostro de un perro, y una creamallera en forma de boca, la cual tiene como función abrir y cerrar para sacar y guardar su lengua', 'meta title', 'meta description', 'meta tagas ', 'perro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (12, 'Dinosaurio ', 'elaborado en paño lency, compuesto por la imagen de un dinosaurios que invita a realizar ensartado, cruzando el cordon  de un extremo al otro por la parte superior de la limagen, dos de sus patas estan puestas con botones y  se pueden quitar y poner, apuntando y desapuntando.', 'meta title', 'meta description', 'meta tagas ', 'dinosaurio', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (13, 'Cocodrilos', 'Elaborados en paño lency, Dos cocodrilos,verde y azul, cremalleras, tamaño mediano, página de color amarillo, 4 pescados de diferente color.', 'meta title', 'meta description', 'meta tagas ', 'cocodrilos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (14, 'Guante granja', 'Elaborado en paño lency, variedad de colores, 5 animales en forma de títere de dedo, vaca, cerdo, gallo, rana, gato. 1 sol, 1 nube, fondo en forma de mano de granja.', 'meta title', 'meta description', 'meta tagas ', 'guante-granja', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (15, 'Panal de Abejas', 'Elaborado en paño lency, panal de abejas con cremallera y espacio para guardar las abejas, 4 abejas con tejido en el borde, ojos locos, rama y velcro para mover las abejas,  cinta de color pegada  a la cada abejas que no permite  caerse. ', 'meta title', 'meta description', 'meta tagas ', 'panal-de-abejas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (16, 'Rana', 'Elaborado en paño lency, Rana con cremallera por fuera, 4 moscas con ojos locos y velcro para poder moverlas y lengua larga para enrollar.  ', 'meta title', 'meta description', 'meta tagas ', 'rana', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (17, 'Ratòn', 'Ratón de laberinto elaborado en paño lency, simulando un queso, casa y cuerda la cual permite que el ratòn recorra el laberinto.', 'meta title', 'meta description', 'meta tagas ', 'raton', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (18, 'Tangram', ' Este juego esta compuesto por 7 piezas elaboradas con paño lency, con una base que le indica a los niños y niñas donde va cada pieza, realizando  asi clasificación de formas, ', 'meta title', 'meta description', 'meta tagas ', 'tangram', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (19, 'Manos de Conteo', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (20, 'Elmo come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'elmo-come-galletas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (21, 'Zapatos de Amarrar PAR', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-par', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (22, 'Pizza nùmerica ', '', 'meta title', 'meta description', 'meta tagas ', 'pizza-nùmerica', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (23, 'Partes de la cara', '', 'meta title', 'meta description', 'meta tagas ', 'partes-de-la-cara', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (24, 'Gusano secuencia de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-secuencia-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (25, 'Gusano clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (26, 'Abeja laberinto de insertado', '', 'meta title', 'meta description', 'meta tagas ', 'abeja-laberinto-de-insertado', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (27, 'Ballena come peces', '', 'meta title', 'meta description', 'meta tagas ', 'ballena-come-peces', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (28, 'Caracol de insertado ', '', 'meta title', 'meta description', 'meta tagas ', 'caracol-de-insertado', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (29, 'Cerdito de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'cerdito-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (30, 'Oveja  de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'oveja-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (31, 'Perro con espejo', '', 'meta title', 'meta description', 'meta tagas ', 'perro-con-espejo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (32, 'Vaca de texturas ', '', 'meta title', 'meta description', 'meta tagas ', 'vaca-de-texturas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (33, 'Araña con botones', '', 'meta title', 'meta description', 'meta tagas ', 'araña-con-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (34, 'Cepillado de dientes', '', 'meta title', 'meta description', 'meta tagas ', 'cepillado-de-dientes', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (35, 'Pato clasificaciòn de colores ', '', 'meta title', 'meta description', 'meta tagas ', 'pato-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (36, 'Hongo Vocales', '', 'meta title', 'meta description', 'meta tagas ', 'hongo-vocales', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (37, 'Figuras Geometricas clasificaciòn ', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-clasificaciòn', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (38, 'Camisa de botones', '', 'meta title', 'meta description', 'meta tagas ', 'camisa-de-botones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (39, 'OTROS', '', 'meta title', 'meta description', 'meta tagas ', 'otros', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (40, 'Moustro de emociones', '', 'meta title', 'meta description', 'meta tagas ', 'moustro-de-emociones', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (41, 'Partes del Cuerpo', '', 'meta title', 'meta description', 'meta tagas ', 'partes-del-cuerpo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (42, 'Zapatos de Amarrar UNO', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-uno', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (43, 'Figuras de colores geometricas', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-de-colores-geometricas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (44, 'Perro de rompecabezas', '', 'meta title', 'meta description', 'meta tagas ', 'perro-de-rompecabezas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (45, 'Amarres', '', 'meta title', 'meta description', 'meta tagas ', 'amarres', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (46, 'Tortuga Clasificacion de colores', '', 'meta title', 'meta description', 'meta tagas ', 'tortuga-clasificacion-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (47, 'Ponque tamaños', '', 'meta title', 'meta description', 'meta tagas ', 'ponque-tamaños', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (48, 'Manos de conteo signos ', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-signos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (49, 'Lapices clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'lapices-clasificaciòn-de-colores', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (50, 'Tamaños de grande a pequeño', '', 'meta title', 'meta description', 'meta tagas ', 'tamaños-de-grande-a-pequeño', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (51, 'Flautista', '', 'meta title', 'meta description', 'meta tagas ', 'flautista', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (52, 'Tren de los números', '', 'meta title', 'meta description', 'meta tagas ', 'tren-de-los-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (53, 'Vocales lazos', '', 'meta title', 'meta description', 'meta tagas ', 'vocales-lazos', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (54, 'Manos de conteo y Números', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-y-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (55, 'ABC ', '', 'meta title', 'meta description', 'meta tagas ', 'abc', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (56, 'Ratón de insertado Números', '', 'meta title', 'meta description', 'meta tagas ', 'ratón-de-insertado-números', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (57, 'Cojín  León', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-león', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (58, 'Cojín Mico', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-mico', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (59, 'Cojín dinosaurio', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-dinosaurio', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (60, 'Cojin Come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'cojin-come-galletas', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (61, 'Cojín Elefante', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elefante', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (62, 'Cojín Elmo', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elmo', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (63, 'Cojín Perro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-perro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (64, 'Cojín Moutro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-moutro', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (65, 'Cojín Gato', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-gato', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (66, 'TEXTURAS BEBES 7 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-7-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (67, 'TEXTURAS BEBES 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-10-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (68, 'KENY 7 ACTIVIDADES ', '', 'meta title', 'meta description', 'meta tagas ', 'keny-7-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (69, 'KENY 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-10-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (70, 'KENY 5 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-5-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (71, 'KENY MÀS ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-màs-actividades', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
-INSERT INTO `products` VALUES (72, 'CUBO SENSORIAL', '', 'meta title', 'meta description', 'meta tagas ', 'cubo-sensorial', '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1, 1);
+INSERT INTO `products` VALUES (1, 'Espectacular libro sensorial', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'meta title', 'meta description', 'meta tagas ', 'page-1', 1, 6, '2021-02-10 00:00:00', '2021-02-10 00:00:00', 1);
+INSERT INTO `products` VALUES (2, 'Mono con bananas', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Mico con boca de cremallera la cual se puede abrir, cerrar y de esta forma  guardar  tres bananas de color amarillo las cuales se encuentran pegados con velcro para pegar y despegar.', 'meta title', 'meta description', 'meta tagas ', 'mono-con-bananas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
+INSERT INTO `products` VALUES (3, 'Figuras Geometricas texturas', 'Actividad compuesta por seis figuras geométricas creadas con paño lency y telas de distintas texturas, con una base que le indica a cada uno de los niños y niñas donde debe ir cada una de las piezas,  para que logre ubicaarlas relizando asociacion de imagenes.', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-texturas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (4, 'Lavadora ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Lavadora que permite abrir y cerrar por medio de un botón en el cual se le puede guardar los objetos que se encuentran extendidos en el tendedero ya sea por medio de un velcro para quitar o poner o con pinzas, desarrollando habilidades motrices finas. ', 'meta title', 'meta description', 'meta tagas ', 'lavadora', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (5, 'Sombrila', 'sombrilla elaborada en paño lency, cordones de colores de donde se desprenden chaquiras  que estan ubicadas de forma ascendente desde el 1 al 5, invitando a los niños y niñas a iniciar sus habilidades numericas y de conteo ', 'meta title', 'meta description', 'meta tagas ', 'sombrila', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (6, 'Buho', 'elaborada en paño lency con cordones de colores y chaquiras, ubicadas de forma ascendente del 1 al 3 tiene forma de buho, se utilizan colores llamativos e invita a los niños y niñas a iniciar con sus habilidades numericas ', 'meta title', 'meta description', 'meta tagas ', 'buho', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (7, 'Pulpo ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas.  Pulpo  con cordones de colores en los cuales se desprenden chaquiras de colores del 1 al 10, iniciando el desarrollo de habilidades numéricas.', 'meta title', 'meta description', 'meta tagas ', 'pulpo', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (8, 'Carro de insertar', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Carretera con aros en los cuales se inserta un cordón, el cual se encuentra unido a un cascabel produciendo un sonido al movimiento.', 'meta title', 'meta description', 'meta tagas ', 'carro-de-insertar', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (9, 'Jirafa con botones ', 'Elaborado en paño Lency colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Jirafa de colores variados con  botones y moños para abotonar los cuales permiten desarrollar habilidades motrices finas.', 'meta title', 'meta description', 'meta tagas ', 'jirafa-con-botones', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (10, 'Palitos de colores ', 'Elaborado en paño Lency Colombiano de excelente calidad, lavable, resistente al desgarre y uso de los niños y niñas. Rectángulos de forma horizontal con bolsillo de diferentes colores, en los cuales se puede guardar diversos palos de colores según corresponda, permitiendo  el reconocimiento y clasificación de colores.', 'meta title', 'meta description', 'meta tagas ', 'palitos-de-colores', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (11, 'Perro', 'Elaborado en paño lency, compuesta por la silueta del rostro de un perro, y una creamallera en forma de boca, la cual tiene como función abrir y cerrar para sacar y guardar su lengua', 'meta title', 'meta description', 'meta tagas ', 'perro', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (12, 'Dinosaurio ', 'elaborado en paño lency, compuesto por la imagen de un dinosaurios que invita a realizar ensartado, cruzando el cordon  de un extremo al otro por la parte superior de la limagen, dos de sus patas estan puestas con botones y  se pueden quitar y poner, apuntando y desapuntando.', 'meta title', 'meta description', 'meta tagas ', 'dinosaurio', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (13, 'Cocodrilos', 'Elaborados en paño lency, Dos cocodrilos,verde y azul, cremalleras, tamaño mediano, página de color amarillo, 4 pescados de diferente color.', 'meta title', 'meta description', 'meta tagas ', 'cocodrilos', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (14, 'Guante granja', 'Elaborado en paño lency, variedad de colores, 5 animales en forma de títere de dedo, vaca, cerdo, gallo, rana, gato. 1 sol, 1 nube, fondo en forma de mano de granja.', 'meta title', 'meta description', 'meta tagas ', 'guante-granja', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (15, 'Panal de Abejas', 'Elaborado en paño lency, panal de abejas con cremallera y espacio para guardar las abejas, 4 abejas con tejido en el borde, ojos locos, rama y velcro para mover las abejas,  cinta de color pegada  a la cada abejas que no permite  caerse. ', 'meta title', 'meta description', 'meta tagas ', 'panal-de-abejas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (16, 'Rana', 'Elaborado en paño lency, Rana con cremallera por fuera, 4 moscas con ojos locos y velcro para poder moverlas y lengua larga para enrollar.  ', 'meta title', 'meta description', 'meta tagas ', 'rana', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (17, 'Ratòn', 'Ratón de laberinto elaborado en paño lency, simulando un queso, casa y cuerda la cual permite que el ratòn recorra el laberinto.', 'meta title', 'meta description', 'meta tagas ', 'raton', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (18, 'Tangram', ' Este juego esta compuesto por 7 piezas elaboradas con paño lency, con una base que le indica a los niños y niñas donde va cada pieza, realizando  asi clasificación de formas, ', 'meta title', 'meta description', 'meta tagas ', 'tangram', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (19, 'Manos de Conteo', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (20, 'Elmo come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'elmo-come-galletas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (21, 'Zapatos de Amarrar PAR', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-par', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (22, 'Pizza nùmerica ', '', 'meta title', 'meta description', 'meta tagas ', 'pizza-nùmerica', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (23, 'Partes de la cara', '', 'meta title', 'meta description', 'meta tagas ', 'partes-de-la-cara', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (24, 'Gusano secuencia de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-secuencia-de-colores', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (25, 'Gusano clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'gusano-clasificaciòn-de-colores', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (26, 'Abeja laberinto de insertado', '', 'meta title', 'meta description', 'meta tagas ', 'abeja-laberinto-de-insertado', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (27, 'Ballena come peces', '', 'meta title', 'meta description', 'meta tagas ', 'ballena-come-peces', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (28, 'Caracol de insertado ', '', 'meta title', 'meta description', 'meta tagas ', 'caracol-de-insertado', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (29, 'Cerdito de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'cerdito-de-texturas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (30, 'Oveja  de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'oveja-de-texturas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (31, 'Perro con espejo', '', 'meta title', 'meta description', 'meta tagas ', 'perro-con-espejo', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (32, 'Vaca de texturas ', '', 'meta title', 'meta description', 'meta tagas ', 'vaca-de-texturas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (33, 'Araña con botones', '', 'meta title', 'meta description', 'meta tagas ', 'araña-con-botones', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (34, 'Cepillado de dientes', '', 'meta title', 'meta description', 'meta tagas ', 'cepillado-de-dientes', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (35, 'Pato clasificaciòn de colores ', '', 'meta title', 'meta description', 'meta tagas ', 'pato-clasificaciòn-de-colores', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (36, 'Hongo Vocales', '', 'meta title', 'meta description', 'meta tagas ', 'hongo-vocales', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (37, 'Figuras Geometricas clasificaciòn ', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-clasificaciòn', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (38, 'Camisa de botones', '', 'meta title', 'meta description', 'meta tagas ', 'camisa-de-botones', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (39, 'OTROS', '', 'meta title', 'meta description', 'meta tagas ', 'otros', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (40, 'Moustro de emociones', '', 'meta title', 'meta description', 'meta tagas ', 'moustro-de-emociones', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (41, 'Partes del Cuerpo', '', 'meta title', 'meta description', 'meta tagas ', 'partes-del-cuerpo', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (42, 'Zapatos de Amarrar UNO', '', 'meta title', 'meta description', 'meta tagas ', 'zapatos-de-amarrar-uno', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (43, 'Figuras de colores geometricas', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-de-colores-geometricas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (44, 'Perro de rompecabezas', '', 'meta title', 'meta description', 'meta tagas ', 'perro-de-rompecabezas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (45, 'Amarres', '', 'meta title', 'meta description', 'meta tagas ', 'amarres', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (46, 'Tortuga Clasificacion de colores', '', 'meta title', 'meta description', 'meta tagas ', 'tortuga-clasificacion-de-colores', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (47, 'Ponque tamaños', '', 'meta title', 'meta description', 'meta tagas ', 'ponque-tamaños', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (48, 'Manos de conteo signos ', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-signos', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (49, 'Lapices clasificaciòn de colores', '', 'meta title', 'meta description', 'meta tagas ', 'lapices-clasificaciòn-de-colores', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (50, 'Tamaños de grande a pequeño', '', 'meta title', 'meta description', 'meta tagas ', 'tamaños-de-grande-a-pequeño', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (51, 'Flautista', '', 'meta title', 'meta description', 'meta tagas ', 'flautista', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (52, 'Tren de los números', '', 'meta title', 'meta description', 'meta tagas ', 'tren-de-los-números', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (53, 'Vocales lazos', '', 'meta title', 'meta description', 'meta tagas ', 'vocales-lazos', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (54, 'Manos de conteo y Números', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-y-números', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (55, 'ABC ', '', 'meta title', 'meta description', 'meta tagas ', 'abc', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (56, 'Ratón de insertado Números', '', 'meta title', 'meta description', 'meta tagas ', 'ratón-de-insertado-números', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (57, 'Cojín  León', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-león', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (58, 'Cojín Mico', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-mico', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (59, 'Cojín dinosaurio', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-dinosaurio', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (60, 'Cojin Come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'cojin-come-galletas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (61, 'Cojín Elefante', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elefante', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (62, 'Cojín Elmo', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-elmo', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (63, 'Cojín Perro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-perro', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (64, 'Cojín Moutro', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-moutro', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (65, 'Cojín Gato', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-gato', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (66, 'TEXTURAS BEBES 7 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-7-actividades', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (67, 'TEXTURAS BEBES 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'texturas-bebes-10-actividades', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (68, 'KENY 7 ACTIVIDADES ', '', 'meta title', 'meta description', 'meta tagas ', 'keny-7-actividades', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (69, 'KENY 10 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-10-actividades', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (70, 'KENY 5 ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-5-actividades', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (71, 'KENY MÀS ACTIVIDADES', '', 'meta title', 'meta description', 'meta tagas ', 'keny-màs-actividades', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (72, 'CUBO SENSORIAL', '', 'meta title', 'meta description', 'meta tagas ', 'cubo-sensorial', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 COMMIT;
 
 -- ----------------------------
@@ -1069,6 +1111,27 @@ CREATE TABLE `tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for types
+-- ----------------------------
+DROP TABLE IF EXISTS `types`;
+CREATE TABLE `types` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of types
+-- ----------------------------
+BEGIN;
+INSERT INTO `types` VALUES (1, 'Libro', '2021-03-09 00:00:00', '2021-03-09 00:00:00');
+INSERT INTO `types` VALUES (2, 'Actividad', '2021-03-09 00:00:00', '2021-03-09 00:00:00');
+COMMIT;
+
+-- ----------------------------
 -- Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
@@ -1221,16 +1284,26 @@ CREATE PROCEDURE `keny`.`ksp_create_purchase`(p_user_id INT,
 	p_city_id INT,
 	p_total DOUBLE,
 	p_details TEXT,
+    p_details_activity TEXT,
 	p_now VARCHAR(255))
   COMMENT 'creación de una compra'
 BEGIN
 	
 	DECLARE details TEXT default "";
+    DECLARE details_activity TEXT default "";
     DECLARE reference_id INT ;
     DECLARE reference_name VARCHAR(40) ;
     DECLARE quantity INT;
 	DECLARE price DOUBLE;
     DECLARE price_with_discount DOUBLE;
+    DECLARE owner_activity_id INT;
+    DECLARE activity_id INT;
+	DECLARE quantity_activity INT;
+    DECLARE price_with_discount_activity DOUBLE;
+    DECLARE reference_name_activity VARCHAR(255);
+    DECLARE price_activity DOUBLE;
+    
+    
 	DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
         SHOW ERRORS; 
@@ -1245,6 +1318,7 @@ BEGIN
     set @status_recibida = 1;
     set @status_pending = 2;
     SET @count = 1;
+    SET @count_activity = 1;
     
     START TRANSACTION;
         INSERT INTO `keny`.`orders`
@@ -1263,7 +1337,7 @@ BEGIN
                 -- seleccionar la data faltante
                 SELECT name,rh.price FROM `references` r 
 				JOIN `references_headquarters` rh on r.id = rh.reference_id
-				where rh.headquarter_id = 1
+				where rh.headquarter_id = 1 and r.id = reference_id
                 limit 1
                 INTO reference_name,price ;
                 
@@ -1272,12 +1346,45 @@ BEGIN
 				(`id`,`order_id`,`reference_id`,`reference_name`,`price`,`quantity`,`price_with_discount`,`puchase_status_id`,`created_at`,`updated_at`)
 				VALUES
 				(null,@order_id,reference_id,reference_name,price,quantity,price_with_discount,@status_recibida,p_now,p_now);
+                
+                SET @order_detail_id = last_insert_id();
+                REPEAT
+					SELECT kf_split_str(p_details_activity, "||", @count_activity) INTO details_activity;
+                    IF details_activity <> "" THEN
+                    
+						SELECT kf_split_str(details_activity, "&&", 1) INTO owner_activity_id;
+						SELECT kf_split_str(details_activity, "&&", 2) INTO activity_id;
+						SELECT kf_split_str(details_activity, "&&", 3) INTO quantity_activity;
+                        SELECT kf_split_str(details_activity, "&&", 4) INTO price_with_discount_activity;
+                        
+                        IF owner_activity_id = reference_id THEN
+                        
+							SELECT name,rh.price FROM `references` r 
+							JOIN `references_headquarters` rh on r.id = rh.reference_id
+							where rh.headquarter_id = 1 and r.id = activity_id
+							limit 1
+							INTO reference_name_activity,price_activity;
+                            
+                        
+							INSERT INTO `keny`.`order_details_activity`
+							(`id`,`order_detail_id`,`reference_id`,`purchase_status_id`,`reference_name`,`price`,`price_with_discount`,`created_at`,`updated_at`)
+							VALUES
+							(NULL,@order_detail_id,activity_id,@status_recibida,reference_name_activity,price_activity,price_with_discount_activity,p_now,p_now);
+
+                        
+                        END IF;
+                        
+                    END IF;
+                    SET @count_activity =  @count_activity + 1;
+                    UNTIL details_activity = ""
+                END REPEAT;
+                
 			END IF;
 			SET @count = @count + 1;
 			UNTIL details = ""
 		END REPEAT; 
     COMMIT;
-    call ksp_response(true,"Order creada correctamente");
+    call ksp_response(true,@order_id);
 END
 ;;
 delimiter ;
@@ -1358,9 +1465,9 @@ delimiter ;;
 CREATE PROCEDURE `keny`.`ksp_get_info_references`(in p_references text)
   COMMENT 'retorna la información de 1 o mas referencias'
 BEGIN
-	
-	select rh.stock, rh.price, r.id, kf_promotion_by_reference(r.product_id) discount  from references_headquarters rh 
-		join `references` r on r.id = rh.reference_id
+	select rh.stock, rh.price, r.id, kf_promotion_by_reference(r.product_id) discount, p.type_id from references_headquarters rh 
+	join `references` r on r.id = rh.reference_id
+	join products p on p.id = r.product_id
 	where rh.headquarter_id = 1 and FIND_IN_SET(rh.reference_id,p_references) and rh.status_id = 1;
 END
 ;;

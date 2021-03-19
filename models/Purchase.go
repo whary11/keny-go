@@ -20,15 +20,15 @@ type Purchase struct {
 	CityId     int         `json:"city_id,omitempty" binding:"required"`
 }
 
-func (p *Purchase) CreatePurchase(details string) (bool, string) {
+func (p *Purchase) CreatePurchase(details string, details_activities string) (bool, string) {
 
 	var excepcioSql utils.ExceptionSql
 	var (
 		result  bool
 		message string
 	)
-	querySelect := `CALL ksp_create_purchase(?,?,?,?,?,?,?)`
-	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.UserId, p.PhoneId, p.AddressId, p.CityId, p.Total, details, carbon.Now().DateTimeString())
+	querySelect := `CALL ksp_create_purchase(?,?,?,?,?,?,?,?)`
+	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.UserId, p.PhoneId, p.AddressId, p.CityId, p.Total, details, details_activities, carbon.Now().DateTimeString())
 	result = false
 	err := row.Scan(&excepcioSql.Level, &excepcioSql.Code, &excepcioSql.Message)
 	message = excepcioSql.Message
@@ -60,16 +60,18 @@ func GetInfoRefences(ids string) Purchase {
 		price    float64
 		id       int
 		discount float64
+		type_id  int
 	)
 	defer rows.Close()
 	for rows.Next() {
-		if err := rows.Scan(&stock, &price, &id, &discount); err != nil {
+		if err := rows.Scan(&stock, &price, &id, &discount, &type_id); err != nil {
 			fmt.Println(err.Error())
 		}
 		reference.Stock = stock
 		reference.Price = price
 		reference.Discount = discount
 		reference.Id = id
+		reference.TypeId = type_id
 		reference.PriceWithDiscount = utils.GetPriceWithDiscount(price, discount)
 		purchase.References = append(purchase.References, reference)
 	}

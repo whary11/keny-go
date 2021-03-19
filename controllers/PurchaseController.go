@@ -16,6 +16,7 @@ var (
 	code_not_exist_references int
 	code_bad_total            int
 	code_error_create         int
+	code_error_bad_activities int
 )
 
 func init() {
@@ -23,6 +24,7 @@ func init() {
 	code_not_exist_references = 301
 	code_bad_total = 302
 	code_error_create = 303
+	code_error_bad_activities = 304
 }
 
 func Create(c *gin.Context) {
@@ -39,26 +41,48 @@ func Create(c *gin.Context) {
 	}
 
 	// Armar el string con los id de referencias recibidas
-	var ids string
+	var (
+		ids            string
+		ids_activities string
+	)
 	details := ""
+	details_activities := ""
 	for i := 0; i < len(purchase.References); i++ {
-		ids += strconv.Itoa(purchase.References[i].Id)
-
 		id := strconv.Itoa(purchase.References[i].Id)
+		ids += id
 		quantity := strconv.Itoa(purchase.References[i].Quantity)
 		price_with_discount := fmt.Sprintf("%g", purchase.References[i].PriceWithDiscount)
+
+		for _, val := range purchase.References[i].Activities {
+			ids_activities += strconv.Itoa(val.Id)
+			details_activities += id + "&&" + strconv.Itoa(val.Id) + "&&" + strconv.Itoa(val.Quantity) + "&&" + fmt.Sprintf("%g", val.PriceWithDiscount)
+			if len(purchase.References[i].Activities) > i+1 {
+				ids_activities += ","
+				details_activities += "||"
+			}
+		}
+
 		details += id + "&&" + quantity + "&&" + price_with_discount
 		if len(purchase.References) > i+1 {
 			ids += ","
 			details += "||"
 		}
 	}
-	fmt.Println(details)
+	// utils.GetResponse(c, http.StatusOK, utils.Response{
+	// 	"code":    code_not_exist_references,
+	// 	"status":  false,
+	// 	"message": "Algunas referencias no existen",
+	// 	"data":    details,
+	// })
+	// return
+
 	var (
 		bad_references   []models.Reference
 		exist_references []models.Reference
+		bad_activities   []models.Reference
 		total_back       float64
 	)
+
 	result := models.GetInfoRefences(ids)
 
 	for _, item := range result.References {
@@ -71,10 +95,8 @@ func Create(c *gin.Context) {
 					bad_references = append(bad_references, item)
 				}
 				exist_references = append(exist_references, item)
-
 			}
 		}
-
 	}
 
 	//validar que existan todas las referencias
@@ -99,6 +121,29 @@ func Create(c *gin.Context) {
 		return
 	}
 
+	result_activities := models.GetInfoRefences(ids_activities)
+	for _, r := range result_activities.References {
+		for _, d := range purchase.References {
+			for _, a := range d.Activities {
+				if a.Id == r.Id {
+					if r.TypeId != 2 || r.PriceWithDiscount != a.PriceWithDiscount || r.Stock < a.Quantity {
+						bad_activities = append(bad_activities, r)
+					}
+				}
+			}
+		}
+	}
+
+	if len(bad_activities) > 0 {
+		utils.GetResponse(c, http.StatusOK, utils.Response{
+			"code":    code_error_bad_activities,
+			"status":  false,
+			"message": "Algunas actividades con inconsistencias",
+			"total":   bad_activities,
+		})
+		return
+	}
+
 	// validar el total
 	if total_back != purchase.Total {
 		utils.GetResponse(c, http.StatusOK, utils.Response{
@@ -119,7 +164,7 @@ func Create(c *gin.Context) {
 		fmt.Println(claim.Sub)
 		purchase.UserId = claim.Sub
 	}
-	create_status, message_create := purchase.CreatePurchase(details)
+	create_status, message_create := purchase.CreatePurchase(details, details_activities)
 	if create_status {
 		utils.GetResponse(c, http.StatusOK, utils.Response{
 			"code":    http.StatusOK,
