@@ -22,8 +22,6 @@ func (i *Images) GetImagesByReferenceId() (status bool, message string) {
 		FROM reference_images ri
 		WHERE ri.reference_id = ?; `
 
-	fmt.Println(i.ReferenceId)
-
 	rows, err := dbBoilerplateGo.Read.Query(querySelect, i.ReferenceId)
 	if err != nil {
 		fmt.Println(err.Error())

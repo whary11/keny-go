@@ -38,6 +38,7 @@ func Api(router *gin.Engine) {
 		{
 			product.GET("/detail/:slug", controllers.ProductDatail)
 			product.GET("/reference/info", controllers.Info)
+			product.GET("/types/:slug/:page", controllers.ProductsType)
 		}
 
 		// Productos
