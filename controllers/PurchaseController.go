@@ -169,7 +169,8 @@ func Create(c *gin.Context) {
 		utils.GetResponse(c, http.StatusOK, utils.Response{
 			"code":    http.StatusOK,
 			"status":  true,
-			"message": message_create,
+			"message": "Done.",
+			"id":      message_create,
 		})
 		return
 	} else {

@@ -11,11 +11,10 @@ import (
 
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {
-
 		header := c.Request.Header["Authorization"]
-
 		if len(header) > 0 {
 			bearerToken := header[0]
+			// fmt.Println(bearerToken)
 			token := strings.Split(bearerToken, " ")
 			if len(token) == 2 && token[0] == "Bearer" {
 				_, validate := utils.VerifiedToken(token[1])
