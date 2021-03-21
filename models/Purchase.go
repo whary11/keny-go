@@ -18,17 +18,21 @@ type Purchase struct {
 	UserId     int         `json:"user_id,omitempty"`
 	City       City        `json:"city,omitempty"`
 	CityId     int         `json:"city_id,omitempty" binding:"required"`
+	Platform   string      `json:"platform" binding:"required"`
 }
 
 func (p *Purchase) CreatePurchase(details string, details_activities string) (bool, string) {
 
+	fmt.Println(details)
+	fmt.Println(".....................")
+	fmt.Println(details_activities)
 	var excepcioSql utils.ExceptionSql
 	var (
 		result  bool
 		message string
 	)
-	querySelect := `CALL ksp_create_purchase(?,?,?,?,?,?,?,?)`
-	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.UserId, p.PhoneId, p.AddressId, p.CityId, p.Total, details, details_activities, carbon.Now().DateTimeString())
+	querySelect := `CALL ksp_create_purchase(?,?,?,?,?,?,?,?,?)`
+	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.UserId, p.PhoneId, p.AddressId, p.CityId, p.Total, details, details_activities, carbon.Now().DateTimeString(), p.Platform)
 	result = false
 	err := row.Scan(&excepcioSql.Level, &excepcioSql.Code, &excepcioSql.Message)
 	message = excepcioSql.Message
@@ -40,9 +44,7 @@ func (p *Purchase) CreatePurchase(details string, details_activities string) (bo
 	if excepcioSql.Code == 200 {
 		result = true
 	}
-
 	return result, message
-
 }
 
 func GetInfoRefences(ids string) Purchase {

@@ -66,7 +66,7 @@ func ProductsType(c *gin.Context) {
 			"code":    http.StatusNotFound,
 			"status":  status,
 			"message": message,
-			"data":    t.Products,
+			"data":    t.References,
 		})
 		return
 	}
@@ -75,7 +75,7 @@ func ProductsType(c *gin.Context) {
 		"code":    http.StatusOK,
 		"status":  status,
 		"message": message,
-		"data":    t.Products,
+		"data":    t.References,
 	})
 	return
 }
