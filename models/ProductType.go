@@ -20,11 +20,12 @@ type ReferenceActivity struct {
 }
 
 type Type struct {
-	References []ReferenceActivity `json:"products"`
+	References []ReferenceActivity `json:"references"`
 	Slug       string              `json:"slug" example:"actividades"`
-	Id         int                 `json:"id" example:"1"`
-	Offset     int                 `json:"page"`
-	Limit      int
+	Id         int                 `json:"id,omitempty" example:"1"`
+	Offset     int                 `json:"page,omitempty"`
+	Limit      int                 `json:"limit,omitempty"`
+	Count      int                 `json:"count"`
 }
 
 func (t *Type) GetProductsType() (status bool, message string) {
@@ -56,12 +57,7 @@ func (t *Type) GetProductsType() (status bool, message string) {
 			return false, message
 		}
 		reference.Images = reference_images.Images
-
 		t.addReferenceToType(reference)
-		// product.addReference(reference)
-
-		// t.addProduct(product)
-
 	}
 
 	// fmt.Println(rows)
@@ -72,4 +68,13 @@ func (t *Type) GetProductsType() (status bool, message string) {
 
 func (t *Type) addReferenceToType(r ReferenceActivity) {
 	t.References = append(t.References, r)
+}
+
+func (t *Type) GetCountProductType() {
+	querySelect := `CALL ksp_count_products_by_type(?)`
+	row := dbBoilerplateGo.Read.QueryRow(querySelect, t.Slug)
+	err := row.Scan(&t.Count)
+	if err != nil {
+		fmt.Println("GetCountProductType: " + err.Error())
+	}
 }

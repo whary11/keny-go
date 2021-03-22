@@ -60,13 +60,14 @@ func ProductsType(c *gin.Context) {
 	t.Offset = t.Limit * (page_int - 1)
 
 	status, message := t.GetProductsType()
+	t.GetCountProductType()
 
 	if !status {
 		utils.GetResponse(c, http.StatusOK, utils.Response{
 			"code":    http.StatusNotFound,
 			"status":  status,
 			"message": message,
-			"data":    t.References,
+			"data":    t,
 		})
 		return
 	}
@@ -75,7 +76,7 @@ func ProductsType(c *gin.Context) {
 		"code":    http.StatusOK,
 		"status":  status,
 		"message": message,
-		"data":    t.References,
+		"data":    t,
 	})
 	return
 }

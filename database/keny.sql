@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 20/03/2021 23:04:29
+ Date: 22/03/2021 14:46:23
 */
 
 SET NAMES utf8mb4;
@@ -458,7 +458,7 @@ CREATE TABLE `order_details` (
   CONSTRAINT `od_order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   CONSTRAINT `od_puchase_status_id` FOREIGN KEY (`puchase_status_id`) REFERENCES `purchase_statuses` (`id`),
   CONSTRAINT `od_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `references` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=260770 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of order_details
@@ -668,6 +668,195 @@ INSERT INTO `order_details` VALUES (208, 98, 2, 'verde', 20000, 1, 17000, 1, '20
 INSERT INTO `order_details` VALUES (209, 99, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-20 22:51:08', '2021-03-20 22:51:08');
 INSERT INTO `order_details` VALUES (210, 99, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-20 22:51:08', '2021-03-20 22:51:08');
 INSERT INTO `order_details` VALUES (211, 99, 2, 'verde', 20000, 1, 17000, 1, '2021-03-20 22:51:08', '2021-03-20 22:51:08');
+INSERT INTO `order_details` VALUES (212, 100, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 08:49:39', '2021-03-21 08:49:39');
+INSERT INTO `order_details` VALUES (213, 100, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 08:49:39', '2021-03-21 08:49:39');
+INSERT INTO `order_details` VALUES (214, 100, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 08:49:39', '2021-03-21 08:49:39');
+INSERT INTO `order_details` VALUES (215, 101, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 08:50:08', '2021-03-21 08:50:08');
+INSERT INTO `order_details` VALUES (216, 101, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 08:50:08', '2021-03-21 08:50:08');
+INSERT INTO `order_details` VALUES (217, 101, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 08:50:08', '2021-03-21 08:50:08');
+INSERT INTO `order_details` VALUES (218, 102, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details` VALUES (219, 102, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details` VALUES (220, 102, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details` VALUES (221, 103, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 08:55:08', '2021-03-21 08:55:08');
+INSERT INTO `order_details` VALUES (222, 103, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 08:55:08', '2021-03-21 08:55:08');
+INSERT INTO `order_details` VALUES (223, 103, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 08:55:08', '2021-03-21 08:55:08');
+INSERT INTO `order_details` VALUES (224, 104, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 09:00:04', '2021-03-21 09:00:04');
+INSERT INTO `order_details` VALUES (225, 104, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 09:00:04', '2021-03-21 09:00:04');
+INSERT INTO `order_details` VALUES (226, 104, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 09:00:04', '2021-03-21 09:00:04');
+INSERT INTO `order_details` VALUES (227, 105, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (228, 105, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (229, 105, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (230, 106, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (231, 106, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (232, 106, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (233, 107, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (234, 107, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (235, 107, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (236, 108, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (237, 108, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (238, 108, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (239, 109, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (240, 109, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (241, 109, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (242, 110, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (243, 110, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (244, 110, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (245, 111, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (246, 112, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (247, 113, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (248, 113, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (249, 113, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (250, 114, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (251, 114, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (252, 114, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (253, 115, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (254, 115, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (255, 115, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (256, 116, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (257, 116, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (258, 116, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (260, 118, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (261, 118, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (262, 118, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (263, 119, 21, 'Tangram', 15000, 10, 15000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (264, 119, 1, 'rojo', 10000, 1, 8500, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (265, 119, 2, 'verde', 20000, 1, 17000, 1, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details` VALUES (267, 121, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (268, 121, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (269, 121, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (270, 122, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (271, 122, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (272, 122, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (273, 123, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (274, 123, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (275, 123, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (276, 124, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (277, 124, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (278, 124, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (279, 125, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (280, 125, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (281, 125, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (282, 126, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (283, 126, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (284, 126, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (285, 127, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (286, 127, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (287, 127, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (288, 128, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (289, 128, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (290, 128, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (291, 129, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (292, 129, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (293, 129, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (294, 130, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (295, 130, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (296, 130, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (297, 131, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (298, 131, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (299, 131, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (300, 132, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (301, 132, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (302, 132, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (303, 133, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (304, 133, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (305, 133, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (306, 134, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (307, 134, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (308, 134, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (309, 135, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (310, 135, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (311, 135, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (312, 136, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (313, 136, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (314, 136, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (315, 137, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (316, 137, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (317, 137, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (318, 138, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (319, 138, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (320, 138, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (321, 139, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (322, 139, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (323, 139, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (324, 140, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (325, 140, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (326, 140, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (327, 141, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (328, 141, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (329, 141, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (330, 142, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (331, 142, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (332, 142, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (333, 143, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (334, 143, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (335, 143, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (336, 144, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (337, 144, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (338, 144, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (339, 145, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (340, 145, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (341, 145, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (342, 146, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (343, 146, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (344, 146, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (345, 147, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (346, 147, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (347, 147, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (348, 148, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (349, 148, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (350, 148, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (351, 149, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (352, 149, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (353, 149, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (354, 150, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (355, 150, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (356, 150, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (357, 151, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (358, 152, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (359, 152, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (360, 152, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (361, 153, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (362, 153, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (363, 153, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (364, 154, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (365, 154, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (366, 154, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260734, 156, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260735, 156, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260736, 156, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260737, 157, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260738, 157, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260739, 157, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260740, 158, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260741, 158, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260742, 158, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260743, 159, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260744, 159, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260745, 159, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260746, 160, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260747, 160, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260748, 160, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260749, 161, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260750, 161, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260751, 161, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260752, 162, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260753, 162, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260754, 162, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260755, 163, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 10:51:44', '2021-03-21 10:51:44');
+INSERT INTO `order_details` VALUES (260756, 163, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 10:51:44', '2021-03-21 10:51:44');
+INSERT INTO `order_details` VALUES (260757, 163, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 10:51:44', '2021-03-21 10:51:44');
+INSERT INTO `order_details` VALUES (260758, 164, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 10:52:00', '2021-03-21 10:52:00');
+INSERT INTO `order_details` VALUES (260759, 164, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 10:52:00', '2021-03-21 10:52:00');
+INSERT INTO `order_details` VALUES (260760, 164, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 10:52:00', '2021-03-21 10:52:00');
+INSERT INTO `order_details` VALUES (260761, 165, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 10:52:02', '2021-03-21 10:52:02');
+INSERT INTO `order_details` VALUES (260762, 165, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 10:52:02', '2021-03-21 10:52:02');
+INSERT INTO `order_details` VALUES (260763, 165, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 10:52:02', '2021-03-21 10:52:02');
+INSERT INTO `order_details` VALUES (260764, 166, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 10:52:03', '2021-03-21 10:52:03');
+INSERT INTO `order_details` VALUES (260765, 166, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 10:52:03', '2021-03-21 10:52:03');
+INSERT INTO `order_details` VALUES (260766, 166, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 10:52:03', '2021-03-21 10:52:03');
+INSERT INTO `order_details` VALUES (260767, 167, 21, 'Tangram', 15000, 10, 15000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260768, 167, 1, 'rojo', 10000, 1, 8500, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details` VALUES (260769, 167, 2, 'verde', 20000, 1, 17000, 1, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
 COMMIT;
 
 -- ----------------------------
@@ -692,7 +881,7 @@ CREATE TABLE `order_details_activity` (
   CONSTRAINT `order_details_activity_order_detail_id` FOREIGN KEY (`order_detail_id`) REFERENCES `order_details` (`id`),
   CONSTRAINT `order_details_activity_purchase_status_id` FOREIGN KEY (`purchase_status_id`) REFERENCES `purchase_statuses` (`id`),
   CONSTRAINT `order_details_activity_reference_id` FOREIGN KEY (`reference_id`) REFERENCES `references` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of order_details_activity
@@ -708,6 +897,32 @@ INSERT INTO `order_details_activity` VALUES (7, 41, 5, 1, 'Mono con bananas', 12
 INSERT INTO `order_details_activity` VALUES (8, 43, 5, 1, 'Mono con bananas', 12000, 12000, '2021-03-20 21:07:00', '2021-03-20 21:07:00');
 INSERT INTO `order_details_activity` VALUES (9, 45, 5, 1, 'Mono con bananas', 12000, 12000, '2021-03-20 21:07:59', '2021-03-20 21:07:59');
 INSERT INTO `order_details_activity` VALUES (10, 47, 5, 1, 'Mono con bananas', 12000, 12000, '2021-03-20 21:08:17', '2021-03-20 21:08:17');
+INSERT INTO `order_details_activity` VALUES (11, 218, 10, 1, 'Pulpo ', 10000, 10000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (12, 218, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (13, 218, 68, 1, 'Cojín Gato', 35000, 35000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (14, 218, 67, 1, 'Cojín Moutro', 35000, 35000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (15, 218, 8, 1, 'Sombrila', 10000, 10000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (16, 218, 16, 1, 'Cocodrilos', 11000, 11000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (17, 218, 5, 1, 'Mono con bananas', 12000, 12000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (18, 218, 20, 1, 'Ratòn', 13000, 13000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (19, 218, 11, 1, 'Carro de insertar', 15000, 15000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (20, 218, 7, 1, 'Lavadora ', 12000, 12000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (21, 218, 9, 1, 'Buho', 12000, 12000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (22, 218, 6, 1, 'Figuras Geometricas texturas', 10000, 9000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (23, 218, 11, 1, 'Carro de insertar', 15000, 15000, '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `order_details_activity` VALUES (24, 243, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details_activity` VALUES (25, 248, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details_activity` VALUES (26, 251, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details_activity` VALUES (27, 254, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details_activity` VALUES (28, 257, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details_activity` VALUES (29, 261, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details_activity` VALUES (30, 264, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `order_details_activity` VALUES (31, 355, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `order_details_activity` VALUES (44, 260756, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2021-03-21 10:51:44', '2021-03-21 10:51:44');
+INSERT INTO `order_details_activity` VALUES (45, 260759, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2021-03-21 10:52:00', '2021-03-21 10:52:00');
+INSERT INTO `order_details_activity` VALUES (46, 260762, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2021-03-21 10:52:02', '2021-03-21 10:52:02');
+INSERT INTO `order_details_activity` VALUES (47, 260765, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2021-03-21 10:52:03', '2021-03-21 10:52:03');
+INSERT INTO `order_details_activity` VALUES (48, 260768, 70, 1, 'TEXTURAS BEBES 10 ACTIVIDADES', 120000, 120000, '2021-03-21 00:00:00', '2021-03-21 00:00:00');
 COMMIT;
 
 -- ----------------------------
@@ -737,7 +952,7 @@ CREATE TABLE `orders` (
   CONSTRAINT `orders_phone_id` FOREIGN KEY (`phone_id`) REFERENCES `phones` (`id`),
   CONSTRAINT `orders_puchase_status_id` FOREIGN KEY (`puchase_status_id`) REFERENCES `purchase_statuses` (`id`),
   CONSTRAINT `orders_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of orders
@@ -827,6 +1042,71 @@ INSERT INTO `orders` VALUES (96, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-20 22:46
 INSERT INTO `orders` VALUES (97, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-20 22:48:56', '2021-03-20 22:48:56');
 INSERT INTO `orders` VALUES (98, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-20 22:50:48', '2021-03-20 22:50:48');
 INSERT INTO `orders` VALUES (99, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-20 22:51:08', '2021-03-20 22:51:08');
+INSERT INTO `orders` VALUES (100, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 08:49:39', '2021-03-21 08:49:39');
+INSERT INTO `orders` VALUES (101, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 08:50:08', '2021-03-21 08:50:08');
+INSERT INTO `orders` VALUES (102, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 08:52:42', '2021-03-21 08:52:42');
+INSERT INTO `orders` VALUES (103, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 08:55:08', '2021-03-21 08:55:08');
+INSERT INTO `orders` VALUES (104, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 09:00:04', '2021-03-21 09:00:04');
+INSERT INTO `orders` VALUES (105, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (106, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (107, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (108, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (109, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (110, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (111, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (112, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (113, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (114, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (115, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (116, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (118, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (119, 1, 1, 1, 1, 2, 175500, 'WEB', '2020-03-21 00:09:00', '2020-03-21 00:09:00');
+INSERT INTO `orders` VALUES (121, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (122, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (123, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (124, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (125, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (126, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (127, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (128, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (129, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (130, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (131, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (132, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (133, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (134, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (135, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (136, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (137, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (138, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (139, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (140, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (141, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (142, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (143, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (144, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (145, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (146, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (147, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (148, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (149, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (150, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (151, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (152, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (153, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (154, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (156, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (157, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (158, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (159, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (160, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (161, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (162, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
+INSERT INTO `orders` VALUES (163, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 10:51:44', '2021-03-21 10:51:44');
+INSERT INTO `orders` VALUES (164, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 10:52:00', '2021-03-21 10:52:00');
+INSERT INTO `orders` VALUES (165, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 10:52:02', '2021-03-21 10:52:02');
+INSERT INTO `orders` VALUES (166, 4, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 10:52:03', '2021-03-21 10:52:03');
+INSERT INTO `orders` VALUES (167, 1, 1, 1, 1, 2, 175500, 'WEB', '2021-03-21 00:00:00', '2021-03-21 00:00:00');
 COMMIT;
 
 -- ----------------------------
@@ -901,7 +1181,7 @@ INSERT INTO `products` VALUES (10, 'Palitos de colores ', 'Elaborado en paño Le
 INSERT INTO `products` VALUES (11, 'Perro', 'Elaborado en paño lency, compuesta por la silueta del rostro de un perro, y una creamallera en forma de boca, la cual tiene como función abrir y cerrar para sacar y guardar su lengua', 'meta title', 'meta description', 'meta tagas ', 'perro', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (12, 'Dinosaurio ', 'elaborado en paño lency, compuesto por la imagen de un dinosaurios que invita a realizar ensartado, cruzando el cordon  de un extremo al otro por la parte superior de la limagen, dos de sus patas estan puestas con botones y  se pueden quitar y poner, apuntando y desapuntando.', 'meta title', 'meta description', 'meta tagas ', 'dinosaurio', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (13, 'Cocodrilos', 'Elaborados en paño lency, Dos cocodrilos,verde y azul, cremalleras, tamaño mediano, página de color amarillo, 4 pescados de diferente color.', 'meta title', 'meta description', 'meta tagas ', 'cocodrilos', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
-INSERT INTO `products` VALUES (14, 'Guante granja', 'Elaborado en paño lency, variedad de colores, 5 animales en forma de títere de dedo, vaca, cerdo, gallo, rana, gato. 1 sol, 1 nube, fondo en forma de mano de granja.', 'meta title', 'meta description', 'meta tagas ', 'guante-granja', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (14, 'Guante granja', 'Elaborado en paño lency, variedad de colores, 5 animales en forma de títere de dedo, vaca, cerdo, gallo, rana, gato. 1 sol, 1 nube, fondo en forma de mano de granja.', 'meta title', 'meta description', 'meta tagas ', 'guante-granja', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (15, 'Panal de Abejas', 'Elaborado en paño lency, panal de abejas con cremallera y espacio para guardar las abejas, 4 abejas con tejido en el borde, ojos locos, rama y velcro para mover las abejas,  cinta de color pegada  a la cada abejas que no permite  caerse. ', 'meta title', 'meta description', 'meta tagas ', 'panal-de-abejas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (16, 'Rana', 'Elaborado en paño lency, Rana con cremallera por fuera, 4 moscas con ojos locos y velcro para poder moverlas y lengua larga para enrollar.  ', 'meta title', 'meta description', 'meta tagas ', 'rana', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (17, 'Ratòn', 'Ratón de laberinto elaborado en paño lency, simulando un queso, casa y cuerda la cual permite que el ratòn recorra el laberinto.', 'meta title', 'meta description', 'meta tagas ', 'raton', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
@@ -918,12 +1198,12 @@ INSERT INTO `products` VALUES (27, 'Ballena come peces', '', 'meta title', 'meta
 INSERT INTO `products` VALUES (28, 'Caracol de insertado ', '', 'meta title', 'meta description', 'meta tagas ', 'caracol-de-insertado', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (29, 'Cerdito de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'cerdito-de-texturas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (30, 'Oveja  de texturas', '', 'meta title', 'meta description', 'meta tagas ', 'oveja-de-texturas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
-INSERT INTO `products` VALUES (31, 'Perro con espejo', '', 'meta title', 'meta description', 'meta tagas ', 'perro-con-espejo', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (31, 'Perro con espejo', '', 'meta title', 'meta description', 'meta tagas ', 'perro-con-espejo', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (32, 'Vaca de texturas ', '', 'meta title', 'meta description', 'meta tagas ', 'vaca-de-texturas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (33, 'Araña con botones', '', 'meta title', 'meta description', 'meta tagas ', 'araña-con-botones', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (34, 'Cepillado de dientes', '', 'meta title', 'meta description', 'meta tagas ', 'cepillado-de-dientes', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (33, 'Araña con botones', '', 'meta title', 'meta description', 'meta tagas ', 'araña-con-botones', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
+INSERT INTO `products` VALUES (34, 'Cepillado de dientes', '', 'meta title', 'meta description', 'meta tagas ', 'cepillado-de-dientes', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (35, 'Pato clasificaciòn de colores ', '', 'meta title', 'meta description', 'meta tagas ', 'pato-clasificaciòn-de-colores', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (36, 'Hongo Vocales', '', 'meta title', 'meta description', 'meta tagas ', 'hongo-vocales', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (36, 'Hongo Vocales', '', 'meta title', 'meta description', 'meta tagas ', 'hongo-vocales', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (37, 'Figuras Geometricas clasificaciòn ', '', 'meta title', 'meta description', 'meta tagas ', 'figuras-geometricas-clasificaciòn', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (38, 'Camisa de botones', '', 'meta title', 'meta description', 'meta tagas ', 'camisa-de-botones', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (39, 'OTROS', '', 'meta title', 'meta description', 'meta tagas ', 'otros', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
@@ -940,11 +1220,11 @@ INSERT INTO `products` VALUES (49, 'Lapices clasificaciòn de colores', '', 'met
 INSERT INTO `products` VALUES (50, 'Tamaños de grande a pequeño', '', 'meta title', 'meta description', 'meta tagas ', 'tamaños-de-grande-a-pequeño', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (51, 'Flautista', '', 'meta title', 'meta description', 'meta tagas ', 'flautista', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (52, 'Tren de los números', '', 'meta title', 'meta description', 'meta tagas ', 'tren-de-los-números', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (53, 'Vocales lazos', '', 'meta title', 'meta description', 'meta tagas ', 'vocales-lazos', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (53, 'Vocales lazos', '', 'meta title', 'meta description', 'meta tagas ', 'vocales-lazos', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (54, 'Manos de conteo y Números', '', 'meta title', 'meta description', 'meta tagas ', 'manos-de-conteo-y-números', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (55, 'ABC ', '', 'meta title', 'meta description', 'meta tagas ', 'abc', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (55, 'ABC ', '', 'meta title', 'meta description', 'meta tagas ', 'abc', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (56, 'Ratón de insertado Números', '', 'meta title', 'meta description', 'meta tagas ', 'ratón-de-insertado-números', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
-INSERT INTO `products` VALUES (57, 'Cojín  León', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-león', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
+INSERT INTO `products` VALUES (57, 'Cojín  León', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-león', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
 INSERT INTO `products` VALUES (58, 'Cojín Mico', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-mico', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (59, 'Cojín dinosaurio', '', 'meta title', 'meta description', 'meta tagas ', 'cojín-dinosaurio', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 1);
 INSERT INTO `products` VALUES (60, 'Cojin Come galletas', '', 'meta title', 'meta description', 'meta tagas ', 'cojin-come-galletas', 1, 1, '2021-03-11 05:03:43', '2021-03-11 05:03:43', 2);
@@ -1564,6 +1844,36 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for ksp_count_products_by_type
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_count_products_by_type`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_count_products_by_type`(in p_slug text)
+BEGIN
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SHOW ERRORS;
+        ROLLBACK;   
+    END;
+    
+    DECLARE EXIT HANDLER FOR SQLWARNING
+    BEGIN
+        SHOW ERRORS;  
+        ROLLBACK;   
+    END;
+
+		SELECT 
+		count(p.id)
+		FROM products p
+		INNER join keny.references r on p.id = r.product_id
+		INNER join references_headquarters rh on rh.reference_id = r.id
+		INNER JOIN types t on t.id = p.type_id
+		WHERE t.slug = p_slug and rh.stock > 0;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for ksp_create_purchase
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `ksp_create_purchase`;
@@ -1575,12 +1885,13 @@ CREATE PROCEDURE `keny`.`ksp_create_purchase`(p_user_id INT,
 	p_total DOUBLE,
 	p_details TEXT,
     p_details_activity TEXT,
-	p_now VARCHAR(255), p_platform VARCHAR(100))
+	p_now VARCHAR(255),
+	p_platform VARCHAR(100))
   COMMENT 'creación de una compra'
 BEGIN
 	
 	DECLARE details TEXT default "";
-	DECLARE details_activity TEXT default "";
+	DECLARE details_activity TEXT;
 	DECLARE reference_id INT ;
 	DECLARE reference_name VARCHAR(40) ;
 	DECLARE quantity INT;
@@ -1638,12 +1949,16 @@ BEGIN
 				SET @order_detail_id = last_insert_id();
 				REPEAT
 					SELECT kf_split_str(p_details_activity, "||", @count_activity) INTO details_activity;
+					
+					-- call ksp_response(true,details_activity);
 					IF details_activity <> "" THEN
 						SELECT kf_split_str(details_activity, "&&", 1) INTO owner_activity_id;
 						SELECT kf_split_str(details_activity, "&&", 2) INTO activity_id;
 						SELECT kf_split_str(details_activity, "&&", 3) INTO quantity_activity;
 						SELECT kf_split_str(details_activity, "&&", 4) INTO price_with_discount_activity;
-						IF owner_activity_id = reference_id THEN
+						
+						-- call ksp_response(true,CONCAT("ref: ",reference_id," - ","owner: ",owner_activity_id," - ","details_activity: ",details_activity, reference_id = owner_activity_id));
+						IF reference_id = owner_activity_id THEN
 							SELECT name,rh.price FROM `references` r 
 							JOIN `references_headquarters` rh on r.id = rh.reference_id
 							where rh.headquarter_id = 1 and r.id = activity_id
@@ -1656,7 +1971,117 @@ BEGIN
 						END IF;
 					END IF;
 					SET @count_activity =  @count_activity + 1;
-					UNTIL details_activity = ""
+					UNTIL details_activity <> ""
+				END REPEAT;
+			END IF;
+			SET @count = @count + 1;
+			UNTIL details = ""
+		END REPEAT; 
+    COMMIT;
+    call ksp_response(true,@order_id);
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for ksp_create_purchase_fin
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `ksp_create_purchase_fin`;
+delimiter ;;
+CREATE PROCEDURE `keny`.`ksp_create_purchase_fin`(p_user_id INT,
+	p_phone_id INT, 
+	p_address_id INT,
+	p_city_id INT,
+	p_total DOUBLE,
+	p_details TEXT,
+    p_details_activity TEXT,
+	p_now VARCHAR(255),
+	p_platform VARCHAR(100))
+  COMMENT 'creación de una compra'
+BEGIN
+	
+	DECLARE details TEXT default "";
+	DECLARE details_activity TEXT;
+	DECLARE reference_id INT ;
+	DECLARE reference_name VARCHAR(40) ;
+	DECLARE quantity INT;
+	DECLARE price DOUBLE;
+	DECLARE price_with_discount DOUBLE;
+	DECLARE owner_activity_id INT;
+	DECLARE activity_id INT;
+	DECLARE quantity_activity INT;
+	DECLARE price_with_discount_activity DOUBLE;
+	DECLARE reference_name_activity VARCHAR(255);
+	DECLARE price_activity DOUBLE;
+    
+    
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SHOW ERRORS; 
+        ROLLBACK;
+    END;
+    
+    DECLARE EXIT HANDLER FOR SQLWARNING
+    BEGIN
+        SHOW ERRORS;
+        ROLLBACK;
+    END;
+    set @status_recibida = 1;
+    set @status_pending = 2;
+    SET @count = 1;
+    SET @count_activity = 1;
+    
+    START TRANSACTION;
+        INSERT INTO `keny`.`orders`
+		(`id`,`user_id`,`phone_id`,`address_id`,`city_id`,`puchase_status_id`,`total`,`created_at`,`updated_at`,`platform`)
+		VALUES
+		(null,p_user_id,p_phone_id,p_address_id,p_city_id, @status_pending,p_total,p_now,p_now, p_platform);
+        
+        SET @order_id = last_insert_id();
+        -- details 
+        REPEAT
+			SELECT kf_split_str(p_details, "||", @count) INTO details;           
+			IF details <> "" THEN
+				SELECT kf_split_str(details, "&&", 1) INTO reference_id;
+				SELECT kf_split_str(details, "&&", 2) INTO quantity;
+				SELECT kf_split_str(details, "&&", 3) INTO price_with_discount;
+				-- seleccionar la data faltante
+				SELECT name,rh.price FROM `references` r 
+				JOIN `references_headquarters` rh on r.id = rh.reference_id
+				where rh.headquarter_id = 1 and r.id = reference_id
+				limit 1
+				INTO reference_name,price ;
+				-- guardar los details
+				INSERT INTO `keny`.`order_details`
+				(`id`,`order_id`,`reference_id`,`reference_name`,`price`,`quantity`,`price_with_discount`,`puchase_status_id`,`created_at`,`updated_at`)
+				VALUES
+				(null,@order_id,reference_id,reference_name,price,quantity,price_with_discount,@status_recibida,p_now,p_now);
+				SET @order_detail_id = last_insert_id();
+				REPEAT
+					SELECT kf_split_str(p_details_activity, "||", @count_activity) INTO details_activity;
+					
+					call ksp_response(true,details_activity);
+					IF details_activity <> "" THEN
+						SELECT kf_split_str(details_activity, "&&", 1) INTO owner_activity_id;
+						SELECT kf_split_str(details_activity, "&&", 2) INTO activity_id;
+						SELECT kf_split_str(details_activity, "&&", 3) INTO quantity_activity;
+						SELECT kf_split_str(details_activity, "&&", 4) INTO price_with_discount_activity;
+						
+						-- call ksp_response(true,CONCAT("ref: ",reference_id," - ","owner: ",owner_activity_id," - ","details_activity: ",details_activity, reference_id = owner_activity_id));
+						IF reference_id = owner_activity_id THEN
+							SELECT name,rh.price FROM `references` r 
+							JOIN `references_headquarters` rh on r.id = rh.reference_id
+							where rh.headquarter_id = 1 and r.id = activity_id
+							limit 1
+							INTO reference_name_activity,price_activity;				
+							INSERT INTO `keny`.`order_details_activity`
+							(`id`,`order_detail_id`,`reference_id`,`purchase_status_id`,`reference_name`,`price`,`price_with_discount`,`created_at`,`updated_at`)
+							VALUES
+							(NULL,@order_detail_id,activity_id,@status_recibida,reference_name_activity,price_activity,price_with_discount_activity,p_now,p_now);
+						END IF;
+					END IF;
+					SET @count_activity =  @count_activity + 1;
+					UNTIL details_activity <> ""
 				END REPEAT;
 			END IF;
 			SET @count = @count + 1;
