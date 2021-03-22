@@ -36,7 +36,7 @@ func (p *Purchase) CreatePurchase(details string, details_activities string) (bo
 	result = false
 	err := row.Scan(&excepcioSql.Level, &excepcioSql.Code, &excepcioSql.Message)
 	message = excepcioSql.Message
-	fmt.Println(err, row)
+	// fmt.Println(err, row)
 	if err != nil {
 		result = false
 		message = err.Error()
