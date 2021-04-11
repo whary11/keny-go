@@ -22,7 +22,7 @@ func Api(router *gin.Engine) {
 		user := api.Group("/users")
 		{
 			user.POST("/register", controllers.RegisterUser)
-			user.GET("/:user_id", middlewares.Auth(), controllers.GetUserById)
+			user.GET("/:user_id", middlewares.Auth(true), controllers.GetUserById)
 
 		}
 
@@ -45,7 +45,7 @@ func Api(router *gin.Engine) {
 
 		purchase := api.Group("/purchase")
 		{
-			purchase.POST("/create/", middlewares.Auth(), controllers.Create)
+			purchase.POST("/create/", middlewares.Auth(false), controllers.Create)
 			// purchase.GET("/reference/info", controllers.Info)
 		}
 	}

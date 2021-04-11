@@ -11,35 +11,38 @@ type Purchase struct {
 	References []Reference `json:"references" example:"[]" binding:"required"`
 	Total      float64     `json:"total" example:"100000" binding:"required"`
 	Address    Address     `json:"address,omitempty" `
-	AddressId  int         `json:"address_id,omitempty" binding:"required"`
-	PhoneId    int         `json:"phone_id,omitempty" binding:"required"`
-	Phone      int         `json:"phone,omitempty"`
+	AddressId  int         `json:"address_id,omitempty" `
+	PhoneId    int         `json:"phone_id,omitempty" `
+	Phone      Phone       `json:"phone,omitempty"`
 	Id         int         `json:"id,omitempty"`
 	UserId     int         `json:"user_id,omitempty"`
 	City       City        `json:"city,omitempty"`
 	CityId     int         `json:"city_id,omitempty" binding:"required"`
 	Platform   string      `json:"platform" binding:"required"`
+	User       User        `json:"user,omitempty"`
 }
 
-func (p *Purchase) CreatePurchase(details string, details_activities string) (bool, string) {
+func (p *Purchase) CreatePurchase(details string, details_activities string, user_string string, address_string string, phone_string string) (bool, string) {
 
-	fmt.Println(details)
-	fmt.Println(".....................")
-	fmt.Println(details_activities)
+	// fmt.Println(details)
+	// fmt.Println(".....................")
+	// fmt.Println(p.UserId, p.PhoneId, p.AddressId, p.CityId, p.Total, details, details_activities, carbon.Now().DateTimeString(), p.Platform)
 	var excepcioSql utils.ExceptionSql
 	var (
 		result  bool
 		message string
 	)
-	querySelect := `CALL ksp_create_purchase(?,?,?,?,?,?,?,?,?)`
-	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.UserId, p.PhoneId, p.AddressId, p.CityId, p.Total, details, details_activities, carbon.Now().DateTimeString(), p.Platform)
+	querySelect := `CALL ksp_create_purchase(?,?,?,?,?,?,?,?,?,?,?,?)`
+	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.UserId, p.PhoneId, p.AddressId, p.CityId, p.Total, details, details_activities, carbon.Now().DateTimeString(), p.Platform, user_string, address_string, phone_string)
 	result = false
 	err := row.Scan(&excepcioSql.Level, &excepcioSql.Code, &excepcioSql.Message)
 	message = excepcioSql.Message
-	// fmt.Println(err, row)
+	fmt.Println(message, row)
 	if err != nil {
 		result = false
 		message = err.Error()
+
+		fmt.Println(message)
 	}
 	if excepcioSql.Code == 200 {
 		result = true

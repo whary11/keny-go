@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Auth() gin.HandlerFunc {
+func Auth(is_abort bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		header := c.Request.Header["Authorization"]
 		if len(header) > 0 {
@@ -25,6 +25,9 @@ func Auth() gin.HandlerFunc {
 						var a models.Auth
 						a.Uuid = claim.Jti
 						if a.ValidateTokenByUuid() {
+
+							c.Set("user_id", a.UserId)
+
 							c.Next()
 							return
 						}
@@ -32,11 +35,14 @@ func Auth() gin.HandlerFunc {
 				}
 			}
 		}
-		c.AbortWithStatusJSON(http.StatusUnauthorized, utils.Response{
-			"code":    http.StatusUnauthorized,
-			"status":  false,
-			"message": "No autorizado",
-		})
+
+		if is_abort {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, utils.Response{
+				"code":    http.StatusUnauthorized,
+				"status":  false,
+				"message": "No autorizado",
+			})
+		}
 
 	}
 }

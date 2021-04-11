@@ -72,3 +72,13 @@ func (user *User) CreateUser() (bool, string) {
 
 	return result, message
 }
+
+func (user *User) GetUserIdByid() (err error) {
+	querySelect := `CALL ksp_get_user_id_by_email(?)`
+
+	row := dbBoilerplateGo.Read.QueryRow(querySelect, user.Email)
+	fmt.Println(row)
+	err = row.Scan(&user.Id)
+
+	return err
+}

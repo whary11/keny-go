@@ -6,7 +6,6 @@ import (
 	"keny-go/utils"
 	"net/http"
 	"strconv"
-	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -29,16 +28,23 @@ func init() {
 
 func Create(c *gin.Context) {
 
+	// return
+
 	var purchase models.Purchase
+
+	purchase.User.Password, _ = utils.HashPassword("asdgadsadas")
 	if err := c.ShouldBindJSON(&purchase); err != nil {
 		utils.GetResponse(c, http.StatusOK, utils.Response{
 			"code":    http.StatusInternalServerError,
 			"status":  false,
 			"message": err.Error(),
-			"data":    "",
+			"data":    "ShouldBindJSON",
 		})
 		return
 	}
+	user_id, _ := c.Get("user_id") // Si existe el user_id está logueado
+
+	fmt.Println("user_id", user_id)
 
 	// Armar el string con los id de referencias recibidas
 	var (
@@ -68,13 +74,6 @@ func Create(c *gin.Context) {
 			details += "||"
 		}
 	}
-	// utils.GetResponse(c, http.StatusOK, utils.Response{
-	// 	"code":    code_not_exist_references,
-	// 	"status":  false,
-	// 	"message": "Algunas referencias no existen",
-	// 	"data":    details,
-	// })
-	// return
 
 	var (
 		bad_references   []models.Reference
@@ -154,17 +153,25 @@ func Create(c *gin.Context) {
 		})
 		return
 	}
+
 	//obtener id del user.
-	header := c.Request.Header["Authorization"]
-	bearerToken := header[0]
-	token := strings.Split(bearerToken, " ")
-	if len(token) == 2 && token[0] == "Bearer" {
-		var claim utils.Claim
-		claim.GetContainJwt(token[1])
-		fmt.Println(claim.Sub)
-		purchase.UserId = claim.Sub
+	user_string := ""
+	if user_id != nil {
+		purchase.UserId = user_id.(int)
+	} else {
+		user_string += purchase.User.Email + "&&" + purchase.User.Name + "&&" + purchase.User.LastName + "&&" + purchase.User.Password
 	}
-	create_status, message_create := purchase.CreatePurchase(details, details_activities)
+	address_string := ""
+	if purchase.AddressId == 0 {
+		address_string += purchase.Address.ViaGenerator + "&&" + purchase.Address.ValueViaGenerator + "&&" + purchase.Address.ViaNumber + "&&" + purchase.Address.House + "&&" + strconv.Itoa(purchase.CityId)
+	}
+
+	phone_string := ""
+	if purchase.PhoneId == 0 {
+		phone_string += purchase.Phone.Phone + "&&" + strconv.Itoa(purchase.Phone.Principal) + "&&" + strconv.Itoa(purchase.Phone.CountryId)
+	}
+
+	create_status, message_create := purchase.CreatePurchase(details, details_activities, user_string, address_string, phone_string)
 	if create_status {
 		utils.GetResponse(c, http.StatusOK, utils.Response{
 			"code":    http.StatusOK,
@@ -181,15 +188,5 @@ func Create(c *gin.Context) {
 		})
 		return
 	}
-	// purchase.Total = total_back
 
-	// fmt.Println(total_back)
-
-	// Consultar la información de las referencias
-	// utils.GetResponse(c, http.StatusOK, utils.Response{
-	// 	"code":    http.StatusOK,
-	// 	"status":  true,
-	// 	"data":    result,
-	// 	"message": "Continue...",
-	// })
 }
