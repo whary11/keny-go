@@ -3,3 +3,4 @@ main
 config.json
 keys/public.pub
 keys/private.key
+node_modules
