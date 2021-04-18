@@ -3,7 +3,6 @@ package controllers
 import (
 	"fmt"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 
@@ -13,14 +12,14 @@ import (
 
 func GetUserById(c *gin.Context) {
 	var user models.User
-	userId, err := strconv.Atoi(c.Param("user_id"))
-	user.Id = userId
+	userId, _ := c.Get("user_id")
+	user.Id = userId.(int)
 	fmt.Println(user.Id)
-	if err != nil {
-		// badRequest(c, []string{"user ID is invalid"})
-		return
-	}
-	err = user.GetUserByid()
+	// if err != nil {
+	// 	// badRequest(c, []string{"user ID is invalid"})
+	// 	return
+	// }
+	err := user.GetUserByid()
 	if err != nil {
 		// serverError(c, err)
 		fmt.Println(err.Error())

@@ -19,13 +19,13 @@ type User struct {
 
 func (user *User) GetUserByid() (err error) {
 	querySelect := `
-		SELECT  name, email
+		SELECT  name, email, last_name
 			FROM users 
 		WHERE id = ?; `
 
 	row := dbBoilerplateGo.Read.QueryRow(querySelect, user.Id)
 	fmt.Println(row)
-	err = row.Scan(&user.Name, &user.Email)
+	err = row.Scan(&user.Name, &user.Email, &user.LastName)
 
 	if errors.Is(err, sql.ErrNoRows) {
 		err = nil

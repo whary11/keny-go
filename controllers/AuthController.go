@@ -110,5 +110,6 @@ func Login(c *gin.Context) {
 		"expires_at":    expires.Unix(),
 		"token":         token,
 		"refresh_token": tokenRefresh,
+		"message":       "Usuario logueado.",
 	})
 }

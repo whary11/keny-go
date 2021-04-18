@@ -22,7 +22,7 @@ func Api(router *gin.Engine) {
 		user := api.Group("/users")
 		{
 			user.POST("/register", controllers.RegisterUser)
-			user.GET("/:user_id", middlewares.Auth(true), controllers.GetUserById)
+			user.GET("/get_info", middlewares.Auth(true), controllers.GetUserById)
 
 		}
 
