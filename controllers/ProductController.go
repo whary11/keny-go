@@ -6,11 +6,21 @@ import (
 	"keny-go/utils"
 	"net/http"
 	"strconv"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
 
 func ProductDatail(c *gin.Context) {
+
+	utils.GetResponse(c, http.StatusOK, utils.Response{
+		"code":    http.StatusNotFound,
+		
+		"message": os.Getenv("GOPROXY")  ,
+		"data":    nil,
+	})
+
+	return 
 	var product models.Product
 	slug := c.Param("slug")
 	product.Slug = slug
