@@ -3,6 +3,7 @@ package models
 import (
 	"database/sql"
 	"fmt"
+	"keny-go/utils"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -58,14 +59,24 @@ func init() {
 
 // Up new mysql database connection
 func (db *database) upConnectionMysql(info *infoDatabase) (err error) {
-	driverRead := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", info.Read.Username, info.Read.Password, info.Read.Hostname, info.Read.Port, info.Read.Name)
+
+	var username = utils.GetEnv("DB_USERNAME", "")
+
+	var password = utils.GetEnv("DB_PASSWORD", "")
+	var hostname = utils.GetEnv("DB_HOST_READ", "")
+	var port = utils.GetEnv("DB_PORT", "")
+	var database = utils.GetEnv("DB_DATABASE", "")
+
+	driverRead := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", username, password, hostname, port, database)
 	db.Read, err = sql.Open("mysql", driverRead)
 	db.Read.SetConnMaxLifetime(time.Second * 10)
 	if err != nil {
 		return
 	}
 
-	fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", info.Read.Username, info.Read.Password, info.Read.Hostname, info.Read.Port, info.Read.Name)
+	hostname = utils.GetEnv("DB_HOST", "")
+
+	fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", username, password, hostname, port, database)
 
 	driverWrite := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", info.Write.Username, info.Write.Password, info.Write.Hostname, info.Write.Port, info.Write.Name)
 	db.Write, err = sql.Open("mysql", driverWrite)
