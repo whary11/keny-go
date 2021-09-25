@@ -6,7 +6,7 @@ website keny company
 
 ## Privada
 
-openssl genrsa -out ./keys/private.key
+mkdir keys && openssl genrsa -out ./keys/private.key
 
 ## Pública
 
