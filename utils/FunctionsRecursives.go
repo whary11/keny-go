@@ -31,7 +31,7 @@ func GetIvaValue(value int, iva int) int {
 func GetEnv(key string, defaultKey string) string {
 	err := godotenv.Load()
 	if err != nil {
-		return defaultKey
+		return err.Error()
 	}
 	result := os.Getenv(key)
 
