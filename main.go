@@ -10,14 +10,17 @@ import (
 	"github.com/joho/godotenv"
 )
 
-
-// Dev: nodemon --exec go run main.go --signal SIGTERM
-func main() {
+func init() {
 	err := godotenv.Load()
 	if err != nil {
 
 		fmt.Println(err.Error())
 	}
+}
+
+// Dev: nodemon --exec go run main.go --signal SIGTERM
+func main() {
+
 	fmt.Println(utils.GetEnv("APP_PORT", ":4001"))
 	// models.SaveTablesAndData()
 

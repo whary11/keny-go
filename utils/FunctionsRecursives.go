@@ -3,7 +3,6 @@ package utils
 import (
 	"net"
 	"os"
-	"fmt"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -30,7 +29,7 @@ func GetIvaValue(value int, iva int) int {
 }
 
 func GetEnv(key string, defaultKey string) string {
-	fmt.Println(defaultKey)
+	// fmt.Println(defaultKey)
 	result := os.Getenv(key)
 
 	return result
