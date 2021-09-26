@@ -9,7 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 	// "github.com/joho/godotenv"
 	"github.com/joho/godotenv"
-	_ "github.com/joho/godotenv/autoload"
 )
 
 func GetResponse(c *gin.Context, code int, data Response) {
