@@ -1,12 +1,14 @@
 package utils
 
 import (
+	"fmt"
 	"net"
 	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 	// "github.com/joho/godotenv"
+	"github.com/joho/godotenv"
 	_ "github.com/joho/godotenv/autoload"
 )
 
@@ -29,9 +31,12 @@ func GetIvaValue(value int, iva int) int {
 }
 
 func GetEnv(key string, defaultKey string) string {
-	// fmt.Println(defaultKey)
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println(err.Error(), defaultKey)
+		return err.Error()
+	}
 	result := os.Getenv(key)
-
 	return result
 }
 

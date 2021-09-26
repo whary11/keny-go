@@ -12,14 +12,6 @@ import (
 
 func ProductDatail(c *gin.Context) {
 
-	utils.GetResponse(c, http.StatusOK, utils.Response{
-		"code": http.StatusNotFound,
-
-		"message": utils.GetEnv("DB_PORT", ":100000"),
-		"data":    nil,
-	})
-
-	return
 	var product models.Product
 	slug := c.Param("slug")
 	product.Slug = slug
