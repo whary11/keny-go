@@ -3,19 +3,31 @@ package models
 import (
 	"fmt"
 	"keny-go/utils"
+	"strconv"
+
+	"github.com/uniplaces/carbon"
 )
 
 type Product struct {
-	Id               int         `json:"id" example:"123"`
-	Name             string      `json:"name" example:"Paracetamol"`
-	Description      string      `json:"description" example:"luis.raga@keny.com"`
-	MetaTitle        string      `json:"meta_title" example:"2021-02-24 20:19:39"`
-	MetaDescription  string      `json:"meta_description" example:"2021-02-24 20:19:39"`
-	MetaTags         string      `json:"meta_tags" example:"2021-02-24 20:19:39"`
+	Id               int         `json:"id" example:"1"`
+	Name             string      `json:"name" example:"Paracetamol" binding:"required"`
+	Description      string      `json:"description" example:"description" binding:"required"`
+	MetaTitle        string      `json:"meta_title" example:"meta_title" binding:"required"`
+	MetaDescription  string      `json:"meta_description" example:"meta_description" binding:"required"`
+	MetaTags         string      `json:"meta_tags" example:"2021-02-24 20:19:39" binding:"required"`
 	Slug             string      `json:"slug" example:"page-1"`
-	Discount         float64     `json:"discount" example:"10"`
+	Discount         float64     `json:"discount" example:"10" `
 	NumberActivities int         `json:"number_activities" example:"123"`
-	References       []Reference `json:"references" example:"page-1"`
+	TypeId           int         `json:"type_id" example:"1" binding:"required"`
+	References       []Reference `json:"references" example:"[]" binding:"required"`
+}
+
+var (
+	now *carbon.Carbon
+)
+
+func init() {
+	now = carbon.Now()
 }
 
 func (product *Product) GetProductBySlug() (status bool, message string) {
@@ -58,4 +70,49 @@ func (product *Product) GetProductBySlug() (status bool, message string) {
 
 func (p *Product) addReference(r Reference) {
 	p.References = append(p.References, r)
+}
+
+func (p *Product) CreateProduct() (bool, string) {
+	var excepcioSql utils.ExceptionSql
+	var (
+		result  bool
+		message string
+	)
+
+	querySelect := `CALL ksp_create_product(?,?,?,?,?,?,?,?)`
+	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.Name, p.Description, p.MetaTitle, p.MetaDescription, p.MetaTags, p.Slug, p.TypeId, now.DateTimeString())
+
+	result = false
+	err := row.Scan(&excepcioSql.Level, &excepcioSql.Code, &excepcioSql.Message)
+	message = excepcioSql.Message
+	fmt.Println(message, row)
+
+	if err != nil {
+		result = false
+		message = err.Error()
+
+		fmt.Println(message)
+	}
+	if excepcioSql.Code == 200 {
+		result = true
+	}
+
+	return result, message + now.DateTimeString()
+
+}
+
+func (p *Product) GenearteSlug() {
+	p.Slug = utils.Slug(p.Name)
+}
+
+func (p *Product) GenerateReferences() string {
+	referenceString := ""
+	for i := 0; i < len(p.References); i++ {
+		if i > 0 {
+			referenceString += "@@@@@@@@"
+		}
+		referenceString += p.References[i].Name + "&&" + strconv.Itoa(p.References[i].Stock) + "&&" + fmt.Sprintf("%v", p.References[i].Price)
+	}
+	// fmt.Println("REFERENCES: " + referenceString)
+	return referenceString
 }

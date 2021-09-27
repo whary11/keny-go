@@ -8,12 +8,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// func init() {
-// 	err := godotenv.Load()
-// 	if err != nil {
-
-// 		fmt.Println(err.Error())
-// 	}
+// Ligin
+// {
+// 	"email":"luis.raga@gmail.com",
+// 	"password": "5f4dcc3b5aa765d61d8327deb882cf99"
 // }
 
 // Dev: nodemon --exec go run main.go --signal SIGTERM

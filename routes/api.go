@@ -2,6 +2,7 @@ package routes
 
 import (
 	"keny-go/controllers"
+	"keny-go/controllers/Office"
 	"keny-go/middlewares"
 
 	"github.com/gin-gonic/gin"
@@ -47,6 +48,16 @@ func Api(router *gin.Engine) {
 		{
 			purchase.POST("/create/", middlewares.Auth(false), controllers.Create)
 			// purchase.GET("/reference/info", controllers.Info)
+		}
+
+		// API del backkoffice
+		office := api.Group("/office")
+		{
+			pr := office.Group("/product")
+			{
+				pr.POST("/create/", middlewares.Auth(true), Office.CreateProduct)
+
+			}
 		}
 	}
 

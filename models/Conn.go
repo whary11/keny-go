@@ -76,12 +76,9 @@ func (db *database) upConnectionMysql(info *infoDatabase) (err error) {
 
 	hostname = utils.GetEnv("DB_HOST", "")
 
-	fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", username, password, hostname, port, database)
-
-	driverWrite := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", info.Write.Username, info.Write.Password, info.Write.Hostname, info.Write.Port, info.Write.Name)
+	driverWrite := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", username, password, hostname, port, database)
 	db.Write, err = sql.Open("mysql", driverWrite)
 	db.Write.SetConnMaxLifetime(time.Second * 10)
 
-	fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", info.Write.Username, info.Write.Password, info.Write.Hostname, info.Write.Port, info.Write.Name)
 	return
 }

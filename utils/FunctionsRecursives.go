@@ -42,3 +42,11 @@ func GetEnv(key string, defaultKey string) string {
 func GetPriceWithDiscount(price float64, percent float64) float64 {
 	return price - ((price * percent) / 100)
 }
+
+func Slug(str string) string {
+	var s string
+
+	s = strings.ReplaceAll(str, " ", "-")
+
+	return s
+}
