@@ -45,8 +45,6 @@ func GetPriceWithDiscount(price float64, percent float64) float64 {
 
 func Slug(str string) string {
 	var s string
-
 	s = strings.ReplaceAll(str, " ", "-")
-
 	return s
 }

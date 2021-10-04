@@ -21,10 +21,7 @@ func CreateProduct(c *gin.Context) {
 		return
 	}
 	product.GenearteSlug()
-
-	// return
 	validate, message := product.CreateProduct()
-
 	if validate == false {
 		utils.GetResponse(c, http.StatusOK, utils.Response{
 			"code":    http.StatusInternalServerError,
@@ -41,7 +38,4 @@ func CreateProduct(c *gin.Context) {
 		"message": message,
 		//"data":    product,
 	})
-
-	// Crear producto en la base de datos
-
 }
