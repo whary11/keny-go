@@ -21,9 +21,8 @@ func CreateProduct(c *gin.Context) {
 		return
 	}
 	product.GenearteSlug()
-	product.GenerateReferences()
 
-	return
+	// return
 	validate, message := product.CreateProduct()
 
 	if validate == false {

@@ -79,8 +79,12 @@ func (p *Product) CreateProduct() (bool, string) {
 		message string
 	)
 
-	querySelect := `CALL ksp_create_product(?,?,?,?,?,?,?,?)`
-	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.Name, p.Description, p.MetaTitle, p.MetaDescription, p.MetaTags, p.Slug, p.TypeId, now.DateTimeString())
+	referenceString := p.GenerateReferences()
+
+	fmt.Println(referenceString)
+
+	querySelect := `CALL ksp_create_product(?,?,?,?,?,?,?,?,?)`
+	row := dbBoilerplateGo.Write.QueryRow(querySelect, p.Name, p.Description, p.MetaTitle, p.MetaDescription, p.MetaTags, p.Slug, p.TypeId, now.DateTimeString(), referenceString)
 
 	result = false
 	err := row.Scan(&excepcioSql.Level, &excepcioSql.Code, &excepcioSql.Message)
@@ -111,8 +115,18 @@ func (p *Product) GenerateReferences() string {
 		if i > 0 {
 			referenceString += "@@@@@@@@"
 		}
-		referenceString += p.References[i].Name + "&&" + strconv.Itoa(p.References[i].Stock) + "&&" + fmt.Sprintf("%v", p.References[i].Price)
+		referenceString += p.References[i].Name + "&&" + strconv.Itoa(p.References[i].Stock) + "&&" + fmt.Sprintf("%v", p.References[i].Price) + "&&" + fmt.Sprintf("%v", p.References[i].Price) + "&&" + GenerateHeadquarters(p.References[i].Headquarters)
 	}
-	// fmt.Println("REFERENCES: " + referenceString)
 	return referenceString
+}
+
+func GenerateHeadquarters(headquarters []int) string {
+	headquartersString := ""
+	for i := 0; i < len(headquarters); i++ {
+		if i > 0 {
+			headquartersString += "WWWWWWW"
+		}
+		headquartersString += strconv.Itoa(headquarters[i])
+	}
+	return headquartersString
 }

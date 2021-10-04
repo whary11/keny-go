@@ -19,6 +19,7 @@ type Reference struct {
 	Images            []Image     `json:"images" example:"[]" binding:"required"`
 	Activities        []Reference `json:"activities"`
 	TypeId            int         `json:"type_id" binding:"required"`
+	Headquarters      []int       `json:"Headquarters" binding:"required"`
 }
 
 func ValidateStockReference(referenceId int) (bool, int) {
